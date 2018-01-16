@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // js的数据的类型
+    var num = 1;
+    var  str = "aa";
+    var  bol = true;// false;
+    // null  undefined
+    // 引用数据类型 ： 这个是操作空间地址；
+
+    var  obj = {};// 对象
+   var  a = 10;
+//    var a1 = 10;
+    var  obj = {1:"a"};// a is  not defined  :
+    console.log(obj);
+
+    var ary = [];
+    var  reg = /\d/;
+    function sum() {
+
+    }
+    //Math  Date...
+
+
+    // 1. 开辟一个空间
+    // 2. 把对象中键值对存储到这个空间下；
+    // 3. 把这个空间地址赋值给变量名；
+//    console.log(obj);// 地址 ： xxfffoo88
+
+
+    // = : 赋值
+    // ==  : 比较 返回一个布尔值（true，false）；
+//    var  obj = {};
+//    var  obj1 = {};
+    // 在js中遇到{}、[]  都是开辟一个新的空间地址；
+    // "" == false;
+    // Number("") : 强制转换数字
+
+    // 对象 == 对象 ：比较的是空间地址
+    // 对象 == 字符串 ： 把对象转换成字符串，toString()
+    // 对象 == 布尔 ： 对象先转字符串再转数字；布尔转数字；
+    // 字符串 == 布尔 ： 都转数字进行比较
+    // 字符串== 数字 ： 字符串转数字
+    // 布尔== 数字： 布尔转数字；
+    // NaN == NaN : false  NaN 和自己都不相等；
+    // null  == undefined    true
+
+
+    // 在判断语句中：
+//    if(1==1)console.log(1);
+//    console.log(2);
+
+//    if(!isNaN("12px")){
+//
+//    };
+//    if("12px"){// 如果只有一个值，那么会默认转布尔；
+//    }
+    //有且只有这五个 0 NaN undefined null ""转布尔是false；
+
+    // 三元运算符
+    // switch  case   绝对比较
+
+
+
+//   var  a  = b  = 4;
+//   b = 10;
+//    console.log(a);// 4
+//
+//    var  obj1 = obj2= {age:10};
+//
+//    obj2.age = 8;
+//    console.log(obj1);// {age:8}
+
+    // 1. 数据类型检测
+    // typeof   : 返回值是一个字符串，字符串中内容代表当前的数据类型；
+    // 局限性：
+    // 1.typeof null -- >"object";空对象指针
+    // 2.不能对象数据类型中具体的数据类型
+    // typeof []// --> "object"
+    // typeof  {} -- > "object";
+
+    // 2. instanceof
+    // 3. constructor
+    // 4. Object.prototype.toString.call();
+
+
+    var  a = 10;
+    function sum(num,num1){
+        console.log(num + num1);
+        if(typeof num=== "number" && typeof num1==="number"){
+            console.log(num+num1)
+        }
+    };
+    var  b = sum(1,2);
+    sum("1",2)
+
+    // setTimeOut  setInterval
+    // clearTimeout() clearInterval()
+    var  a  = setTimeout(function () {
+
+    },1000);// setTimeout
+    console.log(a);
+    var  b = setInterval(function () {
+        console.log(1);
+    },10)
+    console.log(b);
+    clearTimeout(a)
+    // 定时器的返回值代表当前定时器在页面是第几个；
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

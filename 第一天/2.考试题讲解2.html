@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" class="box">
+    <div id="tab"></div>
+</div>
+<!--你好-->
+<div id="box1" ></div>
+<script>
+    // 获取页面元素
+    var  a = document.getElementById("box");
+    var tab = document.getElementById("tab");
+    var b = document.createElement("ul");
+//    a.style.background = "#000"
+//    console.log(a);
+//    var  b = document.getElementsByClassName("box")[0];
+//    b.style.background ="red";
+//    console.log(b);
+    //
+
+    // 动态操作DOM节点：
+    // 1.document.createElement
+    // 2. appendChild
+    // 3. insertBefore(newChild,oldChild);
+    // 4. removeChild
+    // 5. replaceChild;
+    // 6. cloneNode
+    // 7. get/set/removeAttribute;
+
+    //
+//    a.insertBefore(b,tab);
+
+    // 节点       nodeType      nodeName    nodeValue
+
+    // 元素节点       1           大写标签名      null
+    // 文本节点       3            #text         文本内容
+    // 注释节点       8            #comment       注释内容
+    // document      9            #document       null
+    // 空格和换行都属于文本节点；
+    // childNodes : 子节点
+    // children : 子元素节点  在IE8 及以下，会把注释节点当做元素节点；
+    // parentNode : 父亲节点
+    // previousSibling // previousElementSibling (在IE8及以下不兼容)
+    // nextSibling // nextElementSibling
+    // firstChild : firstElementChild
+    // lastChild : lastElementChild
+
+    //console.log(a.childNodes);
+    // 获取上一个哥哥元素节点 兼容所有浏览器
+    function getBrother(curEle) {
+        // in  检测对象中属性是否在这个对象中存在，存在返回true，不存在false
+        console.log("previousElementSibling" in  curEle)
+        if("previousElementSibling" in  curEle){// true  说明是标准浏览器
+            return curEle.previousElementSibling;
+        }
+        var  p = curEle.previousSibling;
+        while(p){
+            if(p.nodeType === 1){
+                return p;
+            };
+            p = p.previousSibling;
+        }
+    }
+    getBrother(tab);
+    var obj = {a:1}
+    console.log("b" in obj);
+
+    // 字符串： substr(m,n)  substring  slice
+
+    // replace: 替换
+
+
+    // 三
+    //ary.push()   ary.splice(ary.length,0,xxx)  ary[ary.length] = 12;
+    // pop   ary.length--  ary.splice(ary.length-1,1)
+
+    // forEach  map  :
+//    ary.forEach(function (item,index) {
+//
+//    })
+    // ary.sort(function(a,b){return a-b}) :从小到大
+
+//    var ary = [109,999,888,666,876,867,789];
+//    ary.sort();
+//    console.log(ary);
+//    ary.slice(n-1,m);
+
+    // 四
+    //Math.abs() : 取绝对值
+    // Math.ceil() 向上取整
+    // Math.floor
+//    Math.round()
+//    Math.random()
+//    Math.max()
+//    Math.min()
+//    Math.pow()
+//    Math.sqrt()[40-80]
+   // Math.round(Math.random()*(n-m)+m)
+
+
+    var  ary = [1,2,3,2,1,2,3,4,2,1,2,3,4,3,2,1];
+    var  obj = {};
+    for(var i=0;i<ary.length;i++){
+        var  cur = ary[i];
+        if(obj[cur] === cur){
+            ary[i] = ary[ary.length-1];
+            ary.length--;
+            i--;
+            continue;
+        }
+        obj[cur] = cur;
+    };
+    ary.sort(function (a,b) {
+        return b-a;
+    })
+
+        //{1：1，2:2,3:3}
+
+        var  a = setInterval(function () {
+            var  str = "";
+            var i=0;
+            while(i<4){
+                str+= Math.round(Math.random()*9);
+                i++;
+            };
+            a.innerHTML = str;
+        },1000)
+        setTimeout(function () {
+            clearTimeout(a)
+        },10000);
+
+
+
+
+
+</script>
+</body>
+</html>
