@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 不管条件是否成立，都要进行变量提升
+
+    // 在新版本浏览器中，if条件中的函数只声明，不定义
+    // 在老版本浏览器中，if条件中的函数不仅声明，而且还要定义；
+    //console.log(a);// undefined  :
+//    console.log(fn);// undefined
+//    if([] ==![]){
+////        var  a = 100;
+//        function fn() {
+//
+//        }
+//    }
+//    console.log(a);
+    f = function () {return true;};
+    g = function () {return false;};
+    ~function () {
+        // g : undefined
+        if (g() && [] == ![]) {// g is not a function : 不是一个函数
+            f = function () {return false;};
+            function g() {return true;}
+        }
+    }();
+    console.log(f());// false
+    console.log(g());// false
+
+
+</script>
+</body>
+</html>

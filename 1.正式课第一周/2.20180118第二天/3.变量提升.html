@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 变量提升也叫预解释
+//    console.log(a);// undefined
+//    var  a = 100;
+//    console.log(c);// undefined
+//    console.log(a);// 100
+//    console.log(b);// b is not defined
+//    b =10;
+//    console.log(b);// 10
+
+    // 加载页面时，首先会形成一个全局作用域，然后代码执行进行变量提升，最后代码从上到下开始执行；
+    // 变量提升：在当前作用域下，代码执行之前，把带var和带function的变量或函数，进行提升的声明(通知当前作用域有这个变量)；这个阶段就是“变量提升”阶段；
+     // 1. 变量提升带var只声明不定义；当代码执行到这一行时进行定义赋值；
+    // 2. function 进行变量提升时，不仅进行声明，还要定义；
+
+    // 函数的定义发生在变量提升阶段；
+//    var c = "珠峰";
+//    console.log(a);
+//    console.log(fn);
+//    fn()
+//    function fn() {// 在函数定义部分，当代码从上到下执行到这时，代码立即跳过
+        // 全局作用域中这个变量不进行变量提升
+        // 如果当前变量只声明，未赋值那么默认存储值是undefined；
+//        console.log(a);// undefined
+//        var a = 10;
+//        console.log(a);// 10
+//        f()
+//        function f() {
+//
+//        }
+//    };
+//    fn();
+    // f()// f is not defined
+    // 1.
+    // 1.
+    // 函数执行--> 形成私有作用域--> 形参赋值---> 变量提升--> 代码从上到下执行--> 作用域销毁
+    // 私有变量：在函数体中被var过，形参也是私有变量；
+
+    function sum(num) {
+        console.log(num)// 整个函数  14    整个函数
+        var num=20;
+        function num() {
+
+        }
+        console.log(num);                   //整个函数
+        console.log(num);// 整个函数；20     20
+    }
+    sum(14)
+
+
+</script>
+</body>
+</html>

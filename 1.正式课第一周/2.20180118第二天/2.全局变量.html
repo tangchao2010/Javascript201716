@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // webstorm : 代码编辑器
+    // 浏览器：代码的解析器
+    // 全局变量 ：
+    // 变量 ：
+    //    var  a = 10;
+    // 1. 字母数字下划线_$组成,数字不能开头
+    //2. 严格大小写
+    //3. 遵循驼峰命名法
+    // 4. 不能使用关键字保留字；
+    //    var  a= 10;
+
+    //   function fn() {
+    //       console.log(1)
+    //   };
+    //   fn();
+    //   fn();
+
+    //函数分为定义和执行
+    // 执行：
+    // 1. 形成一个私有作用域
+    // 2. 形参赋值
+    // 3. 变量提升
+    // 4. 代码从上到下执行
+    // 5. 作用域是否销毁
+    // 当加载页面时，代码运行之前，浏览器首先会形成一个全局的作用域；
+    // 全局作用域 : 是栈内存，是提供给代码运行环境
+
+
+    // 私有作用域 ： 函数执行时，首先会形成一个私有作用域；供函数体中代码执行
+    // 函数每执行一次，会形成一个新的私有作用域；
+
+    // 闭包 ： 函数执行会形成一个私有作用域，保护里面的私有变量不受外界的干扰，这种保护机制---> "闭包"；
+
+    // 2.存储值；
+    //    function f() {
+    //        var  a = 10;
+    ////        console.log(a);
+    //        return  a;
+    //    }
+    //    var  n = f();
+    //console.log(f());
+    //    a = 100;
+    //console.log(a)// a is  not  defined
+    //    console.log(1);
+    //    function fn() {
+    //        console.log(1);
+    //    }
+    //
+
+    // 全局变量： 在全局下定义的变量就是全局变量；相当于给window新增一个键值对，属性名就是变量名，属性值是变量存储的值；
+
+//    var dd = "zhongguo";
+    //    console.log(a)// a is not  defined
+//    var num = "a";
+//    a = 200;
+    //    alert("hhh");
+//    function a() {
+//
+//    };
+
+    // 私有变量 ： 在私有作用域定义的变量就是私有变量
+    // 函数体中可以访问函数外面的变量；
+    var  b = 100;
+    function fn() {
+        var  a = 10;
+        b = 10;
+        console.log(b)// 10
+    };
+    console.log(b);// 100
+    fn()
+
+    console.log(b)// 10
+    if(isNaN(NaN)){
+        var  a = 10;
+    }
+
+    var  a ,b ,fn = function () {
+        var a = b = 10;
+    };
+    fn();
+    console.log(a, b);// undefined  10;
+
+    var a;
+    var b;
+    var fn = function () {
+        var a =10;
+        b = 10;
+    };
+    fn();
+
+
+
+
+
+</script>
+</body>
+</html>
