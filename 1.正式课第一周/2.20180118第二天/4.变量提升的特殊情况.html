@@ -11,25 +11,107 @@
     // 在新版本浏览器中，if条件中的函数只声明，不定义
     // 在老版本浏览器中，if条件中的函数不仅声明，而且还要定义；
     //console.log(a);// undefined  :
-//    console.log(fn);// undefined
-//    if([] ==![]){
-////        var  a = 100;
-//        function fn() {
-//
-//        }
-//    }
-//    console.log(a);
-    f = function () {return true;};
-    g = function () {return false;};
-    ~function () {
-        // g : undefined
-        if (g() && [] == ![]) {// g is not a function : 不是一个函数
-            f = function () {return false;};
-            function g() {return true;}
-        }
-    }();
-    console.log(f());// false
-    console.log(g());// false
+    //    console.log(fn);// undefined
+    //    if([] ==![]){
+    ////        var  a = 100;
+    //        function fn() {
+    //
+    //        }
+    //    }
+    //    console.log(a);
+    //    f = function () {return true;};
+    //    g = function () {return false;};
+    //    ~function () {
+    //        // g : undefined
+    //        if (g() && [] == ![]) {// g is not a function : 不是一个函数
+    //            f = function () {return false;};
+    //            function g() {return true;}
+    //        }
+    //    }();
+    //    console.log(f());// false
+    //    console.log(g());// false
+
+    // 2. 变量提升只发生在等号的左边；
+
+    //var  obj = {
+    //    fn : function () {}
+    //}
+    //    console.log(f);//  f is not defined
+    //    var fn = function f() {
+    //
+    //    }
+
+    // 3.return出去的内容不进行变量提升，但是return下面的代码需要进行变量提升；
+    //    function sum() {
+    //        var  a = 10;
+    //        console.log(b);// 整个函数
+    //        console.log(c);
+    ////        console.log(fn);
+    //        return  function () {
+    //            console.log("hello");
+    //        };
+    //        console.log(b);// 此处代码不执行
+    //        var c = 199;
+    //        function b() {
+    //            var  d =10;
+    //        }
+    //    }
+    //   var  f = sum();
+    //    f()
+    //    console.log(a);
+
+    // 4. 如果变量名重复，那么不再进行声明，但是要重新定义；
+    //    console.log(a);// 函数
+    //    var a = 100;
+    //    console.log(a);// 100
+    ////     var a = 1000;
+    //    function a() {
+    //
+    //    }
+    //    fn()// 3
+    //    var fn = function () {
+    //        console.log(0)
+    //    }
+    //    fn()// 3  0
+    //    function fn() {
+    //        console.log(1)
+    //    }
+    //    fn()// 3   0
+    //    function fn() {
+    //        console.log(2)
+    //    }
+    //    var fn = 10
+    //    function fn() {
+    //        console.log(3)
+    //    }
+    //    fn();//  报错
+
+    // 5. 匿名函数不进行变量提升；
+    //    function f() {
+    //
+    //    }
+    //     函数表达式
+    //    var  fn = function () {
+    //
+    //    };
+    //    fn()
+    // 自执行函数定义和执行是一起完成的；
+    //    (function () {
+    //        console.log(1)
+    //    })()
+    //  var c = 10;
+    //  var  c = 1;
+
+
+    // es6 中定义变量
+    // 1. let  定义变量不进行变量提升
+    // 2. let变量不能重复声明；
+    //    console.log(a);
+    //    let  a = 10;
+    //    let a = 1;
+    //    let  a =3.14;
+    // const : 定义一个常量；
+    //    a =100;
 
 
 </script>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 基本数据类型
+    // 引用数据类型
+//    var  obj = {};// xxxfffooo
+//    var  obj1 = {};
+//    obj1.a = 10;
+//    obj1["a"] = 10;
+//    console.log(obj);
+//    console.log(obj == obj1);// false
+    //console.log(obj1);// obj1 is not  defined
+//    var  obj = obj1 = {};
+//    obj1.a= 1;
+//    console.log(obj);
+//    console.log(obj1);
+//    var ary = [1,2,3,4];// [0,2,3,4]
+//    function f(ary){
+//        // ary = xxxfff000
+//        ary[0] = 0;
+//        arguments[0] = [];// xxxfff111
+//        ary[0] = 100;
+//        console.log(ary)//  [100]
+//        return ary;
+//    }
+//    f(ary);// xxxfff000
+//    console.log(ary);// [0,2,3,4]
+
+//    var  a = b = c = 10;
+//    c = 12;
+//    console.log(a);// 10
+//    var d = e = f = {};
+//    f.a = 10;
+//    console.log(d);// {a:10}
+
+    // 开辟一个空间；
+    // 把键值对存储到这个空间下；堆内存存储引用数据类型值；
+    var  obj = {a:10};//xxxfff000
+    var  num = 10;
+    // 栈内存存储基本数据类型值；
+
+    // 全局作用域和私有作用域都是栈内存；提供代码运行环境的；
+
+    //全局作用域 ： 栈内存；在打开页面时形成，当关闭页面这个全局作用域才会销毁；全局作用域属于不销毁的作用域；
+
+    // 堆内存释放 ： 存储引用数据类型值；
+
+    // 谷歌浏览器 ：浏览器每隔一段时间会对当前空间地址进行检查，看当前地址有没有被占用；如果没有被占用，浏览器会马上把这个空间地址回收掉；如果被占用，那么就不能销毁；
+
+    // IE 火狐浏览器：采用了计数的规则； 如果当前地址被占用一次，那么浏览器会给当前这个地址+1； 如果不再占用，那么浏览器会让其-1；直到减到0，此时这个空间地址就没有被占用；那么浏览器会把这个地址立即回收；
+
+//    var  obj = {};
+//    obj = null;
+
+//    function fn() {
+//        var i =0;
+//        i++;
+//        console.log(i)// 1
+//    };
+//    fn();
+//    fn();
+    // 形成私有作用域 --> 形参赋值 --> 变量提升--> 代码从上到下执行--> 作用域是否销毁
+    // 一般情况下，函数执行完成之后，当前作用域会立即销毁；
+    //  栈内存销毁，那么里面存储的值也会随着销毁；
+    var a = 100;
+    function fn() {
+        var  a= 10;
+        return  function () {
+            console.log(a);// 10
+        }
+    }
+    fn()
+    var f = fn();//
+    f()// 10
+    fn()();
+
+    // 不销毁作用域的条件： 1. 函数体中return一个引用数据类型值；
+    //                   2. return出内容被外界变量或对象属性名接收；
+
+    // 不立即销毁：
+
+    // 作用域销毁与否不仅和函数内部有关，还跟函数执行有关系；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
