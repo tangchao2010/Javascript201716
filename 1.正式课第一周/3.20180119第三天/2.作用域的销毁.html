@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    function fn() {
+//        var i=10;// 11  12
+//        return function (n) {// n = 15
+//            console.log(n + (++i))// 26
+//        }
+//    };
+//    var f = fn();
+//    f(15);// 26
+//    fn()(20);// 31
+//    f(20);// 32
+//    fn()(15);// 26
+
+//    var  i =0;
+
+//    console.log(i++);//先输出，后运算；
+////    console.log(i);
+//    console.log(++i);// 1// 先运算后输出；
+//     console.log(i);// 1
+//    function fn(i) {
+//        // i =5  6
+//        return function (n) {// 10
+//            console.log(n + i++);
+//        }
+//    };
+//    var f  = fn(5);
+//    f(10);//15
+//    f(20); // 26
+//    fn(8)(12);// 20
+//    fn()(18)// NaN
+
+    var  obj= {
+        i : 10,
+        fn:(function () {
+           var i = 0;// 加载时开辟的栈内存
+           return function (n) {
+               console.log(n + i++)
+           }
+        })()
+    };
+    var  f = obj.fn;
+    f(10);// 10
+    f(20);// 21
+    obj.fn(30);//32
+    obj.fn(40);// 43
+
+
+
+</script>
+</body>
+</html>
