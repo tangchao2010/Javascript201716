@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+        var num =1;// 2  4
+        var obj = {
+            num : 2,// 4
+            fn : (function () {
+                // 当代码加载到这一行时，当定义对象，键值对存储到堆内存中代码执行；fn实际存储就是这个自执行函数return出的函数
+                this.num *= 2;// this-->window
+                num +=3;
+                var num =1;// 3  4   6
+                // num 是私有变量；
+                return function () {
+                    num +=2;
+                    this.num +=2
+                    console.log(++num)// 4   7
+                }
+            })()
+        };
+        var f= obj.fn;
+        f();
+        obj.fn();
+        console.log(window.num,obj.num) // 4   4;
+
+
+        var num = 2;//4 6
+        var obj = {num: 1};//3
+        obj.fn = (function (num) {
+            this.num += 2;
+            num--;//1
+            return function (n) {//2
+                this.num += 2;
+                num--;
+                console.log(n + ++num);//3  2
+            }
+        })(this.num);// this--window
+        var fn = obj.fn;
+        fn(2);//3
+        obj.fn(1);// 2
+        console.log(num, obj.num);// 6 3
+
+
+    // 变量提升  作用域   this；
+
+    // 数组的方法 pop  push   shift  unshift  ......
+
+    var  ary = [1,2,8];// [1,2]
+        ary.push(12,88,99)
+    ary.pop()
+    Array.prototype.pop = function () {
+        var  last = this[this.length-1];
+        this.length--;
+        return  last;
+    }
+
+</script>
+</body>
+</html>
