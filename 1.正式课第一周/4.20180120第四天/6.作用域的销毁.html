@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 堆栈内存： 这两种内存是浏览器形成的虚拟内存；
+    // 堆内存 ： 引用数据类型需要开辟空间地址，存储数据
+//    var  obj = {a:100,b:9};// 堆内存
+//    obj = {}
+//    console.log(obj.a);
+//    var ary = [19,89,77,8];
+    // 在js中遇到{}  []  都是开辟一个新的空间地址
+
+     // var obj = o ={};
+    // 堆内存回收：
+
+
+    //栈内存释放
+    // 栈内存：1. 提供代码运行环境  2.储存基本数据类型值；
+    // 全局作用域 ： 当关闭页面时，全局作用域会被浏览器回收，所以全局作用域不销毁的；
+    // 私有作用域： 函数执行会形成私有作用域；
+//    function fn() {
+//        var  f = 10;
+//    };
+    // 不销毁：
+    // 1. return 出引用数据类型值
+    // 2.并且被外界接收
+//    function fn() {
+//        var  a = 10;
+//        return  function () {
+//            console.log(a);
+//        }
+//    }
+//     fn()();// 10
+
+//    var  obj = {};
+//    function fn() {
+//        var b = 10;
+//        obj.a = function d() {
+//            console.log(b);// 10
+//        }
+//    }
+//    fn();
+//    obj.a()
+
+    //不立即销毁
+
+    // 立即销毁： 函数执行一般会立即销毁，栈内存销毁那么栈内存中所存储的基本数据类型值也会随着销毁；
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

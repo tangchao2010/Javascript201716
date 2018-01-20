@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.不管条件是否成立，都要进行变量提升
+    // 在最新版本浏览器中： function 在条件语句中只声明，不定义
+    // 在老版本浏览器中，function不仅声明还要定义
+//    console.log(f);
+//    if([]==[]){
+//        function f() {
+//
+//        }
+//    }
+//    console.log(fn);
+//    var obj = {}
+//    for(var i=0;i<4;i++){
+//        obj["fn" + i] = function () {
+//            console.log(1);
+//        }
+//    };
+//    console.log(obj);
+//    obj.fn1();
+
+
+    // let  a = 19;
+    // var a = {}
+//    console.log(a);
+//    for(var i=0;i<8;i++){
+//
+//    };
+//    console.log(i);//8
+
+    // 2. 变量提升只发生在等号的左边，等号右边不进行变量提升；
+//    var  obj = {
+//        fn:function () {
+//
+//        }
+//    }
+//    var  f = function sum() {
+//
+//    }
+
+    // 3. return 出的内容不进行变量提升，但是return下面的代码需要进行变量提升；
+//    function fn() {// 方法、功能
+//        console.log(a);
+//        return function () {
+//
+//        };
+//        var a = "你好";
+//    }
+    // 1. 没有return
+    // 2. 有return
+
+//    function f() {
+//        for(var i=0;i<10;i++){
+////            continue;
+////            break;
+//            if(i==5){
+//                break;
+//            }
+//            console.log(i);
+//        }
+//    }
+//    f()
+
+    // 4.如果变量名字重复，不再重复声明，但要重新定义；
+//    var a ;
+//    function a() {
+//
+//    };
+
+    // 5. 匿名函数不进行变量提升
+    //
+//    function fn() {
+//
+//    }
+//    (function (a,b) {// 定义和执行是当加载到这一行时完成
+//        console.log(this);//
+//    })(this.a)
+    for(var i=0;i<18;i++){
+        // i=0;
+        for(var j = 10;j<19;j++){// 9
+
+        }
+    }
+
+
+</script>
+</body>
+</html>

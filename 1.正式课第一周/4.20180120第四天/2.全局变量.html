@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 全局变量、私有变量
+    //    var a = 10;
+    // 给window新增一个键值对； 这个过程发生在变量提升阶段；
+    //    if("a" in window){
+    //        var a;
+    //    }
+    //    console.log(a);// undefined
+    //    console.log(a);
+    //    window.a = 10
+    //    console.log(a);
+    //    function fn() {
+    //        console.log(this)// window
+    //    }
+    //    window.fn()
+
+    //    function fn() {
+    // a
+    //        var a = 10;
+    // 是否是私有变量： 1.有没有被var 过； 2，是否是形参
+    //        function b() {
+    //            var  a = 100;
+    //        }
+    //        b();
+    //        console.log(a);
+    //        var  obj = {
+    //            a:100
+    //        }
+    //    };
+    //    fn(10)
+    //    console.log(a);
+    //    var a = 10;
+    //    console.log(a)// undefined
+    //    function f() {
+    //        console.log(a)// 1
+    //        var  a = 10;
+    //    }
+    //    f(1);
+    //    var a = 10;
+
+    // 全局作用域 ： 打开页面时，代码执行之前，首先浏览器给代码提供一个运行环境，这个运行环境就是一个栈内存 ---> "全局作用域"
+
+    // 私有作用域： 函数执行首先会提供代码运行环境，供函数体中代码执行；
+
+
+</script>
+</body>
+</html>

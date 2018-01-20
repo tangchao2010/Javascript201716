@@ -68,10 +68,10 @@
     // 循环绑定点击事件
     // 自定义属性方式；
     // 存储值
-        for(var i=0;i<oLis.length;i++){
-            oLis[i].index = i;// 存储了当前li的索引；
+        for(let  i=0;i<oLis.length;i++){
+            //oLis[i].index = i;// 存储了当前li的索引；
             oLis[i].onclick = function () {
-               change(this.index)
+               change(i)
             }
         }
     function change(n) {
@@ -98,16 +98,16 @@
     //            }
     //        })(i)
     //    }
-    for (var i = 0; i < oLis.length; i++) {
-        // 形成三个不销毁的作用域；每个作用域中分别存储一个变量i的值；
-        (function (j) {
-            // 形成一个不销毁的作用域，储存了变量j的值；
-            //当前元素的事件行为占用着函数这个空间地址，导致外层的作用域是不销毁的；
-            oLis[j].onclick = function () {// 点击时执行；
-                change(j);
-            }
-        })(i)
-    }
+//    for (var i = 0; i < oLis.length; i++) {
+//        // 形成三个不销毁的作用域；每个作用域中分别存储一个变量i的值；
+//        (function (j) {
+//            // 形成一个不销毁的作用域，储存了变量j的值；
+//            //当前元素的事件行为占用着函数这个空间地址，导致外层的作用域是不销毁的；
+//            oLis[j].onclick = function () {// 点击时执行；
+//                change(j);
+//            }
+//        })(i)
+//    }
 
 
 </script>

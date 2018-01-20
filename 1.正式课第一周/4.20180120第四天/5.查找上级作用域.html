@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var  a = 1;
+//    function fn() {
+//        console.log(a);// fn 外界作用域是window
+//    }
+//    fn()
+//    var  a = 100;
+    function fn() {
+//        var  a = 10;
+        return function () {
+            console.log(a)// a  is  not  defined;
+        }
+    }
+    var  f = fn();
+    f()// f  在全局作用域下执行；但是f的上一级作用域是跟函数执行没有任何关系的；需要看函数在哪个作用域下定义的；
+
+
+
+
+</script>
+</body>
+</html>

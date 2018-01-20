@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var name = "珠峰";// "中国"
+    var age = 5000;
+    (function (name,age) {
+        // name = "珠峰"  age =8
+        this.name = "中国";
+        arguments[1] = 8;
+        return function () {
+            console.log(name);
+            console.log(age);
+        }
+    })(name,age)();
+    console.log(name,age);
+//
+    var i = 1;// 2  3  4
+    function fn() {
+        return function (n) {
+            console.log(n + i++);
+        }
+    }
+    var f = fn();
+    f(10);// 11
+    fn()(10); // 12
+    f(20);// 23
+    fn()(20);// 24
+
+    var i = 0;  //2  3  5  6  7  9
+    function fn() {
+        i += 2;
+        return function (n) {
+            console.log(n + (++i));
+        }
+    }
+    var f = fn();
+    f(4);//7
+    fn()(6);//12
+    f(7);//14
+    fn(8)(9);//19
+
+
+
+</script>
+</body>
+</html>

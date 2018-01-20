@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 当前作用域中有特殊意义；
+//    function fn() {
+//        //this -->window
+//    };
+    //  函数中的this代表当前函数的执行主体；谁让这个函数执行的（谁调用了这个函数）；
+//    fn()
+//
+//    alert();
+//    var  obj ={
+//        d : function () {
+//
+//        }
+//    }
+//    obj.d()
+
+    // 1. 全局下this指向window
+    // 2. 看函数执行前有没有“.”,点前面是谁，那么函数中的this就会指向谁
+    // 3. 给元素的事件绑定方法，方法中的this指向被绑定的这个元素
+    // 4. 自执行函数中的this永远指向window
+    // 5. 回调函数中的this指向window；
+
+
+    [1,2].sort(function (a,b) {
+        console.log(this);
+        return a-b;
+    });
+//    console.log(this);
+
+
+</script>
+</body>
+</html>

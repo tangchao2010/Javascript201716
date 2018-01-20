@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var num =2;// 1  2
+    var obj = {
+        num : 0,
+        fn : function () {
+            num = 1;
+            (function (num) {
+                ++this.num;
+                num++;
+                console.log(num)// 2
+            })(this.num)// 1
+        }
+    }
+    var f = obj.fn;
+    f();
+    console.log(window.num,obj.num) // 2  0
+    var num =2;// 1  2
+    var obj = {
+        num : 0,
+        fn : function () {
+            num = 1;
+            (function (num) {
+                ++this.num;
+                num++;
+                console.log(num)//  1
+            })(this.num)// 0
+        }
+    }
+    obj.fn();
+    console.log(window.num,obj.num)// 2 0
+
+    var number =2;
+    var obj = {
+        number :4,
+        fn1 : (function () {
+            this.number*=2;
+            number = number*2;
+            var number = 3;
+            return function () {
+                this.number*=2;
+                number*=3;
+                console.log(number)
+            }
+        })()
+    };
+    var fn1 = obj.fn1;
+    console.log(number);
+    fn1();
+    obj.fn1();
+    console.log(window.number,obj.number);
+    var num = 10;
+    var obj = {num: 15};
+    obj.fn = (function (num) {
+        this.num += 10;
+        num *= 2;
+        return function (n) {
+            this.num += n;
+            console.log(n + (--num));
+        }
+    })(obj.num);
+    var fn = obj.fn;
+    fn(10);
+    obj.fn(15);
+    console.log(window.num, obj.num);
+
+
+
+</script>
+</body>
+</html>
