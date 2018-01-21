@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //        function fn(name,age) {
+    //            var  obj = {};
+    //            obj.name = name;
+    //            obj.age = age;
+    //            return obj;
+    //        };
+    //        console.log(new fn(1, 2));
+    //
+    //    function CreatePerson(name, age) {
+    //        // 在函数执行之前会默认创建一个空对象来，并且让这个函数中的this指向当前的实例（this 指向当前的空对象）；
+    //        this.name = name;
+    //        this.age = age;
+    //        console.log(100);
+    //        // 代码执行完成之后，会把这个对象（this）return出去；
+    //    };
+    //    var p = CreatePerson("王云成", 3);// 普通函数执行
+    //    console.log(p);
+    //var  p = createPerson();
+    //    var p1 = new CreatePerson("王云成", 3);//  {name: "王云成", age: 3} 构造函数执行
+    //    console.log(p1);
+    // 在普通函数前面加一个new ,那么当前函数就变成一个构造函数
+    // 构造函数执行会默认创建一个实例；
+    // 类一定是一个函数，但函数不一定是一个类；
+    //var  obj = {};
+    //console.log(new obj); obj  is  not  a  constructor ;
+
+    //    console.log(Number);
+    function CreatePerson(name, age) {
+        console.log(a);
+        var a = 10;
+        if ([]) {
+            var b = 100;
+        }
+        // this ---> 实例
+        this.name = name;
+        this.age = age;
+        this.hobby = function () {
+
+        }
+
+    };
+    //    var  p1 = CreatePerson("王云成", 3)
+    var p1 = new CreatePerson("王云成", 3);// {name: "王云成", age: 3}
+    //    console.log(p);
+    // 1. 构造函数执行时，不需要初始化对象，构造函数中把obj都换成this，没有return；
+    // 2.普通函数执行： 形成私有作用域--> 形参赋值--> 变量提升--> 代码从上到下运行--> 作用域是否销毁；
+    // 构造函数执行 ：形成私有作用域 --->  形参赋值-->变量提升-->(先默认创建一个空对象，并且让这个函数中this指向这个对象)代码从上到下运行 默认把这个this（实例）返回）--->作用域销毁
+    //3.如果不传参，小括号可以省去；没有小括号，函数依然执行；
+    //4.类中的this指向当前的实例；
+    // 5.如果类中return出一个基本数据类型值，那么不会影响类的返回值；如果出引用数据类型值，那么return这个引用数据类型值会把这个实例覆盖掉；
+
+    // 6.类中私有变量和创建的实例没有关系，只有和this相关的代码才是和实例有关系的；
+    // 7. instanceof : 检测当前实例是否属于某个类
+    //console.log(p1 instanceof CreatePerson);// true
+    //    var  ary = new Array;// []
+    //    var  obj = {}
+    //    console.log(ary instanceof Array);// true
+    //    console.log(ary instanceof Function);// false
+    //    function fn() {}
+    //    console.log(fn instanceof Function);// true 所有的函数都是Function的一个实例
+    //    console.log(obj instanceof Array);// false
+    //    console.log(obj instanceof Object);// true;
+    //    var num = 1;
+    //    var n = new  Number(1);
+    //    console.log(num instanceof Number);// false
+    //    console.log(n instanceof Number);// true
+    // 浏览器禁止调用内置类Null Undefined
+    // console.log(null instanceof Null);
+
+
+    // 8. in 检测这个属性名在这个对象中是否存在，存在返回true，不存在返回false；
+    // 当前是公有或者是私有属性都返回true；
+
+//    console.log(p1);
+//    console.log("name" in p1);// true
+//    console.log("age" in p1);
+//    console.log("a" in p1);
+//    console.log("toString" in p1);
+//    console.log("hasOwnProperty" in p1);
+    //console.log(p1.hasOwnProperty);
+
+    // hasOwnProperty : 检测是否是私有属性,私有属性返回true，不是私有属性返回false；
+//    console.log(p1.hasOwnProperty("hobby"));// true
+//    console.log(p1.hasOwnProperty("toString"));// false;
+//    console.log(p1.hasOwnProperty("to"));// false;
+   // hasPublicProperty: 如果是公有属性返回true，不是返回false；
+    function hasPublicProperty(obj,attr) {
+        // attr in obj  : 当前attr 是obj 的一个属性
+        // !obj.hasOwnProperty(attr) : 不是它的私有属性；
+//        if(attr in  obj){
+//            if(obj.hasOwnProperty(attr)=== false){
+//                return true;
+//            }
+//        }
+//        return false;
+        return  attr in obj && !obj.hasOwnProperty(attr) ? true:false;
+    };
+    console.log(hasPublicProperty(p1, "toString"));
+//    console.log(name);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function CreatePerson(name, age) {
+        this.name = name;
+        this.age = age;
+        this.hobby = function () {
+            console.log("I like  JS")
+        }
+    };
+    CreatePerson.prototype.hobby = function () {
+        console.log("I like  JS")
+    }
+    //    var  p1 = CreatePerson("王云成", 3)
+    var p1 = new CreatePerson("王云成", 3);
+    var p2 = new CreatePerson("袁杰", 13);
+//    console.log(p1.hobby());
+    //console.log(p1.hobby === CreatePerson.prototype.hobby);// false
+    //console.log(p1.__proto__.hobby === CreatePerson.prototype.hobby);// true
+//    console.log(p2);
+
+//    var  ary = [12,7,8,9];
+//    var ary1 = [3,8,9];
+    //ary.pop()// pop  是ary的一个属性；
+    //console.log(ary.hasOwnProperty("pop"));// false是ary的一个公有属性；
+    // ary.a()// ary.a is not a function
+//    console.log(ary.__proto__);
+
+
+    // 1. 每一个函数数据类型（普通函数、类（内置类、自定义类））都天生自带一个prototype属性，这个prototype的属性值是一个对象数据类型的；
+    // 2. prototype这个对象中天生自带constructor属性，constructor的属性值指向了prototype对应的那个类；
+    // 3. 每一个对象数据类型的（对象、数组、实例、prototype）都天生自带一个__proto__属性，属性的属性值指向当前实例所属类的原型；
+    
+//    function Fn() {
+//
+//    }
+
+//    var  obj = {};
+
+    // ary.pop();
+    //ary.pop
+
+    // 当获取对象属性名对应的属性值，首先会是否是私有属性，如果私有属性中不存在，那么对象会默认通过__proto__继续向上查找，如果上级也没有，那么会继续通过__proto__ 向上查找，直到找到Object的原型为止，如果Object中也不存在，那么会输出undefined；这样一级一级向上查找过程会形成“原型链”；
+
+
+</script>
+</body>
+</html>
