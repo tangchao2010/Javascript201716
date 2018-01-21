@@ -18,6 +18,7 @@
             })(this.num)// 1
         }
     }
+
     var f = obj.fn;
     f();
     console.log(window.num,obj.num) // 2  0
@@ -36,25 +37,35 @@
     obj.fn();
     console.log(window.num,obj.num)// 2 0
 
-    var number =2;
+
+//    var  obj = {a:1};
+//    var a  = 10;
+//    obj.a*=2;
+//    console.log(obj);//{a:1}
+    var number =2;// 4  8
     var obj = {
-        number :4,
+        number :4,// 8
         fn1 : (function () {
             this.number*=2;
             number = number*2;
-            var number = 3;
+            var number = 3;// 9
             return function () {
                 this.number*=2;
                 number*=3;
-                console.log(number)
+                console.log(number)// 9  27
             }
         })()
     };
     var fn1 = obj.fn1;
-    console.log(number);
+    console.log(number);// 4
     fn1();
     obj.fn1();
     console.log(window.number,obj.number);
+
+
+
+
+
     var num = 10;
     var obj = {num: 15};
     obj.fn = (function (num) {

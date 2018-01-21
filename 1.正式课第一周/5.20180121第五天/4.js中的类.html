@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" class="box">
+    <div id="a"></div>
+</div>
+<script>
+//    var  classBox = document.getElementsByClassName("box");
+    // classBox : HTMLCollection  ；元素集合类；
+//    var  oBox = document.getElementById("box");
+//    oBox.getElementById("a")
+    // js中的类
+    // 内置类 和自定义类
+
+    // 内置类 ： Number String Boolean  Null Undefined  Object Array  RegExp   Function  Date  ...
+
+    // 实例 ：实例都是对象数据类型的；
+
+    //var  ary = [12,7,9,9];// 实例   数组属于数组内置类Array的一个实例；
+//    var  obj = {};
+    //ary.pop()// pop  这个函数在数组类Array的原型上，数组类的实例可以调用数组类原型上的方法
+//    ary.a()
+//    ary.split("+")
+
+//    var  num  =10;
+//    num.pop()
+//    var  str = "1238dhfh";
+//    str.pop()// str.pop is not a function  : str.pop 不是一个函数；
+//    var  ary =[];
+//    var  a  = new  Array;
+//    console.log(typeof a);// "object"
+//  var  oBox = document.getElementById("box");
+   // 元素类
+
+    // #div  ---> HTMLDivElement-->HTMLElement-->Element -->Node-->EventTarget-->Object
+
+
+    // instanceof : 检测当前实例是否属于这个类的方法；属于返回true ，不属于返回false；
+
+    var  ary = [];
+    var  a = 10;
+    var  obj = {}
+    console.log(ary instanceof Array);// true
+    console.log(a instanceof Array);// false
+    console.log(obj instanceof Array);// false
+
+    console.log(ary instanceof Number);// false
+
+</script>
+</body>
+</html>

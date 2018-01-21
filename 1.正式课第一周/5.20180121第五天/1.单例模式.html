@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var name = "小明";
+//    var age = 20;
+//    var hobby = "eat";
+//    console.log(age);// 20
+//    var name = "小红";
+//    var age = 18;
+//    var hobby = "sleep";
+//    console.log(age);//18
+//
+//    console.log(name);// "小红"\
+    //    fn()
+    //    function fn(num) {
+    //        if(num === 3){
+    //            return num;
+    //        }
+    //        if(num % 3===0){
+    //            return  num + fn(num-1);
+    //        }
+    //        return fn(num-1);
+    //
+    //    }
+    //    console.log(fn(100));
+
+    //    var fn = function (num) {
+    //        if(num<3)
+    //            return 0;
+    //        while (num%3)
+    //            num--;
+    ////        console.log(num-1);
+    //        return num+arguments.callee(num-3)
+    //    }
+    //    console.log(fn(100));
+
+
+    var  xiaoMing = {
+        name : "小明",
+        age : 20,
+        hobby : "eat"
+    };
+    var xiaoHong = {
+        name : "小红",
+        age : 18,
+        hobby : "sleep"
+    };
+    console.log(xiaoMing.name);
+
+    // 把描述同一件事物的不同属性放进同一个命名空间下，避免了全局变量的干扰和冲突，那么这种模式---> "单例模式"；
+    // 获取属性值： 命名空间. 属性名
+//    var  A = {
+//        change : function () {
+//
+//        }
+//    }
+//    A.change()
+//    var B = {
+//        change:function(){
+//
+//        }
+//
+//    }
+//    B.change();
+//    A.change()
+
+    // 闭包
+var  utils = (function () {
+    function change() {
+        console.log(1);
+    }
+    change()
+    return {change : change}
+})();
+
+(function () {
+
+    function change() {
+        console.log(2);
+    }
+    change()
+})();
+
+
+
+</script>
+</body>
+</html>

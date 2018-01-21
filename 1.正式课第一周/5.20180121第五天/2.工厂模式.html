@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 单例模式 ： 手工作业模式；
+    // 工厂模式： 实现批量化生产；
+
+    function descPerson(name,age) {
+        var  obj = {};
+        obj.name = name;
+        obj.age = age;
+        obj.hobby = function () {
+            console.log("I like  JS")
+        }
+        return obj;
+    };
+    var a =descPerson("黄永旺",93);
+    var  b =descPerson("张成林",13);
+    console.log(a);
+    console.log(b);
+    // 把实现同一功能的代码放进函数体中，当想实现类似的功能，直接执行当前这个函数；减少了代码的冗余，实现高内聚，低耦合；————>"函数的封装"，实现了批量化的生产---> "工厂模式"；
+
+    //
+
+
+</script>
+</body>
+</html>
