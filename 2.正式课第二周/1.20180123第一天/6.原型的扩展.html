@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Array  pop push  slice
+    //
+    var  ary = [1,8,8,8,5,5,18,"100"];
+    //var a = [1,2]
+    //isNaN("20")// false
+//    ary.sum()// ary.sum is not a function
+//    Array.prototype.sum = function () {
+//       console.log(this);// ary
+//        var total = 0;
+//        for(var i=0;i<this.length;i++){
+//            var cur = this[i];
+//            if(typeof cur === "number"){
+//                total += cur;
+//            }
+//        };
+//        return total;
+//    }
+//    console.log(ary.sum());
+//    console.log(a.sum());
+    // 新增一个去重的方法
+
+//    Array.prototype.distinct = function () {
+//        var obj = {};// 利用了对象的属性名不重复；
+//        for (var i = 0; i < this.length; i++) {
+//            var cur = this[i];
+//            if(obj[cur]===cur){
+//                // 防止数组的塌陷
+//                this[i]=this[this.length-1];
+//                this.length--;
+//                i--;
+//                continue;
+//            }
+//            obj[cur]=cur;
+//        }
+//        return this;
+//    }
+//    console.log(ary.distinct());
+//    ary.pop();
+//    Array.prototype.pop= function () {
+//        console.log(1)
+//    };
+//    ary.pop();
+//    console.log(ary);
+    // 还可以对内置类原型上的方法进行修改；
+    
+    var  num  = 10;
+    Number.prototype.plus = function () {
+
+    }
+    num.plus(20,30,89);
+
+
+</script>
+</body>
+</html>

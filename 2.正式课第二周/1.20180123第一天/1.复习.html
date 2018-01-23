@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 变量提升  作用域   this   面向对象
+    // 全局作用域和私有作用域
+//    (function () {
+//        console.log(100);
+//    })()
+//    function fn(){
+//        console.log(100);
+//        (function () {
+//            console.log(100);
+//        })();
+//        // 在函数体中定义一个函数，这个函数是私有的；
+//        // 1. return，函数外面需要变量接收；
+//        // 2. window.函数名= 函数名；
+//        function sum() {
+//            console.log(101);
+//        };
+//        window.su = sum;
+////        sum();
+//        return sum();
+//    };
+//    var  f = fn();
+//    fn()()
+//    f()
+//    su();//
+
+    // 1. 栈内存
+    // 1. 提供代码运行环境
+    // 2. 储存基本数据类型值
+//    function sum() {
+////        window.a = function () {
+////
+////        }
+//      return function () {
+//
+//      }
+//    }
+//    var s = sum();
+    // sum();
+    // 销毁作用域
+    // 不销毁作用域；
+    // 不立即销毁
+//    sum()();
+    // \
+    // 自定义属性
+    // 闭包；
+
+//var ary = [12,89];
+//    console.log(ary[3]);
+//
+    for(var i=0;i<inputList.length;i++){
+        var cur = inputList[i];
+        // 把0 1 2  分别存储到三个按钮的index属性上；
+        cur.index = i;
+        cur.onclick = function () {
+            document.body.style.background = ary[this.index];
+        }
+    }
+
+    // 闭包
+
+        for(var i=0;i<inputList.length;i++){
+            var cur = inputList[i];
+            console.log(i);
+            cur.onclick = (function (k) {
+                // 执行三次；形成三个不销毁的作用域；三个作用域中分别存储 0 1 2
+                return function () {
+                    // k  不是私有变量；所以需要向上一级作用域查找；
+                    document.body.style.background = ary[k];
+                }
+            })(i)
+        }
+
+    // this --> 关键字
+    // 1. 全局下的this指向window
+    // 2. 函数执行，看函数执行前有没有“.",有点的话，点前面是谁，this就是指向谁，没有点，函数中的this指向window；
+    // 3. 给元素事件绑定方法， 那么方法中的this都是指向被绑定的这个元素
+    // 4. 自执行函数中的this指向window
+    // 5. 回调函数中的this指向window
+    // 6. （构造函数、类）中的this 指向当前的实例；
+    // 7. 通过call ，apply,bind改变函数体中this指向时，那么函数中this指向这三个方法传进来的第一个参数；
+
+//    "use strict";
+//    console.log(this);// window
+//    function fn() {
+//        console.log(this);// undefined
+//    }
+//    fn();
+
+
+</script>
+</body>
+</html>

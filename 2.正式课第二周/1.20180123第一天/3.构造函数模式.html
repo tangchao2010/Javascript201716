@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 单例模式： 手工作业模式
+    //    var newDate = "15:18";
+    //    var newDate = "15:19";
+
+    //    var  utils_NXX = {
+    //
+    //    };
+
+    // 工厂模式： 实现批量化生产；
+    // 减少了代码的冗余，低耦合，高内聚；函数的封装；
+
+    //    function fn(name,age) {
+    //        var obj = {};
+    //        return obj;
+    //    }
+    //    fn();
+
+    //    // previousElementSibling : 上一个哥哥元素节点； 在IE8 是不兼容的；
+    //    function getBrother(curEle) {
+    //        if("previousElementSibling" in curEle){
+    //            return curEle.previousElementSibling;
+    //        }
+    //        var pre = curEle.previousSibling;
+    //        while (pre) {
+    //            if (pre.nodeType === 1) {
+    //                return pre
+    //            }
+    //            pre = pre.previousSibling;
+    //        }
+    //    }
+    //    getBrother(curEle);
+
+
+    //构造函数模式
+    function Fn() {
+//        console.log(10);
+
+        this.x = arguments[0];
+        this.y = arguments[1];
+
+    };
+    //Fn();// undefined
+    //Fn;
+    var f = new Fn(10, 20);// 1.让函数执行； 并且让当前函数变成一个构造函数（类）；
+    console.log(f);// {}
+
+    // 1. 构造函数和普通函数区别
+    // 函数执行：形成私有作用域--> 形参赋值---> 变量提升--> （会默认创建一个空对象，并且把函数中的this指向当前这个对象）代码从上到下运行（会把这个对象返回）---> 作用域销毁；
+    // 2. 函数执行时，私有变量和实例没有直接的关系；和函数体中的this有关；
+
+    // 3. 构造函数如果没有实参，那么构造函数小括号可以省去；
+
+    // 4. 构造函数中如果return出基本数据类型值，那么不会影响构造函数返回的实例；如果是return出一个引用数据类型值；那么会把默认return的实例覆盖；
+
+    // 5.instanceof : 检测当前实例是否属于某个类的；
+    //    console.log(f instanceof Fn);// true;
+    //    function fn() {}
+    //    console.log(fn instanceof Function);// true;
+
+    //    function s() {
+    //        console.log(arguments instanceof Array);// false
+    //    }
+    //    s()
+
+    // 6.in  : 检测当前属性是否在这个对象中，不管是公有属性，还是私有属性，存在返回true，不再返回false；
+
+//    var obj = {a:10,b:20,c:30};
+    // for in  循环遍历对象； 只遍历私有属性。不遍历公有属性；
+    //
+    var obj ={username:"zhufeng",age:9,address:"回龙观"};
+//    function fn(str,obj) {
+//        for(var key in obj){
+//            console.log(1);
+//            if(obj[key] === str){
+//                return key;
+//            }
+//        }
+//    }
+//    console.log(fn("zhufeng",obj));
+
+    // 7.hasOwnProperty: Object原型上有这个方法；验证是否是私有属性
+
+    obj.hasOwnProperty("username")// true
+
+
+</script>
+</body>
+</html>

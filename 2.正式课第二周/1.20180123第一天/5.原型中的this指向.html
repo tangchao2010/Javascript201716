@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn(x, y) {
+        // this---> 实例
+        this.x = x;
+        this.y = y;
+//        this.sum = function () {
+//            console.log(this);// window
+//            // 任何undefined运算都得到NaN；
+//            console.log(this.x + this.y);// this---> f
+//        }
+    };
+    Fn.prototype.x = 100;
+    Fn.prototype.sum = function () {
+        // this-->
+        console.log(this);// {x: 10, y: 30}
+        console.log(Fn.prototype.x + Fn.prototype.y);
+    }
+    var f = new Fn(10, 30);// {}
+    //    var f1 = new Fn(40,50);
+    //    f1.sum()
+    //    var a = f.sum;
+    //    a();
+    //f.sum()// this--> f;
+    Fn.prototype.sum()// this--->Fn.prototype  NaN;
+    f.__proto__.sum()// this--> f.__proto__   NaN;
+
+    // 原型中方法中的this指向： 看方法执行前有没有点，有点的话，让前面的内容替换掉原型中的this；进行计算；
+
+
+</script>
+</body>
+</html>
