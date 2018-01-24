@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Function  的原型有call apply  bind方法; 所有Function的实例都可以调用这三个方法；
+
+    // call apply  bind 都是改变函数体中this指向的方法；
+    //    function fn(a,b) {
+    //        console.log(a, b);
+    //        console.log(this);//  [10, 20]
+    //    };
+    //    console.log(fn.call);
+    //    //fn(1,2)// window
+    //    fn.call([10,20],1,2);
+    //    fn.call(null,1,2);
+
+    // fn通过__proto__这个属性找到Function原型上的call方法，并且让call方法执行；当call方法执行的时候，改变了call方法中this(函数fn)中的this指向，让其指向call方法中传进来的第一个参数；
+    //    function fn1() {
+    //        console.log(this);
+    //        console.log(1)
+    //    }
+    //    function fn2() {
+    //        console.log(this);
+    //        console.log(2);
+    //    }
+
+    //    fn1.call.call.call.call(fn2); //函数fn2执行
+
+
+    // apply : 改变this关键字
+    //    function foo(m,n) {
+    //        // foo 接收参数是接收apply方法中第二个参数中的每一项；
+    //        console.log(this);
+    //        console.log(arguments);
+    //        console.log(m,n);
+    //    };
+    //    // call apply  ： 区别传参数的方式不同，在apply方法中第二个参数必须是一个数组,以数组的形式传给apply，foo 这个函数是一个个接收数组中的值；
+    //    foo.apply(15,[100,200,300])
+
+
+    // bind : 预处理this指向；提前改变函数中this指向，函数并没有执行；
+    // 传参数和call方法一致
+    // 在IE8 及以下是不兼容的
+//    function f(a, b) {
+//        console.log(a, b);
+//        console.log(this);
+//    };
+//    var newf = f.bind([], 1, 2);// bind方法的返回值是改变this之后的f;
+//    newf()// []
+//     "use strict";
+
+    // 严格模式下，call不传参数，那么函数体中的this指向undefined；
+    // call 方法中传null，this就指向null，传undefined，就指向undefined
+
+    // 非严格模式： call 中传null和undefined,那么函数中this指向window
+    function s() {
+        console.log(this);
+    }
+    s.call(undefined);
+
+</script>
+</body>
+</html>

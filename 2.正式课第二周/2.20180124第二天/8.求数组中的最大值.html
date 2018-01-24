@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 数组中的最大值
+    var ary = [1,29,188,99,177,7,88,66];
+    //1.排序
+//    ary.sort(function (a,b) {
+//        return a-b;
+//    });
+//    console.log(ary[ary.length - 1]);
+
+    // 2.假设法
+    // 假设数组的第一项就是最大值，然后循环数组中每一项一一进行比较；比这个值大的，直接对当前这个值覆盖；如果没有这个值大，不做任何操作；
+//    var max = ary[0];
+//    var  min = ary[0];
+//    for(var i=1;i<ary.length;i++){
+//        var cur =ary[i];
+//        if(max<cur){
+//            max = cur;
+//        }
+//        max < cur? max = cur:null;
+//    min > cur ?min = cur:null;
+//    }
+//    console.log(max);
+
+    // 3.Math.max: 求一组数的最大值
+    // apply : 改变this指向；改变传参数的类型；
+    //console.log(Math.max([1, 29, 188, 99, 177, 7, 88, 66]));// NaN
+//    for(var i=0;i<ary.length;i++){
+//        Math.max(ary[i])
+//    }
+    console.log(Math.max.apply(null, [1, 29, 188, 99, 177, 7, 88, 66]));// 18
+
+
+</script>
+</body>
+</html>
