@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            top :200px;
+            width:100px;
+            height:100px;
+            background: blue;
+        }
+        .protected{
+            margin-bottom: 10px;
+            top:0;
+        }
+
+    </style>
+</head>
+<body>
+<!--<div id="box">-->
+
+<!--</div>-->
+<div class="protected"></div>
+<div></div>
+<script src="jquery-1.11.3.js"></script>
+<script>
+//    var  oBox = document.getElementById("box");
+    //$("#box").hide();// jQuery的一个对象；jQuery 的一个实例；
+    //oBox.hide()
+
+
+//    console.log($("#box").css("width","200px"));
+    // jQuery 才用了构造函数的原理；执行jQuery会创建一个jQuery的实例，那么这个实例可以调用jQuery 原型上的方法；所以只有jQuery对象可以用原型方法，原生的不可以；
+//    ~function () {
+//        var jQuery = function (selector, context) {
+//            return new jQuery.fn.init(selector, context);
+//        };
+//        jQuery.fn = jQuery.prototype = {
+//            constructor: jQuery,
+//            init: function (selector, context) {
+//
+//            }
+//        };
+//        //
+//        window.$ = window.jQuery = jQuery;
+//    }();
+//    $("div").click(function(){
+//        if ( $(this).hasClass("protected") )
+//            $(this)
+//                .animate({ left: -1000 })
+//                .animate({ left: 1000 })
+//                .animate({ left: -500 })
+//                .animate({ left: 500 })
+//                .animate({ left: 0 });
+//    });
+</script>
+</body>
+</html>

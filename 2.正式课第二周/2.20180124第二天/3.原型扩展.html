@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn() {
+
+    };
+    Fn.prototype.a =100;
+    Fn.prototype.s = function () {
+        console.log(2);
+    };
+    // 第二种原型扩展；
+    // 把Fn的prototype天生自带的这个空间用新开辟空间进行覆盖；
+    // 这种方式扩展，那么原型新的空间中没有天生自带的constructor属性，为了保证原型正常的机制，手动添上这个constructor属性
+    Fn.prototype = {
+//        constructor:Fn,
+        //此处都是Fn实例的公有属性；
+        sum:function () {
+            console.log(1)
+        },
+        total : function () {
+            
+        },
+        pop : function () {
+            
+        }
+    };
+    var  f  = new  Fn;
+    console.log(f);
+    console.log(f.constructor);// Object
+    //    f.s()
+//    console.log(f.a);// 100
+    f.sum();
+
+
+</script>
+</body>
+</html>

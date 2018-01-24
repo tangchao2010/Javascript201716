@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 每一个函数数据类型（普通函数、类(自定义类、内置类）都天生自带一个prototype属性，这个prototype的属性值是一个对象数据类型de
+    // 2.这个prototype天生自带一个constructor属性，属性值指向当前prototype所对应的那个类
+    // 3. 每一个对象数据类型(对象、数组、实例、prototype)天生自带一个__proto__，属性值是指向当前实例所对应的类的原型；
+
+    // 原型中this
+    function Fn() {
+        //this-->当前实例
+    };
+    Fn.prototype.sum = function () {
+        console.log(this);
+    }
+    var  f  = new  Fn;
+    f.sum()
+    Fn.prototype.sum();
+
+
+    var  ary = [18,0];
+    var a = [100]
+//    Array.prototype.unshift = function () {
+//        //this---ary;
+//        // this关键字可以指向当前调用此方法的实例；
+//        
+//
+//    }
+//    ary.unshift(28)
+//
+//    a.unshift(1)
+    
+    
+    // 原型扩展
+    // 内置类原型新增一个去重的方法
+    
+//    Array.prototype.distinct   = function () {
+//        
+//    };
+    Number.prototype.plus = function () {
+        var total = this;
+        for(var i=0;i<arguments.length;i++){
+            if(typeof arguments[i] === "number"){
+                total += arguments[i]
+            }
+        };
+        return total;
+    }
+
+//    parseFloat("12px")
+    var  num = 19;
+    console.log(num.plus(3, 9, 18, 0));
+
+
+</script>
+</body>
+</html>
