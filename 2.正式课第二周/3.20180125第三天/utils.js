@@ -31,6 +31,10 @@ var utils = {
             }
         };
         return ary;
+    },
+    // 把JSON格式的字符串转换成JSON格式的对象
+    toJSON:function (str) {
+        return  "JSON" in window ? JSON.parse(str):eval("("+str+")");
     }
 }
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #news {
+            width: 500px;
+            margin: 30px auto;
+            list-style: none;
+        }
+
+        #news li {
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            border-bottom: 1px dashed lightgreen;
+            font-size: 22px;
+            /*text-align: center;*/
+        }
+    </style>
+</head>
+<body>
+<ul id="news">
+    <!--<li>习近平2017达沃斯日内瓦主旨演讲的世界意义</li>-->
+    <!--<li>共同开启中拉关系新时代携手构建人类命运共同体</li>-->
+</ul>
+<div></div>
+<script>
+    var oUl = document.getElementById("news");
+    var ary = ["习近平2017达沃斯日内瓦主旨演讲的世界意义", "共同开启中拉关系新时代 携手构建人类命运共同体", "习近平2017达沃斯日内瓦主旨演讲的世界意义", "共同开启中拉关系新时代 携手构建人类命运共同体", "习近平2017达沃斯日内瓦主旨演讲的世界意义", "共同开启中拉关系新时代 携手构建人类命运共同体", "习近平2017达沃斯日内瓦主旨演讲的世界意义", "共同开启中拉关系新时代 携手构建人类命运共同体"];
+    // 1.创建元素对象
+    //     for(var i=0;i<ary.length;i++){
+    //         // 每循环一次，创建一个li;通过innerHTMl属性，把数据内容放入标签中；
+    //         var li = document.createElement("li");
+    //         li.innerHTML = ary[i];
+    //         oUl.appendChild(li);
+    //     }
+    // 2. 文档碎片： js中存储页面元素的一个容器；
+    // 只引发一次回流；
+//    var frg = document.createDocumentFragment();// 储存元素对象；
+//    for (var i = 0; i < ary.length; i++) {
+//        // 每循环一次，创建一个li;通过innerHTMl属性，把数据内容放入标签中；
+//        var li = document.createElement("li");
+////        if(i==0){
+////            li.className = "select";
+//        // li.setAttribute("dataTime","2018")
+////        }
+//
+//        li.innerHTML = ary[i];
+//        frg.appendChild(li);
+//    }
+//    ;
+//    oUl.appendChild(frg);
+    //    frg = null;
+
+    // 3.字符串拼接
+//    var str = "";
+//    for (var i = 0; i < ary.length; i++) {
+//        if (i === 0) {
+//            str += "<li class='select' dataTime=''>" + ary[i] + "</li>";
+//            continue;
+//        }
+//        str += "<li>" + ary[i] + "</li>";
+//    }
+//    oUl.innerHTML = str;
+//    console.log(str);
+
+    // 4.es6模板字符串
+    let str = ``;
+    for(let i=0;i<ary.length;i++){
+        str+=`<li>${ary[i]}</li>`
+    };
+    oUl.innerHTML = str;
+
+
+
+    // DOM 的回流： 当浏览器中盒子的位置发生改变时，导致其他盒子的位置浏览器也会跟着改变；这时浏览器需要对盒子位置进行重新计算，这样是非常消耗性能的；这样就会引发DOM的回流；
+
+    // DOM的重绘： 当浏览器盒子的样式（背景、字体颜色...这些属性发生改变时，浏览器要对盒子的样式进行重新的渲染；这就是DOM的重绘；
+
+</script>
+</body>
+</html>

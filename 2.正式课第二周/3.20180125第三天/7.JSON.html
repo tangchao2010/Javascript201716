@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JSON : 是一种数据格式，不是一种新的数据类型
+    //    var obj = {name:"VUE",age:10};
+    //    console.log(obj.name);// "VUE"
+    //    var JSONObj = {"name":"VUE","age":10};// JSON格式的对象
+    //    console.log(JSONObj.name);
+    //    console.log(JSONObj["name"]);
+    //    JSONObj.a =10;
+    //    console.log(JSONObj);
+
+
+    //
+    //    var str = '{"name":"VUE","age":10}';// JSON格式的字符串
+    //    console.log(str);
+    //    console.log(str["name"]);
+    // 1. 把JSON格式的字符串转换成JSON格式的对象
+    // JSON.parse
+    //    console.log("JSON" in window);// true
+    //    var newObj = JSON.parse(str);
+    //    console.log(newObj);
+
+    // 2.JSON.stringify: 把JSON格式的对象转换成JSON格式的字符串；
+    //    var obj = {"name":"VUE","age":10};
+    //    var obj = {name: "VUE", age: 10};
+    //
+    //    console.log(JSON.stringify(obj));
+    // "JSON" 在IE8以下是不兼容的；
+    //console.log("JSON" in window);
+    var str = '{"name":"VUE","age":10}';
+    console.log(eval("(" + str + ")"));
+
+    // eval : 把字符串两边的双引号去掉，并且让表达式执行；
+    //    console.log("3+9")
+    //    console.log(eval("3+7"));
+
+    //    var  ary = [12,99,7,6,5,8];
+    // join:
+    //    console.log(eval(ary.join("+")));
+   function toJSON(str) {
+      return  "JSON" in window ? JSON.parse(str):eval("("+str+")");
+   };
+   toJSON(str);
+
+</script>
+</body>
+</html>
