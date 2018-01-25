@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+<script>
+    //    function fn() {
+    //        console.log(arguments instanceof Array);//false
+    //    }
+    //    fn(12,8,9,20)
+    //类数组集合
+    var oDivs = document.getElementsByTagName("div");
+    console.log(oDivs);
+    // 1.通过for循环，把类数组中每一项放进真正的数组中；
+//    var  ary = [];
+//    for(var i=0;i<oDivs.length;i++){
+//        ary.push(oDivs[i])
+//    }
+//    console.log(ary);/
+    // 2. slice
+
+    //在IE8及以下不兼容；
+//    var  ary = Array.prototype.slice.call(oDivs)
+//    console.log(ary);
+    if("getComputedStyle" in window){}
+    if("previousElementSibling" in oDivs[0]){// true
+        // 仅仅是为了校验当前是否是标准的浏览器；
+        var  ary = Array.prototype.slice.call(oDivs)
+    }else{
+        var  ary = [];
+        for(var i=0;i<oDivs.length;i++){
+            ary.push(oDivs[i])
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -18,6 +18,8 @@
     //    //fn(1,2)// window
     //    fn.call([10,20],1,2);
     //    fn.call(null,1,2);
+var ary = [123,99];
+ary.call();
 
     // fn通过__proto__这个属性找到Function原型上的call方法，并且让call方法执行；当call方法执行的时候，改变了call方法中this(函数fn)中的this指向，让其指向call方法中传进来的第一个参数；
     //    function fn1() {

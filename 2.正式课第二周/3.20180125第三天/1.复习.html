@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 原型的深入
+    //Function Object
+    //函数的三种角色 ： 普通函数  构造函数  对象
+    function Fn() {// Fn :xxxfff000
+
+    }
+    //    var  Fn = function () { //Fn:xxxxfff111
+    //        // this--- f
+    //        this.x = 100;
+    //        var  a = 10;
+    //        return  {a:a}
+    //    }
+    //    var f = new  Fn;
+    //    console.log(f);
+    //    Fn.num =10;
+    //    console.log(Fn.name);//函数名
+    //    console.log(Fn.length);// 参数的个数
+
+    //console.log(age)// age is not defined
+    //console.log(name)// ""   name是window的内置属性；
+    //console.log("undefined" in window);// true  undefined 在window是内置属性
+
+
+    // call apply  bind  : Function的原型上；改变this指向
+    //    function f(a,b) {
+    //        console.log(this);
+    //    };
+    //    Array.call()
+    //    f.call([],1,2);
+
+    // apply :  传参数不同，第二个参数一定是数组；
+    // bind : 预处理this；返回值是一个改变this之后的函数
+    /// 在IE8 及以下是不兼容的；
+    //     var a = f.bind([]);
+    //     a()
+    //     f()
+
+    // 求最大值
+
+    // 1. 排序
+    // 2. 假设法
+    // 3.  Math.max  / apply
+
+
+</script>
+</body>
+</html>

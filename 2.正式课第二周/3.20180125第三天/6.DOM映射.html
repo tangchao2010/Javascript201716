@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 500px;
+            margin: 40px auto;
+        }
+
+        ul li {
+            height: 30px;
+            border-bottom: 1px dashed red;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>7</li>
+    <li>1</li>
+    <li>5</li>
+    <li>3</li>
+</ul>
+<script src="utils.js"></script>
+<script>
+    var oUl = document.getElementsByTagName("ul")[0];
+    var oLis = document.getElementsByTagName("li");
+    // oLis和页面中的所有的li对应，一个变化，另一个也会跟着变；
+    //    console.log(oLis.length);// 4
+    //    var newLi = document.createElement('li');
+    //    oUl.appendChild(newLi);
+    // 页面中li元素个数发生变化，那么oLis这个集合就会随着变；
+    //    console.log(oLis.length);// 5
+
+    var ary = utils.toArray(oLis);
+    //    console.log(ary);
+    ary.sort(function (a, b) {
+        // a,b
+        return a.innerHTML - b.innerHTML;
+    });
+    // ary 存储的是四个排好顺序的li；
+    //    console.log(ary);
+    for (var i = 0; i < ary.length; i++) {
+//        debugger
+        oUl.appendChild(ary[i]);
+    }
+    // 页面中的html标签和js中的元素对象都是一一映射的，只要一个发生变化，另一个也会跟着变；这种一一对应的关系，就是DOM映射的机制；
+
+
+</script>
+</body>
+</html>

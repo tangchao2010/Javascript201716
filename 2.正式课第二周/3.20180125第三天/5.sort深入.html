@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var  ary = [12,8888,99,66,10,78];
+//    ary.sort();
+//    console.log(ary);//  [10, 12, 66, 78, 8, 99]
+//    var  ary = [123,888,999,660,101,780];
+//    ary.sort();
+//    console.log(ary);// [101, 123, 660, 780, 888, 999]
+//    ary.sort(function (a,b) {return a-b;})// 从小到大
+//    ary.sort(function (a,b) {return b-a;})// 从大到小
+//    function A(callBack) {
+//        callBack()
+//    }
+//    function B() {
+//        console.log(1);
+//    }
+//    A(B);
+    // 回调函数： 把函数B当做函数A的实参传函数A中，在函数A中任意位置都可以执行函数B；那么函数B就叫做函数A的回调函数；
+//    var  ary = [12,888,99,66,10,78];
+//   ary.sort(function (a,b) {
+//       console.log(a, b);
+//       //console.log(1);// 回调函数的执行次数和数组的顺序和数组成员个数有关
+//       return a-b;// 回调函数的返回值影响数组排序；
+//
+//   });
+//    console.log(ary);// 倒序
+    // sort 原理： 让数组相邻两项进行比较，如果数组的前一项大于数组的后一项，让这两项交换位置；如果数组小于后面一项，那么位置不交换；
+    // sort : 如果return a-b 这个大于0，交换位置；小于0，不交换；
+//   var ary = [[9,0],[12,0],[10,0],[100,0],[80,0]];
+//
+//    ary.sort(function (a,b) {
+////        console.log(a[0]);
+//        return a[0]-b[0];// NaN : 返回值是NaN，那么不进行交换位置；
+//    })
+//    console.log(ary);
+    var ary = [{age:18},{age:90},{age:66},{age:88}];
+    ary.sort(function (a,b) {
+        return a.age-b.age;
+    })
+    console.log(ary);
+</script>
+</body>
+</html>

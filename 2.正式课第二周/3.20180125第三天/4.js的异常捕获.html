@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<script src="utils.js"></script>
+<script>
+    var oDivs = document.getElementsByTagName("div");
+    // 处理浏览器兼容的语法
+    //console.log(a)// a is  not  defined
+//    try {
+//        // 如果此处的代码报错，代码并没有停止；而是继续执行catch中的代码；
+//        console.log(1);
+//        console.log(a);
+//        // 报错行上面代码正常运行，但是下面的代码不再运行；
+//        console.log(2);
+//    } catch (e){
+//        // 参数必须传；
+//        // 当try中的代码报错，那么执行此处的代码；try中代码正常，则此处代码不执行；
+//        console.log(e.message);// 代表当前的错误信息
+////        console.log(b);
+//        console.log(100);
+//        throw new Error("王云成很帅");// 抛出错误信息
+//    }finally {
+//        // 不管上面报错与否，此处永远执行；真实项目中，很少用；
+////        console.log(1000);
+//    }
+
+    //类数组转数组
+//    function toArray(likeAry) {
+//        var  ary = [];
+//        try{
+//            ary = Array.prototype.slice.call(likeAry);
+//        }catch(e){
+//            for(var i=0;i<likeAry.length;i++){
+////                ary.push(likeAry[i])
+//                ary[ary.length] = likeAry[i];
+//            }
+//        };
+//        return ary;
+//    };
+
+    console.log(utils.toArray(oDivs) instanceof Array);// true
+
+
+
+</script>
+
+</body>
+</html>
