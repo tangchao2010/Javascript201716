@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // arguments: 类数组集合； 对象数据类型的；不能调用数组原型上的方法
+
+    function avge() {
+        /// 对象数据类型只有__proto__
+        // 为了调用数组原型上的方法；类数组转数组；
+        //__proto__ 只在最新版本浏览器兼容；IE10 及以下是不兼容的；
+        arguments.__proto__ = Array.prototype;
+        arguments.sort(function (a,b) {
+            return a-b;
+        });
+//        arguments.hasOwnProperty()
+        console.log(arguments);
+    }
+    avge(12,99,80,67,66);
+
+</script>
+</body>
+</html>

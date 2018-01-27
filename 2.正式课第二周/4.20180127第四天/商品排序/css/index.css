@@ -1,0 +1,45 @@
+html,body{
+    height:100%;
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+    font-size: 18px;
+    background: #F4F4F4;
+}
+.content{
+    width:1200px;
+    margin:30px auto;
+}
+.content .header{
+    height: 50px;
+    background: white;
+    width:100%;
+    line-height: 50px;
+    padding-left:20px;
+}
+.content .header a{
+    margin-right:10px;
+    color:#555;
+}
+.content #list{
+    margin-top:20px;
+    list-style: none;
+    overflow: hidden;
+}
+.content #list li{
+    margin: 0 15px 15px  0;
+    width:205px;
+    height:350px;
+    padding:10px;
+    background:white;
+    float:left;
+}
+.content #list li img{
+    display: block;
+    width:100%;
+}
+.content #list li span{
+    display: block;
+    font-size: 14px;
+    height:35px;
+    line-height: 35px;
+    color:#555;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    function Fn() {
+//
+//    };
+//    Fn();
+//    new Fn();
+
+    // class : 定义一个类
+    class  Fn{
+        constructor(num){
+            // 类中私有属性
+            this.x  = num;
+        };
+        sum(){// 公有属性
+            console.log(10)
+        }
+    };
+//    var  f = new Fn(100);
+//    f.sum();
+    class  A extends Fn{// extends : 继承  不仅继承私有，而且继承公有；
+        constructor(a){
+            super(a);
+            this.b = 100;
+        }
+        foo(){
+
+        }
+    };
+    console.log(new A(100));
+
+
+</script>
+</body>
+</html>

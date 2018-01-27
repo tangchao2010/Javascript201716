@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. call  apply  bind  ;在Function的原型上；改变this指向
+//    var  obj = {};
+//    function fn() {
+////        this = 19;
+//        console.log(this);
+//
+//    };
+//
+//    fn.call([]);// []
+//    //
+//    fn()// window
+
+    // apply : 传参数不同，第二个参数必须是一个数组；
+    // 求数组最大值
+    // bind : 只是预处理this；// 在IE8 及以下不兼容的；
+//    var  f = fn.bind({});
+//    f()
+
+    // 求最大值：
+    // 排序
+    // 假设
+
+    // Math.max.apply(null,[])
+    // 求平均数
+
+    // arguments : 类数组 ---》 数组
+    // 循环   slice
+
+    //join("+")
+    // eval(): 把字符串转换成一个真正表达式执行
+
+
+    // sort : 数组
+    // sort排序
+//    [{a:2},{a:1,c:"0"}]
+//    var  ary = [1,2,3,4,5,6]
+//    ary.sort(function (a,b) {
+//        console.log(a, b);// 数组成员每一项
+//        return a.a-b.a;// 返回值大于0，交换位置，小于0 ，不交换；
+//    })
+
+
+    // DOM映射： HTMl 中的每一个标签和js中元素是一一对应的，另一个发生改变，另一个也会跟着变；
+
+    // JSON ： 数据格式：
+//    var JSONObj = {"name":10};
+//    var  JSONStr = 'aaaa';
+//    console.log(JSONStr[3]);
+    // JSON.parse: 把JSON字符串转换成JSON格式的对象
+    // JSON.stringify() : 把JSON格式转换成JSON格式字符串
+    //JSON 只存在标准浏览器：在IE8及以下不兼容
+
+    //eval:
+   // eval("("+JSONStr+")")
+
+    // 数据绑定 ：把后端请求到的数据绑定到HTML中，让浏览器进行渲染；
+
+    // 1. 创建元素对象
+    // document.createElement()  innerHTML  appendChild
+
+    // 2. 文档碎片
+    // 只引发一次回流
+
+    // 3. 字符串拼接
+
+    // 字符串  innerHTMl   html()
+
+    //4. es6模板字符串
+
+    // ${}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

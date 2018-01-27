@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // call  : 改变this的指向
+    function A() {
+        this.a = function () {
+            console.log("a")
+        };
+        this.x = function(){
+            console.log("x")
+        }
+    };
+    A.prototype.sum = function () {
+        console.log(1);
+    }
+    function B() {
+        // this--> B 的实例
+        A.call(this);
+        this.f = function () {
+
+        }
+    }
+    // A方法在方法B中执行，改变类A中的this指向，让其指向类B中的this（类B的实例）；类B创建的实例就具有类A的私有属性；
+    var b = new B;
+    b.sum();// b.sum  is  not  a  function;
+    console.log(b);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //原型深入
+    // 1. 原型中this；
+ //  function fn(){
+    //
+    //    };
+    //    fn()
+//    function Fn() {
+//        this.x = 100;
+//    };
+//    Fn.prototype.sum = function () {
+//        console.log(this);
+//    }
+//    var f = new Fn;
+//    Fn.prototype.sum();// Fn.prototype
+//    f.sum();// f
+//    f.__proto__.sum();// f.__proto__/Fn.prototype
+//    Fn.sum();// __proto__// 报错
+
+    // 原型扩展: 往原型上新增一些属性和方法；
+    // 扩展目的： 给类的实例新增公有属性；
+    // 1. 原型.属性名 = 属性值
+
+//    function Fn() {
+//        this.x = 100;
+//    };
+//    Fn.prototype.n  = "hello";
+//    Fn.prototype.sum = function () {
+//        console.log(1);
+//    }
+//    var f  = new Fn;
+//    f.sum();
+//    console.log(Fn.prototype.hasOwnProperty("constructor"));// true
+//    console.log(Fn.prototype.hasOwnProperty("__proto__"));// false
+//    Fn.prototype = {
+//        a:function () {
+//
+//        }
+//    };// 用新的空间地址对原有的地址覆盖
+//    var f1  = new Fn;
+//    //f1.sum();// f1.sum is not a function
+//     f1.a();
+
+
+    // 内置类扩展
+    var  ary = [12,990,8,7];
+//    ary.a();
+//    // 对内置类原型方法进行修改
+//    Array.prototype.a = function () {
+//        this.length--;
+//    };
+//    ary.push(10);
+//    console.log(ary);
+    // 内置类原型不允许以下方式修改；
+//    Array.prototype = {
+//        push : function () {
+//            console.log(1);
+//        }
+//    };
+//    ary.push(10);
+//    console.log(ary);
+
+    // 原型深入
+//    function Fn() {
+//
+//    }
+    //Fn 是Function的实例
+    // 所有的函数数据类型都是Function的一个实例，Function是所有的函数基类
+    // 所有的对象数据类型都是Object的一个实例，时所有对象数据类型的基类
+//    console.log(Function instanceof Object);// true
+//    console.log(Object instanceof Function);// true
+//    console.log(Function.prototype.__proto__ === Object.prototype);// true
+//    var  obj ={};
+//    console.log(obj.__proto__ === Object.prototype);// true
+
+
+    //函数的三种角色
+    // 1. 普通函数
+    // 2. 类：
+    // 3. 对象
+
+    function Foo() {
+        // 改变全局下getName的属性值
+        getName = function () {
+            console.log(1);
+        };
+        return this;// window
+    }
+    Foo.getName = function () {
+        console.log(2);
+    };
+    Foo.prototype.getName = function () {
+        console.log(3);
+    };
+    var getName = function () {
+        console.log(4);
+    };
+
+    function getName() {
+        console.log(5);
+    }
+    Foo.getName();//2
+    getName();// 4
+    Foo().getName();//1
+    getName();//1
+    new Foo.getName();//2
+    new Foo().getName();//3
+    new new Foo().getName();//3
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

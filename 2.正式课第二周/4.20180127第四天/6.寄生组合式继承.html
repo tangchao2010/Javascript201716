@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj = {a:10,b:100};
+//    var  obj = new  Object;
+    var a = Object.create(obj);// Object.create 返回一个对象，返回的对象的__proto__ 指向了Object.create的参数；
+//    console.log(a);// {}
+    function A() {
+        this.b = function () {
+            console.log(2);
+        }
+    }
+    A.prototype.a = function () {
+        console.log(1);
+    }
+    function B() {
+        A.call(this)// 继承了私有属性；
+    };
+    B.prototype = Object.create(A.prototype);// 让B的prototype中的__proto__指向A的prototype；B的实例继承了A的公有属性
+    //
+    var  b = new B;
+    b.b();
+    b.a();
+
+
+
+</script>
+</body>
+</html>
