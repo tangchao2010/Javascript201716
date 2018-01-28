@@ -48,14 +48,16 @@ for(var i=0;i<navs.length;i++){
 // 4.排序功能
 
 function sortList() {
+    // console.log(2);
     //把获取到类数组集合转换成一个真正的数组
-    console.log(this);//指向当前被点击的a标签；
+    // console.log(this);//指向当前被点击的a标签；
     var  that = this;
     var  ary = utils.toArray(oLis);
     var  dataAry = ["data-time","data-hot","data-price"];
     ary.sort(function(a,b){
         // a,b代表ary中的每一个li;
         // getAttribute : 获取当前元素自定义属性的属性值；
+        // getAttribute 获取不到属性名对应值返回null；
         // 当前回调函数中的this指向window；
         var  cur = a.getAttribute(dataAry[that.index]);
         var nex = b.getAttribute(dataAry[that.index]);
@@ -64,9 +66,10 @@ function sortList() {
             cur = cur.replace("-","").replace("-","");
             nex = nex.replace("-","").replace("-","");
         }
+        // debugger
         return (cur-nex)*that.flag;
     });
-    // 把ary中li放进页面中
+    // 断点： 让代码停止到这一行；
     var frg = document.createDocumentFragment();
     for(var i=0;i<ary.length;i++){
         var curLi = ary[i];
@@ -74,8 +77,10 @@ function sortList() {
     };
     oUl.appendChild(frg);
     frg = null;
+    // 把ary中li放进页面中
 }
-// 1. 请求数据
+
+// 1.请求数据
 // 2.绑定数据
 // 3. 循环绑定点击事件
 // 4. 排序： 1) sort  2) 把排好的顺序li放回页面；

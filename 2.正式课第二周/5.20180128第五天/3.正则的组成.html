@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 正则的组成
+    //元字符和修饰符
+    // 元字符： 在正则中有特殊意义的字符都是元字符
+
+//    var  reg = /d/;
+//    console.log(reg.test("abcd"));// true
+    //var  reg = /\d/;// 匹配一个0-9 的数字
+//    var  reg = /^2\d{2}$/;
+//    console.log(reg.test("299"));
+    // 特殊的字符
+    // \ : 转义字符
+    // ^ : 以什么开头
+    // $ : 以什么结尾
+    // . : 匹配除了"\n"之外任意字符
+//    var reg = /./;
+//    console.log(reg.test("12"));
+
+
+    //量词元字符
+    // *  前面的表达式出现0到多次
+    // ? : 出现0次或一次；
+    // + : 出现一次到多次；
+    // {n} : 出现n次
+    // {n,} : 出现n到多次
+    // {n,m} : 出现n到m 次；
+
+
+//    reg = /^\d*$/;
+//    console.log(reg.test("99"));
+
+    // x | y : x或y中的一个
+    // [xyz] : xyz中任意一个字符
+    // [^xyz] : 除了xyz任意一个其他字符
+    // [a-z] : a到z中任意一个字符
+    // [^a-z] : 除了a到z的字符
+
+
+//    var reg  = /[123]/;
+//    var reg = /^z|food$/;
+//    console.log(reg.test("zoodtytty"));
+
+    // \b : 匹配单词边界
+    // \B : 匹配一个非单词边界
+    // \d : 0-9数字
+    // \D : 除了0-9之外的字符
+    // \n : 匹配一个换行符
+    // \w : [a-zA-Z0-9_]
+    // \W : [^a-zA-Z0-9_]
+    var  reg = /er\b/;
+</script>
+</body>
+</html>

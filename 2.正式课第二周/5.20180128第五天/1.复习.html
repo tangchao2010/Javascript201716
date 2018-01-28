@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // for(var i=0;i<100;i++){
+    //     var cur = i;
+    //     if(0){
+    //
+    //     }
+    //     debugger
+    //     function a() {
+    //         var  b = 19;
+    ////         debugger
+    //     }
+    //     a()
+    //     console.log(10);
+    // }
+
+    // 继承方式
+    // 1.原型继承：
+    //    function A() {
+    //
+    //    }
+    //    function B() {
+    //
+    //    };
+    //    B.prototype = new  Array;// 继承了私有属性和公有属性；
+    //    var  b = new B;
+
+    // 2.call 继承：
+    //    function A() {
+    //        this.z = 100;
+    //    }
+    //    function B() {
+    //        A.call(this)
+    //        this.z = 100;
+    //    };
+    //    var b = new  B;// 继承了类A的私有属性
+
+
+    // 3.中间类 __proto__: 改变了对象数据类型中__proto__的指向；
+
+        function a() {
+            // 在IE10 及以下是不兼容的；
+            arguments.__proto__ = Array.prototype;
+            arguments.sort();
+
+        }
+
+    // 4. 寄生组合式继承
+    function A() {
+        this.z = 100;
+    }
+    function B() {
+        A.call(this)// 解决私有问题
+
+    };
+    B.prototype = Object.create(A.prototype);// 公有属性
+    var b = new B;
+    console.log(b);
+
+    // 5.es6继承
+
+    class Fn {
+        constructor() {
+        }
+    }
+    class Foo extends Fn {
+        constructor() {
+            super();
+        }
+    }
+    ;
+    // es6 继承 继承私有和公有；
+
+</script>
+</body>
+</html>

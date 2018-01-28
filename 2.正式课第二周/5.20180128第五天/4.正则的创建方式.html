@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //    var name = "zhufengpeixun";
+    // 在字面量方式创建的正则中，变量不能取到变量所存储的值；不允许引用变量名；
+    //    var  reg = /^\dname$/;// 字面量方式创建
+    //    var reg = /^\d"+name+"$/;
+    //    console.log(reg instanceof RegExp);// true;
+    //    console.log(reg.test('1"""nameeee"'));// true
+    ////    console.log(reg.test("1zhufengpeixun"));// false
+
+    // 实例
+    // 实例创建： 可以参数中引入变量；
+    //    reg = /\dzhufengpeixun\d/;
+//    var reg = new RegExp("\\d+" + name + "\\d", "g");
+//    console.log(reg);
+
+    var reg = /\d+/g;// 修饰符： 全局捕获
+    console.log(reg.exec("zhufeng123peixun234"));
+    console.log(reg.exec("zhufeng123peixun234"));
+
+
+</script>
+</body>
+</html>

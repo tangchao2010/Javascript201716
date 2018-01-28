@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 正向预查 ： ?= 表达式必须跟着括号中内容；
+    //    var reg = /zhufeng(?=peixun)/;
+    // 捕获时，不对括号中的内容进行捕获；
+    //     console.log(reg.test("zhufeng123"));// false
+    //     console.log(reg.test("zhufengpeixun123"));// true
+    //    console.log(reg.exec("zhufengpeixun"));// ["zhufeng", index: 0, input: "zhufengpeixun"]
+    //1. 捕获时，捕获不到内容返回值是null；
+    //2. 通过getAttribute这个方法获取自定义属性的属性值，属性名不存在，获取结果null；
+    // 3. 通过id获取元素，id不存在，结果也是null；
+    // 4.清空对象的堆内存，赋值为null；
+    // 5.body 的父级参照物是null；
+    // 6.previousElementSibling 不存在，结果也是null;
+    //    console.log(reg.exec("zhufeng2018"));// null
+    //    console.log(reg.exec("zhufeng"));// null
+    //    //
+    //    console.log(box.previousElementSibling);
+
+
+    // 负向预查
+
+    var reg = /zhufeng(?!js)/;
+
+    console.log(reg.test("zhufengjs"));// false
+    console.log(reg.test("zhufeng123"));// true
+
+    console.log(reg.exec("zhufeng2345hello"));//["zhufeng", index: 0, input: "zhufeng2345hello"]
+    console.log(reg.exec("zhufengjs"));// null
+</script>
+</body>
+</html>

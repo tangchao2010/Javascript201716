@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 正则的分组 ： ()
+    // 1. 改变了正则中的优先级；
+
+//    var  reg = /^z|food$/;
+//    reg.test("zood")// true
+//    var  reg = /^(z|food)$/;
+//    reg.test("zood")// false
+//
+//    var  reg = /^(z|f)ood$/;
+//    console.log(reg.test("zood"));
+
+    // 2.分组的引用  \1 : 代表和第一个分组出现一模一样的内容
+
+    var reg = /^(\w)(\d)\2\1$/;
+    console.log(reg.test("ab"));// false
+    console.log(reg.test("a11a"));// true
+    console.log(reg.test("a1a"));// true
+
+</script>
+</body>
+</html>
