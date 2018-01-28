@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var  reg = /\d+/g;
+//    console.log(reg.lastIndex);// 0
+//    console.log(reg.exec("zhufeng123peixun234"));// ["1", index: 7, input: "zhufeng123"]
+//    console.log(reg.lastIndex);// 10
+    // reg.lastIndex : 代表正则捕获开始的索引位置
+//    console.log(reg.exec("zhufeng123peixun234"));
+    // g原理： 每一次捕获，都改变正则属性lastIndex的属性值，属性值是下一次开始的索引位置；当下一次捕获时，开始的索引位置是上一次捕获的结束位置索引的下一个；
+    // 数组；
+    // [0] : 代表捕获到的内容
+    // index : 捕获内容在原字符串中出现的索引位置
+    // input : 要捕获的整个字符串
+
+    // g  : global ： 全局捕获（解决懒惰性）
+    // i : ignoreCase 忽略大小写
+    // m : multiline : 多行匹配
+//    var reg = /a/i;
+//    console.log(reg.test("A"));
+
+//    var  reg=/^b/m;
+//    console.log(reg.exec("test\nbeat"));//["b", index: 5, input: "test↵beat"]
+
+   // 1. 懒惰性
+    // 解决正则捕获的懒惰性 ： g
+  // 2.贪婪性 :把问号放在量词的后面，取消捕获的贪婪性；
+//    var  reg = /\d+?/g;
+  // 0
+//    console.log(reg.exec("zhufeng123peixun234"));
+//    console.log(reg.exec("zhufeng123peixun234"));
+    var reg = /^[+-]?(?:\d|(?:[1-9]\d+))(?:\.\d+)?/;
+    // ?:  只匹配 不捕获；
+   // 正则中出现分组，不仅大正则要对其进行捕获，小正则也进行捕获；
+    console.log(reg.exec("12px"));// ["12.898", "12", "12", ".898", index: 0, input: "12.898"]
+
+</script>
+</body>
+</html>
