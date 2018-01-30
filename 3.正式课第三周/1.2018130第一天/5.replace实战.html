@@ -7,7 +7,7 @@
 <body>
 <script>
     // 1.首字母换成大写的；
-//    var str = "my school is  zhufeng,today is sunny";
+    //    var str = "my school is  zhufeng,today is sunny";
     // 1.如何找到第一个字母
     // 2.toUpperCase
     // 3.return
@@ -15,28 +15,59 @@
     //    str.replace(//,function(){
     // 把捕获到的首字母转成大写，再放回原来的位置
     // }))
-//    var a = str.replace(/\b[a-z]/g, function () {
-//        console.log(arguments);//["m", 0, "my school is  zhufeng,today is sunny", callee: ƒ, Symbol(Symbol.iterator): ƒ]
-//        return arguments[0].toUpperCase();
-//    })
-//    console.log(a);
+    //    var a = str.replace(/\b[a-z]/g, function () {
+    //        console.log(arguments);//["m", 0, "my school is  zhufeng,today is sunny", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+    //        return arguments[0].toUpperCase();
+    //    })
+    //    console.log(a);
 
     // 格式化时间
-    var str = "2018-01-30 12:52:30";
-    var  time = ["年","月","日","时","分","秒"];
-    // str = "2018年01月30日12时52分30秒"
-    var i=0;
-    var newStr = "";
-    str.replace(/\d+/g,function () {
-        //
-        newStr+= arguments[0] + time[i++]
-        //
-//        i++
-//        return  arguments[0] + time[i++]
-    });
-    console.log(newStr);
+    //    var str = "2018-01-30 12:52:30";
+    //    var  time = ["年","月","日","时","分","秒"];
+    //    // str = "2018年01月30日12时52分30秒"
+    //    var i=0;
+    //    var newStr = "";
+    //    str.replace(/\d+/g,function () {
+    //        //
+    //        newStr+= arguments[0] + time[i++]
+    ////        i++
+    ////        return  arguments[0] + time[i++]
+    //    });
+    //    console.log(newStr);
+    //    var str = "2018-01-30 12:52:30";
+    //    var  time = ["年","月","日","时","分","秒"];
+    //    // match  : string 原型上的方法
+    //    var ary=str.match(/\d+/g);// ["2018", "01", "30", "12", "52", "30"]
+    //    var  newStr = "";
+    //    for(var i=0;i<ary.length;i++){
+    //        newStr+= ary[i] + time[i]
+    //    };
+    //    console.log(newStr);
 
 
+//    var str = "my name  is {0},i am {1} years old,my hobby is {2}";
+//
+//    var ary = ["niuxiaoxin", 18, "write JS"];
+//    // {0}  {1}  {2}
+//
+//    var  newStr =str.replace(/\{(\d)\}/g,function () {
+//        console.log(arguments);
+//        return ary[arguments[1]]// {0}
+//    })
+//    console.log(newStr);
+
+
+    //
+    //var  reg = /(\w)\1/;// 分组引用
+
+    // $1 : 在replace中的分组引用；
+//    var  reg = /(\w+)\s+(\w+)/;
+//    var  str = "zhufeng   peixun";
+//    console.log(str.replace(reg, '$2 $1'));// "peixun zhufeng"
+
+//    var  reg = /(\w+).(\w+).(\w+)/;
+//    var  str = "www.zhufengpeixun.com";
+//    console.log(str.replace(reg, "$1.$2.$2"));
 </script>
 </body>
 </html>
