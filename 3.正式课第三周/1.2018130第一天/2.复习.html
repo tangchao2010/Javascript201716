@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<script>
+    var oDivs = document.getElementsByTagName("div");
+    // 原型的深入   商品排序    正则
+
+    // 原型的扩展 this -->
+    //    Array.prototype.dum =function () {
+    //              console.log(this)
+    //    }
+    //    Array.prototype = {};
+    //    function Fn() {
+    //
+    //    };
+    //    Fn.prototype.f  = function () {
+    //
+    //    };
+    //    Fn.f();// __proto__
+    //Function   Object
+    //    console.log(Function instanceof Object);// true
+    //    console.log(Object instanceof Function);// true
+    // call  apply  bind
+    //    Function.prototype.call = function () {
+    //
+    //    }
+    //    Function.call();
+    // Function 的__proto__ 属性值Function的prototype；
+//    function A() {
+//        this.a = 10;
+//        this.sum = function () {
+//
+//        }
+//    }
+//    A.prototype.sum = function () {
+//
+//    };
+//    var a = new A;
+//    a.sum();
+//    function B() {
+//
+//    }
+    //    B.prototype = new  A;
+    //    var m = new B;
+    //    console.log(m.__proto__.a);
+    // 继承 ： 五种继承
+    // 1.原型继承
+    // 2.call 继承私有
+    // 3. 中间类 __proto__ 指向
+    // 4.寄生组合式继承
+    // 5.es6继承 class  extends  super()
+
+
+    // 函数的三种角色： 普通函数 类 对象
+
+    // call  apply bind  :
+    //    function fn(a,b,c) {
+    //
+    //    }
+    //    fn.call([],90,8);
+    //    fn.apply([],[]);
+    //    fn.bind([],19)
+
+
+    //商品排序 ：
+    // 类数组转数组；
+//    function toArray(n) {
+//        var ary = [];
+//        try {
+//            ary = Array.prototype.slice.call(n);
+//        }catch (e){
+//            for(var i=0;i<n.length;i++){
+//                ary[ary.length] = n[i];
+//            }
+//        }
+//        return ary;
+//    };
+//    toArray(oDivs);
+    //
+
+//    oDivs.__proto__ = Array.prototype;
+    // sort  : 数组原型上的方法
+    //sort(function(a,b){return a-b});
+
+    // JSON :
+    // JSON.parse
+    // JSON.stringify
+   // console.log("JSON" in window);
+    // eval()
+
+    // 数据绑定
+    // 1. 创建对象document.createElement  innerHTML
+    // 2. 文档碎片
+    // 3. 字符串拼接
+    // 4. es6模板字符串
+
+    // 商品排序
+    // 1. 通过ajax获取数据
+    // 1) 创建ajax对象 2）打开路径 3）监听 4） 发送
+    // 2.绑定数据
+    // 3. 循环绑定
+    // 4.排序  1） 排序  2) 放入页面中
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

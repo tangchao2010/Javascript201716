@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // replace : 字符串原型上的方法 替换 replace(oldStr,newStr);
+    // 把找到的内容替换，且只替换一次；
+    var  str = "zhufeng123zhufeng234";
+   //1. replace(string,string)
+//    var  newStr =str.replace("zhufeng","peixun").replace("zhufeng","peixun");
+//    console.log(newStr);
+//    var time = "2018-01-01";
+//    console.log(time.replace("-", "").replace("-", ""));
+   // 2.replace(reg,function(){})
+    
+//   var  newStr= str.replace(/zhufeng/g,function () {
+        // 函数执行跟捕获次数有关，捕获几次，那么回调函数执行几次
+
+        // 1.arguments : 天生自带的参数集合
+        // ["123", 7, "zhufeng123zhufeng234", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+        // 回调函数中的arguments和正则捕获的内容很相似；
+
+//        console.log(arguments[0])
+       // 2.
+//        return "zhufengpeixun";
+        // return + 内容： 把捕获到的内容进行替换
+
+//    })
+//    console.log(newStr);
+    var  str = "zhufeng123zhufeng234";
+   // 3.replace(reg,"");
+    console.log(str.replace(/\d+/g, "567"));
+
+
+</script>
+</body>
+</html>

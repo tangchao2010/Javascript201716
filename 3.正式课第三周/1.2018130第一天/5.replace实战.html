@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.首字母换成大写的；
+//    var str = "my school is  zhufeng,today is sunny";
+    // 1.如何找到第一个字母
+    // 2.toUpperCase
+    // 3.return
+
+    //    str.replace(//,function(){
+    // 把捕获到的首字母转成大写，再放回原来的位置
+    // }))
+//    var a = str.replace(/\b[a-z]/g, function () {
+//        console.log(arguments);//["m", 0, "my school is  zhufeng,today is sunny", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+//        return arguments[0].toUpperCase();
+//    })
+//    console.log(a);
+
+    // 格式化时间
+    var str = "2018-01-30 12:52:30";
+    var  time = ["年","月","日","时","分","秒"];
+    // str = "2018年01月30日12时52分30秒"
+    var i=0;
+    var newStr = "";
+    str.replace(/\d+/g,function () {
+        //
+        newStr+= arguments[0] + time[i++]
+        //
+//        i++
+//        return  arguments[0] + time[i++]
+    });
+    console.log(newStr);
+
+
+</script>
+</body>
+</html>
