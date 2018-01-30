@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.typeof
+    //2.instanceof
+    //3.constructor
+    //4.Object.prototype.toString.call();
+
+    // 1.typeof :
+    // 返回值： 字符串  字符串中内容代表当前的数据类型
+    // 1.typeof null :“object”
+    // 2.不能具体细分对象数据中的数据类型,都返回"object"
+    // 3.不能区分实例创建的的数据类型
+    //    var  num = new Number(1);
+    //    console.log(typeof num);//"object"
+    //    console.log(typeof ":");//"string"
+    //    console.log(typeof true);// "boolean"
+    //    console.log(typeof undefined);// "undefined"
+    //    console.log(typeof null);// "object"  空对象指针
+    //
+    //    console.log(typeof []);// "object"
+    //    console.log(typeof {});// "object"
+    //    console.log(typeof /\d/)// "object"
+    //    console.log(typeof function () {});// "function"
+    //
+    //    function fn(num,num1) {
+    //        if(typeof num==="undefined"){
+    //            return 0;
+    //        };
+    //        if(typeof num1==="undefined"){
+    //            return num;
+    //        }
+    //        return num + num1;
+    //    }
+    //    fn(10);
+    //
+
+    // 2.instanceof  : 检测实例是否属于某个类的
+    // 1.只要当前类的原型在实例的原型链上检测都返回true；
+    //  2.不能检测通过字面量方式创建的基本数据类型的值；
+    //    function fn() {
+    //        console.log(arguments instanceof Array);//false
+    //    }
+    //    fn(1,2,3)
+
+//    var ary = [];
+//    var obj = {};
+    //    console.log(ary instanceof Array);
+    //    console.log(ary instanceof Object);//true
+    //    console.log(obj instanceof Object);
+    //    console.log(obj instanceof Array);// false
+
+    //    var num = 1;// 字面量方式创建的基本数据类型值不是一个标准的实例；
+//    var num1 = new Number(1)
+//    console.log(num1 instanceof Number);// true
+
+    // 3.constructor : 构造函数
+    // 1.原型扩展
+    // 2 继承发生原型链变化，检测结果也会有影响；
+//    var ary = [];
+//    console.log(ary.constructor===Array);
+//    function fn() {
+//
+//    }
+//    console.log(fn.constructor === Function);
+//    var  num = 10;
+//    console.log(num.constructor === Number);// true
+//    console.log(null.constructor === Null);// Null 不允许调用
+</script>
+</body>
+</html>
