@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            background: red;
+            margin:30px auto;
+            padding:10px;
+            border:10px solid #cccccc;
+            /*在IE8及以下opacity没有作用*/
+            opacity: 0.5;
+            filter:alpha(opacity=30);
+
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var oBox  = document.getElementById("box");
+//    oBox.style.width = 300+ "px";
+    function setCss(curEle,attr,value) {// curELe:元素   attr:属性   value :值
+        // 属性名透明度
+        if(attr==="opacity"){
+            curEle.style[attr] = value;
+            curEle.style["filter"] = "alpha(opacity="+value*100+")";
+            return;
+        }
+        // margin  padding  width  height  top  left  right  bottom  margin-top单位都是px;
+        // 匹配单位是px的属性
+        var  reg = /^((width|height)|((margin|padding)?(top|left|right|bottom)?))$/i;
+        if(reg.test(attr)){
+            value = value + "px";
+        }
+        curEle.style[attr] = value;
+    }
+    setCss(oBox,"width",400);
+    setCss(oBox,"opacity",0.3);
+    setCss(oBox,"marginTop",80);
+
+
+</script>
+</body>
+</html>

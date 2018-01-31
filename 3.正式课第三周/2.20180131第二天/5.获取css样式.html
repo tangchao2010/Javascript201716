@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            background: red;
+            margin:30px auto;
+            padding:10px;
+            border:10px solid #cccccc;
+            /*在IE8及以下opacity没有作用*/
+            opacity: 0.5;
+            filter:alpha(opacity=30);
+
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var oBox  = document.getElementById("box");
+    // 复合属性
+    // width
+    // 1. 元素.style.样式名
+    // 只能获取行内设置的样式
+//    var oBox  = document.getElementById("box");
+//    console.log(oBox.width);// undefined
+//    console.log(oBox.style.width);// ""// "300px"
+//    console.log(oBox.style.background);// ""
+
+
+    // 2.getComputedStyle:获取浏览器计算的样式的方法
+    // 在IE8 及以下是不兼容的；window中不存在这个属性
+    // getComputedStyle(curEle)--->对象（包含了浏览器对当前盒子计算的样式）
+    // in  : 检测属性名是否在这个对象中存在，存在返回true，不存在返回false
+//    console.log("getComputedStyle" in window);
+//    console.log(getComputedStyle(oBox).width);// "200px"
+
+    // 3.currentStyle;在IE下获取CSS样式的属性；
+//    console.log(oBox.currentStyle.width);
+    // 兼容浏览器
+    function getCss(curEle,attr) {
+        var val;
+        if("getComputedStyle" in  window){
+            // 过滤不标准浏览器
+            val = getComputedStyle(curEle)[attr];
+        }else{
+//            透明度需要获取filter的属性值
+            if(attr==="opacity"){
+                var  cur = curEle.currentStyle["filter"];
+                // alpha(opacity=30)
+                var  reg = /alpha\(opacity=(\d+(\.\d+)?)\)/;
+                val =reg.exec(cur)[1]/100;
+            }else{
+                // 不是透明度执行此处代码
+                val = curEle.currentStyle[attr];
+            }
+        }
+        // 去单位；方便后期的计算
+        if(!isNaN(parseFloat(val))){
+            val = parseFloat(val);
+        }
+        return val;
+    }
+    console.log(getCss(oBox, "width"));;// "200px"
+    getCss(oBox,"height");
+    console.log(getCss(oBox, "border"));
+    console.log(getCss(oBox, "background"));
+
+
+</script>
+</body>
+</html>
