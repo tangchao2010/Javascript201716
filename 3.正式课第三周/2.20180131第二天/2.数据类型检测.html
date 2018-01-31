@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. typeof  :
+//    console.log(typeof  1);// "number"
+//    console.log(typeof null);// "object"
+//   // typeof {}/[]/ /\d/ -- 》“object”
+//    // 不能检测通过实例创建的基本数据类型值
+//    var  num = new  Number(1);
+    //typeof num-->"object"
+
+
+    // 2.instanceof : 检测当前实例是否属于某个类的方法；
+    // 1. 当类在当前实例的原型链上，返回true；
+    // 2. 不能检测通过字面方式创建的基本数据类型值
+//    var ary = [];
+//    console.log(ary instanceof Array);// true
+//    console.log(ary instanceof Object);// true
+//    var num  = 1;
+//    var  num = new Number(1);
+//    console.log(num instanceof Number);// false
+
+    // 3.constructor
+    // 1. 原型扩展有可能导致检测结果不准确
+    // 2. 继承改变了实例的原型链，检测结果也可能不准确；
+//    var  ary = [];// Array.prototype
+//    ary.pop()
+//    console.log(ary.constructor===Array);// true
+//    console.log(ary.constructor===Object);// false
+//    function A() {
+//
+//    }
+//    A.prototype = {
+        // constructor没有这个天生自带的了
+//        constructor:A,
+//        s:function () {
+//
+//        },
+//        n:10
+//    }
+//    var a = new A;
+//    console.log(a.constructor===A);
+//    console.log(a.hasOwnProperty);
+//    function A() {
+//        B.call(this)
+//    }
+//    function B() {
+//    }
+//    A.prototype = new B;
+//    var a = new A;
+//    console.log(a.constructor === A);// false    B
+
+
+    // 4.Object.prototype.toString.call();
+    // Object原型上的toString方法，然后改变方法中this指向，指向当前传进来的第一个参数
+   // 返回值： 字符串    "[object 类]"
+    var a = new Number(4);
+    console.log(Object.prototype.toString.call(a));// "[object Number]"
+    console.log(Object.prototype.toString.call(1));// "[object Number]"
+    console.log(Object.prototype.toString.call("{{}}"));// "[object String]"
+    console.log(Object.prototype.toString.call(true));// "[object Boolean]"
+    console.log(Object.prototype.toString.call(null));// "[object Null]"
+    console.log(Object.prototype.toString.call(undefined));// "[object Undefined]"
+    console.log(Object.prototype.toString.call({}));// "[object Object]"
+    console.log(Object.prototype.toString.call(/\d/));// "[object RegExp]"
+    function m() {}
+    console.log(Object.prototype.toString.call(m));// "[object Function]"
+    console.log(Object.prototype.toString.call(Array));// "[object Function]"
+//    var ary = [];
+//    console.log(ary.toString());// ""
+//    var  num =1;
+//    console.log(num.toString());//"1"
+//    var obj = {};
+//    console.log(obj.toString());// "[object Object]"
+    // 通过window的__proto__ 找到了Object的原型，改变toString的this指向；
+    console.log(toString.call([]));
+
+
+</script>
+</body>
+</html>

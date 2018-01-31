@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            padding : 20px;
+            border:10px solid #ffff00;
+            border-top:20px solid #ffff00;
+            margin:20px;
+            background: #31C27C;
+            /*box-sizing: content-box;*/
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="box">今天天气好晴朗今天天气好晴朗今天天气好晴朗今天天气好晴朗今天天气好晴朗今天天气好晴朗今天天气好晴朗今天天气好晴朗今天天气好晴朗今天天气好晴朗</div>
+<script>
+    // js中的盒子模型
+
+
+    var oBox = document.getElementById("box");
+//    console.log(oBox.style.width);// 只能获取通过行内设置的样式
+    // 1.clientWidth  clientHeight:
+    // clientWidth = 内容的宽度+左右两个padding的和
+    // clientHeight = 内容的高度+上下两个padding的和
+//    console.log(oBox.clientWidth);// 140
+//    console.log(oBox.clientHeight);// 140
+
+
+    // 2.clientTop  clientLeft： 边框
+
+    // clientTop : 上边框的高度
+    // clientLeft : 左边框的宽度
+//    console.log(oBox.clientRight)//undefined
+//    console.log(oBox.clientTop);
+
+
+    //3.offsetWidth  offsetHeight ： 内容 + padding + border
+    // 不对margin进行计算
+    // offsetWidth : clientWidth + 左右border的宽度
+    // offsetHeight : clientHeight + 上下border的高度
+//    console.log(oBox.offsetWidth);
+//    console.log(oBox.offsetHeight);
+
+
+    // 4. scrollWidth  scrollHeight
+
+    // 没有溢出的情况下，scrollWidth 和clientWidth 是相等的
+    //scrollHeight 和clientHeight 是相等的
+
+    // 有溢出的情况下
+    // scrollHeight : 内容的真实高度+ 一个上padding的和
+    // scrollWidth : 内容的真实宽度+ 一个左padding的和
+    // overflow:hidden : 相对于没有没加之前，属性值多一个下padding
+    console.log(oBox.clientHeight);
+    console.log(oBox.scrollHeight);
+
+
+</script>
+</body>
+</html>

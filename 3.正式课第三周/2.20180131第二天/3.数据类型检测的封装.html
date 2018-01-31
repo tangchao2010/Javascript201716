@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Object.prototype.toString.call()
+
+//    console.log(Object.prototype.toString.call([]));// "[object Array]"
+//    console.log(Object.prototype.toString.call(1));// "[object Number]"
+
+//    var checkType={}
+//    checkType.isNumber(1)// true
+//    checkType.isArray([])// true
+    (function () {
+        // 初始化对象
+        var obj = {
+            isNumber:"Number",
+            isString : "String",
+            isBoolean : "Boolean",
+            isNull : "Null",
+            isUndefined : "Undefined",
+            isObject : "Object",
+            isArray:"Array",
+            isRegExp:"RegExp",
+            isFunction:"Function"
+        }
+        var checkType = {};
+        for(var key in obj){
+            // key 是obj的属性名  给checkType 新增键值对，属性名是obj中的属性名，属性值是自执行函数指向的返回值；
+            checkType[key] = (function () {
+                // 当前作用域不销毁，循环obj就执行
+                var name = obj[key];// obj中key属性名对应的属性值 name是私有变量
+                return  function (val) {
+                    // 检测时执行
+                    var reg = new RegExp("\\[object "+name+"\\]");// /\[object Number\]/
+                    console.log(reg);
+                    return reg.test(Object.prototype.toString.call(val));
+                }
+            })();
+        }
+        // 把私有放进全局中；
+        window.checkType = checkType;
+    })();
+    console.log(checkType.isNumber("12"));
+//    console.log(checkType.isNumber(12));
+    console.log(checkType.isObject([]));
+//    console.log(checkType.isArray([]));
+
+</script>
+</body>
+</html>
