@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JS中的盒子模型
+    // 8个属性
+    // clientWidth  clientHeight: 内容的宽度+ 左右两个padding
+    // clientLeft  clientTop  ： 左边框的宽度
+    // offsetWidth  offsetHeight ： clientWidth + 左右两个border宽度
+    // scrollWidth  scrollHeight ：
+    // 没有溢出： 等于clientWidth
+    // 有溢出： 一个左padding+ 内容的真实宽度
+    // scrollHeight = 上padding + 内容的真实高度
+
+
+    // 获取css样式值
+    // 1.元素.style.attr : 只能获取行内设置的样式
+    // 2.getComputedStyle  : window中的一个方法 在IE8 及以下不兼容
+    //getComputedStyle(curEle).width
+
+    // 3. currentStyle : IE  opacity
+
+    //
+    function getCss(curEle, attr) {
+        // 1.对computedStyle
+        // 2.currentStyle
+        var val = "";
+        if ("getComputedStyle" in window) {
+            val = getComputedStyle(curEle)[attr]
+        } else {
+            if (attr === "opacity") {
+                var cur = curEle.currentStyle["filter"];
+                var reg = /alpha\(opacity=(\d+(\.\d+)?)\)/;
+                val = reg.exec(cur)[1] / 100;
+            } else {
+                val = curEle.currentStyle[attr];
+            }
+        }
+        if (!isNaN(parseFloat(val))) {//
+            val = parseFloat(val)
+        }
+        return val;
+
+    };
+    getCss()
+
+
+</script>
+</body>
+</html>

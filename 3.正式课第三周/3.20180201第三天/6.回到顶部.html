@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #topBack{
+            display: none;
+            width:100px;
+            height:100px;
+            border-radius: 5px;
+            background: lightcoral;
+            position: fixed;
+            right:20px;
+            bottom:20px;
+            line-height: 100px;
+            text-align: center;
+            color:white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<img src="1.png" alt="">
+<img src="1.png" alt="">
+<img src="1.png" alt="">
+<img src="1.png" alt="">
+<img src="1.png" alt="">
+<img src="1.png" alt="">
+<img src="1.png" alt="">
+<img src="1.png" alt="">
+<div id="topBack">回到顶部</div>
+<script src="utils.js"></script>
+<script>
+   var topBack = document.getElementById("topBack");
+   topBack.onclick = function () {
+//       utils.win("scrollTop",0)
+        var timer = setInterval(function () {
+            // 先获取最新的scrollTop 的值
+            var curT = utils.win("scrollTop");
+            if(curT-10 <=0){
+                utils.win("scrollTop",0);
+                clearInterval(timer);
+                return;
+            }
+            utils.win("scrollTop",curT-30);
+        },10)
+   }
+   var winH= utils.win("clientHeight");
+   // 当页面滚动条卷去高度变化时，这个方法执行
+   window.onscroll = function () {
+       var  curT = utils.win("scrollTop");
+       if(curT > winH){
+           topBack.style.display = "block";
+       }else{
+           topBack.style.display = "none";
+       }
+   }
+
+
+
+</script>
+</body>
+</html>

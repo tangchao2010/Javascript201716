@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            background: red;
+            margin:30px auto;
+            padding:10px;
+            border:10px solid #cccccc;
+            /*在IE8及以下opacity没有作用*/
+            /*opacity: 0.5;*/
+            /*filter:alpha(opacity=30);*/
+
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var oBox = document.getElementById("box");
+    // 设置单个样式
+    function setCss(curEle,attr,value) {// curELe:元素   attr:属性
+        if(attr==="opacity"){
+            curEle.style[attr] = value;
+            curEle.style["filter"] = "alpha(opacity="+value*100+")";
+            return;
+        }
+        var  reg = /^((width|height)|((margin|padding)?(top|left|right|bottom)?))$/i;
+        if(reg.test(attr)){
+            value = value + "px";
+        }
+        curEle.style[attr] = value;
+    }
+//    setCss(oBox,"width",300)
+//    setCss(oBox,"opacity",0.5)
+    // 设置一组样式
+//    function setGroupCss(curEle,options) {
+//        if(typeof options==="object"){
+//            for(var key in options){
+////            console.log(1);
+//                // 只循环私有属性
+//                setCss(curEle,key,options[key])
+//            }
+//        }
+//
+//    }
+//    setGroupCss(oBox,{width:400,opacity:0.8})
+
+//    var  ary = [19,99,9,7];
+//    for(var key in ary){
+//        console.log(ary[key])
+//    }
+</script>
+</body>
+</html>

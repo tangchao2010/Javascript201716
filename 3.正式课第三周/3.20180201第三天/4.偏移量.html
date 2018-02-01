@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            position: relative;
+            margin:30px auto;
+            width:300px;
+            height:300px;
+            background: #31C27C;
+        }
+        #inner{
+            position: relative;
+            margin:auto;
+            width:200px;
+            height:200px;
+            border: 10px solid red;
+            background: lightcoral;
+        }
+        #center{
+            margin:auto;
+            width:100px;
+            height:100px;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center">
+        </div>
+    </div>
+</div>
+<script>
+    // parentNode : 父亲节点
+    var  outer = document.getElementById("outer")
+    var  inner = document.getElementById("inner")
+    var center = document.getElementById("center");
+//    console.log(document.documentElement.parentNode.parentNode);// #document
+    // #document 的父亲节点是null；
+
+    // offsetParent :  父级参照物
+    // offsetLeft offsetTop
+    // 页面中的元素在没有特殊处理的情况下，那么元素父级参照物一般是body；
+    // 如果给当前元素加上position属性，relative absolute fixed都会当前元素的子孙元素的父级参照物，当前元素会变成子孙元素的父级参照物；不会影响自己的父级参照物；
+
+//    console.log(outer.offsetParent);
+//    console.log(inner.offsetParent);
+//    console.log(center.offsetParent);
+    // offsetLeft : 左偏移量；当前元素的外边框距离父级参照物的内边框的距离；
+    // offsetTop ： 上偏移量；当前元素的上外边框距离父级参照物的上内边框的距离；
+//    console.log(center.offsetLeft);
+//    console.log(inner.offsetLeft);
+//    console.log(outer.offsetLeft);
+
+    //计算盒子距离body的距离
+    // 计算当前盒子的左偏量+ 父级参照物的左偏移量
+    function offset(curEle) {
+        var l = curEle.offsetLeft;
+        var t = curEle.offsetTop;
+        var p= curEle.offsetParent;
+        while(p){
+            // p.nodeName!=="BODY"
+            // IE8 ：在真核IE8中，offsetLeft  会把父级参照物的边框算进去；
+            //console.log(navigator.userAgent);// ；浏览器的内核信息
+            if(!/MSIE 8.0/.test(navigator.userAgent)){
+                // 只要不是IE8浏览器，那么会进此处的判断
+                l +=p.clientLeft;
+                t +=p.clientTop;
+            }
+            l+=p.offsetLeft;
+            t+=p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {left:l,top:t}
+        
+    }
+    console.log(offset(center).left);
+    console.log(document.body.offsetParent);//null
+
+</script>
+</body>
+</html>
