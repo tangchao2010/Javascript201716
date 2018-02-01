@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+        }
+        body{
+            width:100%;
+        }
+        #oul{
+            list-style: none;
+
+        }
+        #oul li{
+            width:100%;
+            border-bottom:1px dashed lightblue;
+            height:70px;
+            padding-top:10px;
+            padding-left:10px;
+        }
+        #oul li img{
+            display: block;
+            width:75px;
+            height:60px;
+            float:left;
+            margin-right:10px;
+        }
+        #oul li div{
+
+        }
+    </style>
+</head>
+<body>
+<ul id="oul">
+    <li>
+        <img src="img/1.jpg" alt="">
+        <div>
+            <h3>网络强国战略习近平与“十三五”十四大战略</h3>
+            <p>互联网是二十世纪人类最大的发明互联网是二十世纪.</p>
+        </div>
+    </li>
+</ul>
+<script src="utils.js"></script>
+<script>
+    // 1.ajax 请求数据
+    var data;
+    var oUl = document.getElementById("oul");
+    var xhr = new XMLHttpRequest();
+    xhr.open("get","newList.json",false);
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState===4&&/^2\d{2}$/.test(xhr.status)){
+           data = utils.toJSON(xhr.responseText);// 响应体
+        }
+
+    };
+    xhr.send(null);
+    console.log(data);
+    // 2.绑定数据 es6模板字符串
+    var str = "";
+    for(var i=0;i<data.length;i++){
+        var cur = data[i];
+        str += `<li>
+                    <img src="img/default.jpg" trueImg="${cur.img}" alt="">
+                    <div>
+                        <h3>${cur.title}</h3>
+                        <span>${cur.desc}</span>
+                    </div>
+                </li>`
+//        str +="<li>" +
+//                "<img src='img/default.jpg' trueImg='"+cur.img+"'>"+
+//                "<div>"+
+//                    "<h3>"+cur.title+"</h3>"+
+//                    "<span>"+cur.desc+"</span>"+
+//                "</div>"+
+//            "</li>";
+    };
+    oUl.innerHTML = str;
+    var imgs = document.getElementsByTagName("img");
+    // 3判断每一张图片是否需要延迟加载
+    function delayImg() {
+        for(var i=0;i<imgs.length;i++){
+            delayImgCode(i)
+        }
+    }
+    function delayImgCode(i) {
+        var curImg = imgs[i];
+        if(curImg.load){
+            return;
+        }
+        // 当前图片距离body上偏移量
+        var  curTop = utils.offset(curImg).top;
+        var curH= curImg.offsetHeight;
+        // 浏览器可视窗口的高度
+        var winH = utils.win("clientHeight");
+        // 页面纵向卷起的高度
+        var scrollT = utils.win("scrollTop");
+        if(winH + scrollT>=curTop + curH){
+            var trueAddress = curImg.getAttribute("trueImg");
+            var oImg = document.createElement("img");
+            oImg.src = trueAddress;
+            oImg.onload = function () {
+                curImg.src = trueAddress;
+                oImg= null;
+                fadeIn(curImg);
+                curImg.load = true;
+            }
+        }
+
+
+    }
+    function fadeIn(curImg) {
+        utils.setCss(curImg,"opacity",0.3);
+        var timer=setInterval(function () {
+            var opa = utils.getCss(curImg,"opacity");
+            opa+=0.1;
+            if(opa>=1){
+                utils.css(curImg,"opacity",1);
+                clearInterval(timer);
+                return;
+            }
+            utils.css(curImg,"opacity",opa)
+        },50)
+    }
+    delayImg()
+    window.onscroll = delayImg;
+
+
+</script>
+</body>
+</html>
