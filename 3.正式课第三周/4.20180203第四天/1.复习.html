@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 正则的replace   js盒子模型   方法的封装   懒加载思想
+
+    // 正则 ： 处理复杂字符串的模型
+    // toUpperCase  toLowerCase  charAt  charCodeAt   substr(m,n)  substring(m,n)  slice   indexOf  lastIndexOf   split   replace  trim  trimLeft  trimRight
+    //    var  str = "ni   hao   ";
+
+    // 正则 ： 匹配：test   捕获 :exec
+//    var  reg = /\d/;
+//    var  str = "2zhufeng88";
+//    reg.test(str)
+
+    // exec : 捕获 把符合正则内容的字符找出来  返回一个数组
+    // []1.捕获内容  index : 捕获内容开始的索引 input： 整个捕获的字符串
+
+    // 分组 ：()
+    //1. 改变优先级  2. 小正则也要进行捕获 3.分组引用  \1    $1
+
+    var  reg = /\d+(\.\d+)/;
+
+    var  str = "12.88";
+    console.log(reg.exec(str));//["12.88", ".88", index: 0, input: "12.88"]
+
+    // ?: 只匹配不捕获
+    // ? : 0 到一次
+    // ?= ：正向预查
+    // ?! 负向预查
+    // 量词+ ？ ： 取消捕获的贪婪性
+
+    // g : 取消捕获的懒惰性
+    // i : 忽略大小写
+    // m : 多行匹配
+
+
+    // replace  : 字符串方法
+    // str.replace(oldstr,newstr);
+    var  str = "zhufeng12zhufeng34";
+//    str.replace("zhufeng","zhufengpeixun").replace("zhufeng","zhufengpeixun")
+    //replace (reg,str)
+    //str.replace(/zhufeng/g,"zhufengpeixun")
+
+    // str.replace(reg,function(){
+    //    arguments : 和正则捕获的内容是很相似的
+    //    return + 内容；
+    //
+    // })
+
+
+    var  str = "201802031008";
+    var  ary = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+    var  newStr =str.replace(/\d/g,function () {
+//        console.log(arguments[0]);
+        return  ary[arguments[0]]
+    })
+    console.log(newStr);
+
+
+</script>
+</body>
+</html>

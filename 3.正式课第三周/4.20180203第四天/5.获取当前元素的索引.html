@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <ul></ul>
+    <div id="box"></div>
+    <div></div>
+</div>
+<script>
+    var box=document.getElementById("box")
+    //prev  prevAll next  nextAll siblings  children parents
+    // getIndex
+    // 获取到一个哥哥元素节点+1；
+    function getIndex(curEle) {
+        var pre=curEle.previousSibling;
+//        var ary=[];
+//        while (pre){
+//            if (pre.nodeType===1){
+//                ary.push(pre);
+//            }
+//            pre=pre.previousSibling;
+//        }
+//        return ary.length;
+        var index = 0;
+        while(pre){
+            if(pre.nodeType===1){
+                index++;
+            }
+            pre =pre.previousSibling;
+        }
+        return index;
+    }
+    console.log(getIndex(box));
+    //$("#box").index()
+</script>
+</body>
+</html>

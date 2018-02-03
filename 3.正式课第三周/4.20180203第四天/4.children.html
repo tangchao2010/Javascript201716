@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="parent">
+    <div id="first">
+        <div id="grandSon"></div>
+    </div>
+    <!--我是注释-->
+    <div id="second"></div>
+    <div></div>
+    <ul></ul>
+    <ul></ul>
+</div>
+<script>
+    var  parent = document.getElementById("parent");
+    console.log(parent.tagName);// 大写的标签名
+    console.log(parent.nodeName);
+    //    // children : 当前元素的子元素
+//    // childNodes: 子节点
+//    console.log(parent.children);
+    // 在IE8及以下，children会默认把注释节点当做子元素节点进行处理；
+//    console.log(parent.childNodes);
+    // 兼容所有浏览器
+    // 1. 在IE8 以下只获取子元素节点
+   //
+//    function children(curEle,tagName) {
+//        // 在IE8以下
+//        if(/MSIE [5678]\.0/.test(navigator.userAgent)){
+//           var ary=curEle.children;
+//           var newary=[];
+//           for(var i=0;i<ary.length;i++){
+//               if(ary[i].nodeType===1){
+//                   newary.push(ary[i]);
+//               }
+//           }
+//            return newary;
+//        }
+//        // 标准浏览器
+//        return curEle.children;
+//        var newAry = [];
+//        var likeAry=null;
+//        if("getComputedStyle" in window){
+//            newAry=Array.prototype.slice.call(curEle.children) ;
+//        }else{
+//            likeAry=curEle.children;
+//            for(var i=0;i<likeAry.length;i++){
+//                var cur  = likeAry[i];
+//                // 过滤不是元素节点的
+//                if(cur.nodeType===1){
+//                    newAry.push(cur);
+//                }
+//            }
+//        }
+//        var reg=new RegExp(tagName);// div /div/.test("ul")
+//        for(var j=0;j<newAry.length;j++){
+//            if(!reg.test((newAry[j].nodeName).toLowerCase())){
+//                newAry.splice(j,1);
+//                j--;
+//            }
+//        }
+//        return newAry;
+//    }
+//    console.log(children(parent,"div"));
+
+    // 1.
+//    if("getComputedStyle" in window){
+//
+//    }
+//    // 2.previousElementSibling
+//    if("previousElementSibling" in curEle){
+//
+//    }
+//    if(curEle.previousElementSibling){
+//
+//    }
+
+    // 3./MSIE 8\.0/.test(navigator.userAgent)
+
+
+//    function children(curEle,tagName) {
+//        var  ary = curEle.children;
+//        var newAry = [];
+//        for(var i=0;i<ary.length;i++){
+//            if(ary[i].tagName.toLowerCase()===tagName){
+//                newAry.push(ary[i]);
+//            }
+//        }
+//        return newAry;
+//    }
+//    console.log(children(parent, "div"));
+
+
+</script>
+</body>
+</html>

@@ -49,6 +49,7 @@
     // 1.ajax 请求数据
     var data;
     var oUl = document.getElementById("oul");
+    console.log(oUl.tagName);
     var xhr = new XMLHttpRequest();
     xhr.open("get","newList.json",false);
     xhr.onreadystatechange = function () {
@@ -109,8 +110,6 @@
                 curImg.load = true;
             }
         }
-
-
     }
     function fadeIn(curImg) {
         utils.setCss(curImg,"opacity",0.3);
