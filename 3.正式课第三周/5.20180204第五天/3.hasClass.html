@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box box2" id="box"></div>
+<div class="box1"></div>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    // hasClass : 验证元素有没有某个类名
+//    console.log($("#box").hasClass("box box0"));
+    function hasClass(curEle,className) {
+        // 元素.className
+        // className定义正则，去匹配元素的className
+        var  reg = new RegExp('(^| +)'+className+'( +|$)');
+
+       return reg.test(curEle.className);
+    }
+    var  oBox  = document.getElementById("box");
+//    console.log(hasClass(oBox, "box1 box2"));
+
+
+    // addClass : 增加类名
+//    oBox.className += " box1";
+//    function addClass(curEle,cName) {
+//        // 去除收尾空格
+//        var reg = new RegExp('^ +| +$',"g");
+//        cName=cName.replace(reg,"");
+//        // 数组
+//        var ary = cName.split(/ +/g);
+//        for(var i=0;i<ary.length;i++){
+//            // 如果当前元素没有这个class,给其加上这个class
+//            if(!hasClass(curEle,ary[i])){
+//                if(!curEle.className){
+//                    curEle.className += ary[i];
+//                }else{
+//                    curEle.className +=" " + ary[i];
+//                }
+//                curEle.className ? curEle.className +=" " + ary[i]:curEle.className += ary[i];
+//            }
+//        }
+//    }
+//    addClass(oBox,"box1 box2 box3");
+    // 删除class
+    function removeClass(curEle,cName) {
+        var reg = new RegExp('^ +| +$',"g");
+        cName=cName.replace(reg,"");
+        // 数组
+        var ary = cName.split(/ +/g);
+        for(var i=0;i<ary.length;i++){
+            //
+            var  reg = new RegExp('(^| +)'+ary[i]+'( +|$)');
+            console.log(reg);
+            ///(^| +)box2( +|$)/
+            if(hasClass(curEle,ary[i])){
+                curEle.className = curEle.className.replace(reg," ")
+            }
+        }
+    }
+    removeClass(oBox,"box1 box2")
+
+
+
+
+
+
+</script>
+</body>
+</html>

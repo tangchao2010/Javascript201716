@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box1">
+    <div class="a"></div>
+</div>
+<div class="box1 box2"></div>
+<div class="box1  box2"></div>
+<div class="box2  box3"></div>
+<script src="jquery-1.11.3.js"></script>
+<script src="utils.js"></script>
+<script>
+    // 在IE8及以下不兼容
+    // document的原型链上不存在getElementsByClassName 这个方法，所以不可以调用；
+//    var oDivs = document.getElementsByClassName("box1");
+//    var box1 = oDivs[0];
+//    var a = box1.getElementsByClassName("a");
+//    console.log(a instanceof Array);// false 不是一个数组，是一个类数组集合
+//    console.log(a);//
+//    var  a = document.getElementsByClassName("box1 box2")
+//    console.log(a);
+//    console.log($(".box1.box2"));
+    // getElementsByTagName : 通过标签名来获取元素
+    function getElementsByClass(className,context) {
+        // context : 上下文 className : 类名
+        // 把context 这个下面所有的元素获取到
+        // 循环判断  用正则校验当前元素是否含有这个class
+        // 如果没有传递第一个参数，那么默认是在document下获取元素；
+        context = context || document;
+        if("getComputedStyle" in window){
+            return context.getElementsByClassName(className)
+        }
+        // 获取所有的元素
+        var nodeList = context.getElementsByTagName("*");
+        nodeList = utils.toArray(nodeList);
+        // trim 方法在IE8及以下是不兼容的
+        className = className.replace(/^ +| +$/g,"").split(/ +/);
+        for(var i=0;i<className.length;i++){
+            var reg = new RegExp('(^| +)'+className[i] +'( +|$)');
+            for(var k =0;k<nodeList.length;k++){
+                // 当前这个元素中没有相应的类名
+                if(!reg.test(nodeList[k].className)){
+                    nodeList.splice(k,1);
+                    k--;
+                }
+            }
+        }
+        return nodeList;
+    }
+
+    console.log(getElementsByClass("box1  box2"));// 有box1 并且有box2
+//    var  str = "box1    box2"
+//    console.log(str.replace(/^ +| +$/g, "").split(/ +/));// ["box1","box2"]
+
+</script>
+</body>
+</html>
