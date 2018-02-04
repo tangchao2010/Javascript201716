@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width:400px;
+            height:280px;
+            margin:30px auto;
+
+        }
+        .container ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        .container ul li{
+            width:60px;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid lightcoral;
+            margin-right:10px;
+            font-size: 14px;
+            float:left;
+        }
+        .container ul li.select{
+            background: lightblue;
+        }
+        .container div{
+            display: none;
+            width:400px;
+            height:280px;
+            text-align: center;
+            line-height: 280px;
+            border: 1px solid lightcoral;
+        }
+        .container div.select{
+            display: block;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li class="select">A模块</li>
+        <li>B模块</li>
+        <li>C模块</li>
+    </ul>
+    <div class="select">HTML</div>
+    <div>JavaScript</div>
+    <div>VUE、REACT</div>
+</div>
+<script src="jquery-1.11.3.js"></script>
+<script>
+   //$() --->// jQuery
+   $("ul li").click(function () {
+//       console.log($(this));
+       // 获取当前Li的索引；
+       var index = $(this).index();
+       // addClass : 增加类名
+       // siblings : 所有的哥哥弟弟
+       // removeClass : 移出类名
+       // parent : 父级元素
+       // nextAll : 所有的弟弟
+       // eq : 通过索引获取对应的元素(jQuery的对象)
+
+       $(this).addClass("select").siblings().removeClass("select").parent().nextAll("div").eq(index).addClass("select").siblings().removeClass("select");
+
+   });
+
+
+</script>
+</body>
+</html>
