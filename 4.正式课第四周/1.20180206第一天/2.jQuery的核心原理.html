@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box"></div>
+<script src="jquery-1.11.3.js"></script>
+<script>
+
+    // $()
+    // jQuery核心原理： 采用了构造函数的原理，每调用一次$(),就是让jQuery执行，这个方法执行的同时，让jQuery.fn.init 执行，创建一个实例来
+    //    var jQuery = function (selector,context) {
+    //        // new  + jQuery.fn.init： 创建一个jQuery.fn.init这个函数的一个实例；
+    //        return new jQuery.fn.init(selector,context)
+    //    };
+    //    jQuery.fn = jQuery.fn.prototype = {
+    //        jQuery:version,
+    //        constructor:jQuery
+    //    }
+    //    init = jQuery.fn.init  = function (selector,context) {
+    //        // selector : 选择器
+    //        if(typeof selector === "string"){
+    //
+    //
+    //        }else if(selector.nodeType){
+    //            //只有原生的节点都存在nodeType
+    //
+    //        }else if(jQuery.isFunction(selector)){
+    //
+    //        }
+    //        return jQuery.makeArray(selector,this)
+    //
+    //
+    //    };
+    //    init.prototype = jQuery.fn;
+    //    window.jQuery = window.$ = jQuery;
+    // 把jQuery这个方法赋值给全局下的$,以及全局下的jQuery
+    //    $(".box");// 获取一个clas名就box的一个元素；得到一个jQuery的对象；
+    // $(box): 可以传原生对象，把原生对象转换成jQuery的对象；
+    // 通过jQuery获取到一个实例，是一个类数组；不能用数组原型上的方法；
+    //    console.log($(".box") instanceof Array);// false
+    //    console.log($(".box").nodeType);//undefined
+    // $(".box").fadeIn();// 淡入：
+
+//    var oBox = document.getElementsByClassName("box")[0];
+//    $(oBox).addClass("box2")
+    $(function () {
+        //console.log(12)
+        // 当页面的DOM结构全部加载完成时，才会执行这个方法；
+    });
+    $(function () {
+        console.log(12)
+        // 当页面的DOM结构全部加载完成时，才会执行这个方法；
+    });
+    $(document).ready(function () {
+
+    })
+    // 图片延迟加载：img.onload : 当图片加载完成时，方法执行；
+    for(var i=0;i<10;i++){
+
+    }
+    // DOM0 级事件
+//    window.onload= function () {
+//        console.log(1);
+//        // 当页面的DOM结构（元素，图片）全部加载完成时，才会执行这个方法；
+//    }
+//    window.onload= function () {
+//        console.log(2);
+//        // 当页面的DOM结构（元素，图片）全部加载完成时，才会执行这个方法；
+//    }
+
+
+</script>
+
+</body>
+</html>
