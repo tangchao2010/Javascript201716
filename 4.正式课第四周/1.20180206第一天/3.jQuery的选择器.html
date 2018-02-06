@@ -5,16 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<div class="container" id="box">
-    <div class="box1">
-        <div class="first"></div>
-    </div>
-    <div class="box1 box2"></div>
-    <div class="box1 box3"></div>
-    <div class="box1"></div>
-    <div class="box1"></div>
-    <div class="box1"></div>
-</div>
+<!--<div class="container" id="box">-->
+    <!--<div class="first"></div>-->
+    <!--<div class="box1">-->
+        <!--<div class="first1">-->
+            <!--<div class="first2"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="box1 box2"></div>-->
+<!--</div>-->
+<!--<div class="box" style="display: none">name</div>-->
+<!--<div>age</div>-->
+<!--<div name="12">age</div>-->
+<!--<input type="checkbox" name="newsletter" value="Hot Fuzz" />-->
+<!--<input type="checkbox" name="newsletter" value="Cold Fusion" />-->
+<!--<input type="checkbox" name="accept" value="Evil Plans" />-->
+<select><option>Option</option><option>Option</option><option>Option</option></select>
 <script src="jquery-1.11.3.js"></script>
 <script>
     // 1.基本选择器
@@ -23,11 +29,29 @@
     // element 获取所有的div标签获取
     // *
     // [selector1,selector2];
-//    var  a = $("#box");
-//    console.log(a);// jQuery实例
+    //    var  a = $("#box");
+    //    console.log(a);// jQuery实例
 
     //console.log($("*"));// 所有的元素
-    console.log($(".box1.box2"));//
+    //    console.log($(".box1.box2"));//
+    // 层级选择器
+    //ancestor children : 后代
+    // parent > children  : 邻代
+    //
+    //    console.log($(".box1 > .first"));
+//    console.log($(".container div:first"));
+    // eq : 通过索引获取元素；
+    // gt : 大于索引
+    // lt : 小于索引
+//    console.log($(".container div:gt(4)"));
+
+     //contains : 针对是元素的文本内容
+    // has : 参数是选择器；
+//    console.log($("div:has(p)"));
+//    console.log($("div:hidden"));
+//    console.log($("div:visible"));
+//    console.log($("div[name]"));
+    console.log($("input[name='newsletter']"));
 
 </script>
 </body>

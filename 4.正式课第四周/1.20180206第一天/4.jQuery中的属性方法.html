@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div class="div1" a="1">nihao</div>-->
+<!--<input type="button">-->
+<!--<a href="http://www.baidu.com" cc="aa"></a>-->
+<input type="text" value="18">
+<script src="jquery-1.11.3.js"></script>
+<script>
+    // getAttibute : 获取HTML标签中的属性；获取不到结果是null；
+
+    //    var  a = document.getElementsByTagName("a")[0];
+    //    a.b =1;
+    //    console.log(a.href);
+    //    console.log(a.getAttribute("cc"));
+    //    console.log(a.getAttribute("href"));
+    //    console.log(a.getAttribute("b"));
+    // 1.attr : 获取或设置元素的属性值
+    // removeAttr
+    // 1.传一个参数是获取
+    // 2.两个参数是设置
+    //    console.log($("a").attr("cc"));// "aa"
+    //    console.log($("a").attr("href","http://www.zhufeng.com"));//"http://www.baidu.com"
+    //    console.log($("a").attr("bb",""));//"http://www.baidu.com"
+    //    $("a").removeAttr("bb")
+    //2.prop: 处理固有属性 ；一般应用于表单元素；
+
+    //    console.log($("a").prop("href","http://www.zhufeng.com"));
+    //    console.log($("a").prop("cc"));// undefined
+    // removeProp :
+    //    var $a = $("a");// 为了区分是jQuery对象
+    //
+    //    $a.attr("ab",1);
+    //    $a.removeProp("ab")
+    //    console.log($("div")[0]);
+    // 3.addClass: 新增类名
+    // 如果传函数，那么函数的返回值就是新增的class
+    //    $("div").addClass(function () {
+    //        return "div1"
+    //    })
+
+    //    console.log($("div").addClass("div1 div2").removeClass("div"));
+    // 4.removeClass
+    // 5.toggleClass: 如果存在就删除，不存在，就添加
+//    $("input").click(function () {
+//        $("div").toggleClass("aa");
+//    })
+
+    // 6.html : 和原生中innerHTML（标签，内容）
+    // 可以获取又可以设置；
+//    $("div").html($("a"))
+//    console.log($("div").html());
+    // 7.text : 设置、获取文本内容
+
+    // 8.val : 一般用于表单元素
+
+//    console.log($("input").val());
+
+
+
+
+
+</script>
+</body>
+</html>
