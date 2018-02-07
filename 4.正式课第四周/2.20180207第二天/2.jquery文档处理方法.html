@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"><ul></ul><ul></ul><ul></ul><ul></ul></div>
+<p></p>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    // append: 参数是要添加的内容
+//    $("div").append("<p></p>")
+//    $("div").append($("p")[0])
+    // appendTo： 参数是要添加到哪个元素
+
+    // prepend : 在元素内部前面添加
+//    $("div").prepend("<p></p>")
+    // prependTo:
+    // after: 兄弟
+    // before :
+//    $("ul").after("<p></p>")
+    // replaceWidth : 用内容B替换内容A
+    //A.replaceWith(B)
+
+    // empty : 清空所有的子孙元素
+    // remove:删除
+    // clone  : 克隆
+//    var oBox = document.getElementById("box");
+//    oBox.innerHTML = ""
+//$("#box").empty();
+//    $("ul").remove()
+
+//    console.log($("div").clone(false).appendTo($("p")));
+    console.log($("div").clone(true).appendTo($("p")));
+
+
+</script>
+</body>
+</html>

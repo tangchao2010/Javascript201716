@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 动画 ： 离不开定时器
+    // window中有setTimeout  和setInterval
+//    var  a=setTimeout(function () {// 当代码加载到这一行时，浏览器记录一个时间，当到达目标时间时，定时器执行一次；
+//        console.log(1);
+//    },3)
+    // 定时器的返回值代表是当前定时器在页面中是第几个
+//    setTimeout(function () {
+//        console.log(3);
+//    },1);
+
+    // 定时器是异步的；
+    // ajax请求
+    // 定时器的最小识别时间：每个浏览器都有自己的最小识别时间；谷歌5~8毫秒
+    // IE的10~15毫秒  火狐 10~13；
+
+
+//    var  b = setInterval(function () {
+//        // 每隔2000毫秒执行一次
+//        console.log(2);
+//    },2000);
+//    console.log(a, b);
+
+
+    // 清除定时器: 只要把当前定时器的返回值传给这个方法，那么就会清掉对应的定时器
+   // clearInterval  clearTimeout
+   // JS 是单线程的，同一时间，只能执行一个任务；
+    setTimeout(function () {
+        console.log(1);
+    },5);
+    var n = new Date()
+    for(var i=0;i<100000000;i++){
+        // 大概190~326毫秒
+    }
+    console.log(2);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            /*display: none;*/
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 20px auto;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    var oBox = document.getElementsByClassName("box")[0];
+//    oBox.onclick = function () {
+//        console.log(1);
+//    }
+//    oBox.onclick = function () {
+//        console.log(2);
+//    }
+    // DOM0级事件，只能给一个元素的一个事件行为绑定一个方法，如果绑定两个，那么第二个方法会把第一个方法覆盖；
+//    oBox.onmouseover = function () {
+//        console.log(2);
+//    }
+    // DOM2级事件；可以给一个元素的一个事件行为绑定多个方法；
+    // 事件属性没有“on”
+//    function fn() {
+//
+//    }
+//    $(".box").click(fn)
+//    $(".box").click(function () {
+//        console.log(2);
+//    })
+
+    // on
+//    $(".box").on("click",function () {
+//        console.log(1);
+//    })
+//    $(".box").on("click",function () {
+//        console.log(2);
+//    })
+    // bind
+
+    // delegate
+   // jQuery : 这个函数的私有属性
+    // 在jQuery 原型上
+
+//    $.each($("div"),function (index,item) {
+////        console.log(index);// 索引
+//        //console.log(item);// 数组值
+//        console.log(item)
+//    })// 遍历数组或对象
+//$.each({name:1,age:2},function (item,value) {
+//    console.log(item);
+//    console.log(value);
+//})
+
+    //扩展 ：扩展到jQuery这个类的私有属性
+//    $.extend({
+//        aa:function () {
+//
+//        }
+//    })
+//
+//    // 原型扩展
+//    $.fn.extend({
+//        //
+//        aa:function () {
+//
+//        }
+//    })
+    var oBox= document.getElementsByTagName("div");
+    $.makeArray(oBox).sort(function () {
+
+    });
+
+    // 商品排序jQuery版；
+
+
+
+</script>
+</body>
+</html>
