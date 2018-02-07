@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 定时器  ajax 元素绑定事件都是异步的
+    // 定时器是异步的
+    //    setTimeout(function () {// 记录时间
+    //        console.log(1);
+    //    },300);
+
+    //    for(var i=0;i<100000000;i++){// for循环是同步的；循环不结束，不能执行下面的任务；
+    //        // 至少100多毫秒
+    //        if(i===99999999){
+    //            setTimeout(function () {
+    //                console.log(2);
+    //            },10);
+    //        }
+    //    }
+
+    //    console.log(3);// 先输出
+    //    oBox.onclick = function () {
+    //
+    //    }
+    //  function fn() {
+    //      console.log(4);
+    //  }
+    //  fn()
+
+    // JS是单线程的；js在同一时间只能执行一个任务或者只能执行一行代码；
+    // js 分为主任务队列 ：当主任务队列完成之后，等待任务才开始执行；
+    // 等待任务队列: 等待任务队列，谁的时间先到，谁先执行，跟任务顺序没有关系；
+    //
+    for (let i = 0; i < 6; i++) {
+        // 每循环一次，都给等待任务队列新创建一个新的等待任务；
+        //当for循环完成之后，主任务队列执行完，去等待任务队列中找最先执行的那一个
+        setTimeout(function () {
+            console.log(i)
+        }, 1000 * (i + 1));
+
+    }
+
+    //    var n = 0;
+    //    setTimeout(function () {
+    //        n++;
+    //        console.log(n);
+    //    },1000)
+    //    console.log(n);
+
+    //    setTimeout(function () {
+    //        console.log(1);
+    //    }, 50);
+    //
+    //    setTimeout(function () {
+    //        console.log(2);
+    //    }, 10);
+    //    setTimeout(function () {
+    //        console.log(3);
+    //    }, 30);
+    //    for (var i = 0; i < 100000000; i++) {
+    //        //=>需要600MS~700MS
+    //    }
+    //    console.log(4);//
+
+
+</script>
+</body>
+</html>

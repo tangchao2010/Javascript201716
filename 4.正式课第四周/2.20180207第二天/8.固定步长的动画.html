@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left:0;
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="utils.js"></script>
+
+<script>
+  // 动画 ： 位置每隔一小段时间发生变化（位置的left，top ），结合定时器，综合就会产生一个动画的效果；
+    var  oBox = document.getElementById("box");
+    var winMax = utils.win("clientWidth")-oBox.offsetWidth;
+    oBox.onclick = function () {
+        var timer = setInterval(function () {
+            // 先获取盒子的最新left值；
+            var cur = utils.css(oBox,"left");
+            // 让最新的left+10 重新对盒子进行设置
+            if(cur+10>winMax){
+                // 临界条件： 如果当前盒子的left 值加上10;大于屏幕减去盒子的宽度；此时，应该清除定时器，直接设置cssleft为最大值；
+                clearInterval(timer);// 清除定时器，但是本次回调函数依然要执行；
+                utils.css(oBox,"left",winMax);
+                return;
+            }
+            utils.css(oBox,"left",cur+10);
+
+        },100)
+    }
+
+</script>
+</body>
+</html>
