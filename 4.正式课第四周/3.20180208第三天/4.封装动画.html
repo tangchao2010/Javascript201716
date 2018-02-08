@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left:0;
+            top:0;
+            width:100px;
+            height:100px;
+            background: lightseagreen;
+            border-radius: 50%;
+
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+
+<div id="box"></div>
+<script src="utils.js"></script>
+<script>
+    var oBox = document.getElementById("box");
+    var  maxL = utils.win("clientWidth")-oBox.offsetWidth;
+    var  maxT = utils.win("clientHeight")-oBox.offsetHeight;
+    oBox.onclick = function () {
+        animate(oBox,{left:maxL,top:maxT,width:20,height:20},3000)
+    }
+    function linear(t,d,b,c) {
+        return b + t/d*c;
+    }
+    function animate(curEle,target,duration) {
+        // curEle : 要有动画的元素
+        // target : 目标位置
+        // duration : 动画运动总时间
+        var duration = duration || 1000,
+            b = {},
+            c = {};
+        for(var key in target){
+            // 先获取元素初始的位置
+            b[key] = utils.css(curEle,key);
+            // c中是变化的值
+            c[key] = target[key] - b[key];
+        }
+        var  initTime = 0;
+        curEle.timer=setInterval(function () {
+            // initTime 是走过的时间；
+            // 走过时间占总时间的比等于走过距离和总距离的比
+            initTime+=17;
+            if(initTime>=duration){
+                clearInterval(curEle.timer);
+                utils.css(curEle,target);
+                return;
+            }
+            var curPo={};
+            for(var key in c){
+                if(c.hasOwnProperty(key)){
+                    curPo[key] = linear(initTime,duration,b[key],c[key])
+                }
+            }
+            utils.css(curEle,curPo)
+
+        },17)
+
+
+
+
+
+    }
+
+
+</script>
+</body>
+</html>

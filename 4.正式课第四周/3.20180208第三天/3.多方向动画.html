@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left:0;
+            top:0;
+            width:100px;
+            height:100px;
+            background: lightseagreen;
+            border-radius: 50%;
+
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+
+<div id="box"></div>
+<script src="utils.js"></script>
+<script>
+    function linear(t,d,b,c) {
+        return b + t/d*c;
+    }
+    var  oBox = document.getElementById("box");
+    var  begin = {
+        left:utils.css(oBox,"left"),
+        top:utils.css(oBox,"top"),
+        opacity:1,
+        width:utils.css(oBox,"width"),
+        height:utils.css(oBox,"height")
+    }
+    var target = {
+        left : utils.win("clientWidth")-oBox.offsetWidth,
+        top: utils.win("clientHeight") - oBox.offsetHeight,
+        opacity:0.2,
+        width:10,
+        height:10
+    };
+    var  change = {};
+    for(var key  in target){
+        // 给change对象 新增键值对；
+        //存储变化值
+        change[key] = target[key] - begin[key]
+    }
+    console.log(change);
+    var duration = 3000;
+    oBox.onclick = function () {
+        var curTime =0;
+        var timer = setInterval(function () {
+            curTime+=15;
+            if(curTime>=duration){
+                utils.css(oBox,target);
+                clearInterval(timer);
+                return;
+            }
+            var curPo = {};
+            for(var key in change){
+                // hasOwnProperty : 检测当前时是否是私有的；
+                if(change.hasOwnProperty(key)){
+                    curPo[key] = linear(curTime,duration,begin[key],change[key])
+                }
+            }
+
+            utils.css(oBox,curPo);
+        },15)
+    }
+
+
+     // 可枚举属性和不可枚举属性
+    var obj = {name:10,age:0,add:19};
+    // 对象的私有属性或通过原型扩展到原型链上的属性，都是可枚举属性
+    // 对象原型上内置的方法，是不可枚举的；
+    Object.prototype.a =18;
+    for(var key in obj){
+        // 遍历可枚举属性
+//        console.log(key);
+        if(obj.hasOwnProperty(key)){
+            console.log(key);
+        }
+
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left:100px;
+            top:0;
+            width:100px;
+            height:100px;
+            background: lightseagreen;
+            border-radius: 50%;
+
+        }
+        input{
+            position: absolute;
+            width:200px;
+            top:300px;
+            height:50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        #right{
+            left:200px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="box"></div>
+
+<input type="button" value="向右走" id="right">
+<script src="utils.js"></script>
+<script>
+    var  oBox = document.getElementById("box");
+    var right = document.getElementById("right");
+    // 固定时间动画； 开始位置运动到结束位置时间是1000；
+    var beginLeft = utils.css(oBox,"left");
+    var target = utils.win("clientWidth")-oBox.offsetWidth-beginLeft;
+    var  duration =3000;
+    var  interVal = 17;
+    // 定时器每执行一次，距离增大speed;
+//    var  speed = target/duration*interVal;
+//    oBox.onclick = function () {
+//        var  timer=setInterval(function () {
+//             var  cur = utils.css(oBox,"left");
+//             cur += speed;
+//             if(cur>=target){
+//                 utils.css(oBox,"left",target);
+//                 clearInterval(timer);
+//                 return;
+//             }
+//             utils.css(oBox,"left",cur);
+//        },interVal);
+//    }
+
+    oBox.onclick = function () {
+        var curTime =0;
+        var  timer=setInterval(function () {
+            curTime+=interVal;
+            if(curTime>=duration){
+                clearInterval(timer);
+                utils.css(oBox,"left",target+beginLeft);
+                return;
+            }
+//            var curPo =curTime/duration*target+beginLeft;
+            var curPo = linear(curTime,3000,beginLeft,target);
+            utils.css(oBox,"left",curPo);
+        },interVal);
+    }
+    // 匀速动画的公式 返回值是当前最新的位置；
+    function linear(t,d,b,c) {
+        // t : 代表当前最新时间
+        // b : 开始的位置
+        // d : 总时间
+        // c : 总距离
+        return b + t/d*c;
+    }
+
+</script>
+</body>
+</html>
