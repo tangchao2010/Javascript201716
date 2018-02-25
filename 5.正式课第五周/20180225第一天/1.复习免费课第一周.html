@@ -169,25 +169,88 @@
 
     // 冒泡排序
     // 两个循环  交换
-    var ary = [12,9,8,37,88,66];
-    for(var i=0;i<ary.length;i++){
-        var  flag = true;
-        for(var j=0;j<ary.length-1-i;j++){
-            // j = ary.length-1-1
-            if(ary[j]>ary[j+1]){
-//                var  temp = ary[j];
-//                ary[j] = ary[j+1];
-//                ary[j+1] = temp;
-                var  a = ary[j] + ary[j+1];
-                var b = ary[j]-ary[j+1];
-                ary[j] = (a-b)/2;
-                ary[j+1]= (a+b)/2;
-                flag = false;
-            }
-        }
-        if(flag)break;
-    }
-    console.log(ary);
+    //    var ary = [12,9,8,37,88,66];
+    //    for(var i=0;i<ary.length;i++){
+    //        var  flag = true;
+    //        for(var j=0;j<ary.length-1-i;j++){
+    //            // j = ary.length-1-1
+    //            if(ary[j]>ary[j+1]){
+    ////                var  temp = ary[j];
+    ////                ary[j] = ary[j+1];
+    ////                ary[j+1] = temp;
+    //                var  a = ary[j] + ary[j+1];
+    //                var b = ary[j]-ary[j+1];
+    //                ary[j] = (a-b)/2;
+    //                ary[j+1]= (a+b)/2;
+    //                flag = false;
+    //            }
+    //        }
+    //        if(flag)break;
+    //    }
+    //    console.log(ary);
+
+    // 函数  ： 函数数据类型的
+    // 函数的定义
+    //    function fn() {// fn =xxxfff000; num1,num2是函数的入口
+    //       var  a = 10;
+    // 形参不传默认是undefined
+    //        console.log(num1);
+    // arguments : 函数天生自带的参数集合 是一个类数组
+    //        return a;
+    // 1. 函数的出口，把函数体中的值return出去，作为函数的返回值
+    // 2.终止函数的代码，return下面的代码不再执行
+    //    }
+    // 首先开辟一个空间地址
+    // 把函数体中的代码当做字符串存储进去；
+    // 把空间地址赋值给这个函数名
+
+
+    // 函数的执行
+    //    fn(1,2);
+    //    fn();
+    //    console.log(a)
+    // 1. 形成一个新的私有作用域（栈内存）
+    // 2. 形参赋值
+    // 3. 变量提升
+    // 4. 函数体中代码从上到下运行
+    // 5. 作用域是否销毁
+
+    // 函数闭包： 1.保护里面的变量不受外界干扰 2. 储存值
+
+    // 1.当函数执行时，首先会形成一个私有作用域，保护里面的变量不受外界的干扰；这种保护机制--> "闭包机制"
+    // 私有变量： 在函数体中是否被var过；看是否是形参；
+
+
+    // 递归: 在函数体中调用函数自己本身执行；
+    //var  obj = {a:1,b:obj.a}
+    //    (function () {
+    //        var total = null;
+    //        var num =10;
+    //        var  config = {
+    //            total :null,
+    //            num:10
+    //        }
+    //        var configRight = {
+    //            total :0
+    //        }
+    //        config.total;
+    //        function fn(num) {
+    //            if(num ===0)return num;
+    //            if(num%3===0)return num + fn(num-1);
+    //            if(num%3 !==0)return fn(num-1);
+    //        }
+    //        fn(100);
+    //        function f() {
+    //
+    //        }
+    //    })()
+
+    //    var  a = "b";
+
+    // 自执行函数: 定义执行一起完成
+    //    (function () {
+    //        console.log(1);
+    //    })();
 
 
 </script>
