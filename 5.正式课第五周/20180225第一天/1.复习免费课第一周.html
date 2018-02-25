@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 数据类型  函数  数组方法
+
+    // 数据类型：
+    // 基本数据类型  ： number  string  boolean  null  undefined
+    // 引用数据类型  : 对象数据类型 : 对象{}  数组  正则  Math  Date的实例
+    // 和函数数据类型 : 函数
+
+    //    console.log(typeof Date);// 函数、类
+    //    new Date()// 返回值是当前系统时间
+    //    console.log(Math);
+
+    // number  : 数字  正数 负数 小数  0  NaN(不是一个数字，但是number类型的，NaN 和自己都不相等)
+    // typeof  NaN
+    // typeof  11 --》 “number”
+
+    // Number : 把其他数据类型的值强制转换成数字
+    // Number(true)// 1  Number(1)  Number("1") 1  Number(null) 0
+    // Number([]) 0  Number([12]) 12  Number({}) NaN
+    // parseInt
+    // parseFloat : 比parseInt多可以识别一位小数点
+    //    parseInt("12.88px")// 12
+    //    parseFloat("12.88px")// 12.88
+    //    parseInt("px12.99")// NaN
+
+    // toFixed : 保留小数点位数,返回值是一个字符串
+    //    console.log(18.88.toFixed(2));
+
+    // string : 字符串  被单引号或双引号包起来的内容就是字符串
+    //    var  a = a;
+    //    console.log(a);// undefined
+    //    var a = "bacd";
+    // 字符串有length 每一个字符都有对应的索引；
+    // 字符串的方法
+    //  toUpperCase   toLowerCase  charAt charCodeAt   substr  subString slice   split  replace  indexOf  lastIndexOf   trim trimLeft  trimRight
+    //    [].toString()// ""
+    //    1.toString()
+    // Object 这个类原型上的toString方法是数据类型检测，返回值是字符串；"[object 当前的数据类型类]"
+    //    ({}).toString() // "[object Object]"
+
+    //    var  a =1;
+    //    1.toString()
+
+    //
+    //布尔 boolean  true-->1  false-->0
+    // 0  NaN  ""  null  undefined 有且只有这五个值转布尔是false
+    //    var obj = {a:1}
+    //    if(obj.b)console.log(1);
+    // 1.其他数据类型转布尔值  Boolean
+    // 2.数据类型比较，两个等号会发生数据类型的转换
+    // 对象 == 对象
+    // 对象 == 字符串
+    // 对象 == 数字
+    //....
+    // 在jS中遇到{}、[] 都是开辟一个新的空间地址
+    //if([]==[]){}
+
+    // === : 绝对比较；只要数据类型不一致，结果是false；
+
+    // 2.三元运算符
+    //    1===true?console.log(1):console.log(2);
+    // 3.switch  case
+    //    switch (num){
+    //        case 10:
+    //            console.log(1);
+    //            break;
+    //        case  "10":
+    //            console.log(2);
+    //            break;
+    //        default:
+    //            console.log(0)
+    //    }
+
+    // = : 赋值
+
+    // 三个循环语句
+
+    // for  循环
+    //    for(var i=0;i<6;i++){
+    //        console.log(i);
+    //    }
+    //  continue: 结束本轮循环
+    //  break;结束整个循环
+
+
+    // for in  : 遍历对象 for  of
+    //    for(var key  in obj){
+    //        //key
+    //        //obj[key]
+    //    }
+
+    // while  : 不知道循环多少次
+
+
+    // null 和 undefined ： 都表示没有
+    //typeof null // "object"  空对象指针；
+    var obj = {}
+    obj = null;
+    // 1.通过id获取元素时，如果获取不到，那么默认返回值是null；
+    // 2.正则捕获不到内容返回值也是null；
+    // 3.清空对象所占用的空间时，赋值为null；
+
+    // undefined
+    // 1.获取对象的属性名对应的属性值，如果属性名不存在，那么值是undefined
+    // 2.如果变量只声明，未定义那么默认存储值是undefined
+    // 3.函数如果没有return，那么默认返回值是undefined
+    // 4.如果有形参，没有实参赋值，那么形参默认存储值也是undefined；
+
+
+    // 对象数据类型
+
+    // 对象 ： {} 开辟一个新的空间地址，这是一个堆内存
+
+    //    var obj = {a:1,b:2,c:"b",10:19,8:6};// obj -->xxxfff000
+    //    console.log(obj)
+    // 对象的定义
+    // 1. 先开辟一个新的空间地址
+    // 2.把属性名属性值以键值对存储到这个空间中
+    // 3.把这个空间地址赋值给变量；
+
+    //  增 删 改 查 ；
+    // 1.新增键值对
+    //    obj.d = 10;
+    //    obj["d"] =10;
+    // 2. 删除
+    //delete obj.属性名
+    //3. 改：
+    //    obj.c = "?";
+    //    for(var key in obj){
+    //        // hasOwnProperty:
+    //        if(obj.hasOwnProperty(key)){
+    //            // 只遍历私有属性
+    //            console.log(key);
+    //            console.log(obj[key]);
+    //        }
+    //    }
+
+    // obj 的公有属性：Object的原型上属性；
+    // 不可枚举属性： Object 的原型上的内置属性forin  是不可以遍历到的；
+    // 可枚举属性： 私有属性和原型新增的属性都是可以被遍历到的，这些属性都是可枚举的；
+
+    // 数组 ： [12,78,9,0]; 索引默认从0开始，依次增加1；有length，代表数组成员的个数
+
+    //
+    //    var arr = ["{"];
+    // push  pop  shift  unshift  slice  splice  sort reverse indexOf
+    //lastIndexOf concat  join  forEach  map
+
+    // push  pop  shift  unshift  splice  sort  reverse
+    // slice  indexOf  lastIndexOf  concat  join  forEach  map;
+
+    // filter : 过滤
+    //    var ary = [12,8,9,66,79];
+    //    var  a =ary.filter(function (item) {
+    //        // 返回值是true，放到返回值的数组中；
+    //        return item <15;
+    //    });
+    //    console.log(ary);
+    //    console.log(a);
+
+    // find   filter  reduce   some  includes
+
+    // 冒泡排序
+    // 两个循环  交换
+    var ary = [12,9,8,37,88,66];
+    for(var i=0;i<ary.length;i++){
+        var  flag = true;
+        for(var j=0;j<ary.length-1-i;j++){
+            // j = ary.length-1-1
+            if(ary[j]>ary[j+1]){
+//                var  temp = ary[j];
+//                ary[j] = ary[j+1];
+//                ary[j+1] = temp;
+                var  a = ary[j] + ary[j+1];
+                var b = ary[j]-ary[j+1];
+                ary[j] = (a-b)/2;
+                ary[j+1]= (a+b)/2;
+                flag = false;
+            }
+        }
+        if(flag)break;
+    }
+    console.log(ary);
+
+
+</script>
+</body>
+</html>

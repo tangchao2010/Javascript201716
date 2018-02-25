@@ -39,7 +39,7 @@ function bindData() {
 }
 bindData();
 var oDivWidth = oDivs[0].offsetWidth;
-var timer=setInterval(autoMove,2000)
+var timer=setInterval(autoMove,2000);
 //自动轮播
 var  step = null;// 记录当前第几张
 
