@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="box"></div>
+</div>
+
+<input type="text" id="inp">
+<script>
+    var oBox= document.getElementById("box");
+    // 事件对象
+    // 当事件行为被触发时，不仅绑定的方法会执行，而且还会给当前方法传进一个事件信息，这是一个对象，那么传进的这个值就是事件对象；
+    oBox.onclick = function(e){
+        // 在IE678 下，浏览器不会默认给事件方法传递事件信息，它会把当前事件信息存储到window 的event属性上；
+//        console.log(window.event);
+//        console.log(e);
+//        e = e || window.event;
+//        e.target = e.target || e.srcElement;
+        if(!e){
+            e = window.event;
+            e.target = e.srcElment;
+            e.pageX = e.clientX +  document.body.scrollLeft;
+            e.pageY = e.clientY  + document.body.scrollTop;
+        }
+
+    }
+
+    // e : mouseevent
+    // clientX  : 当前鼠标点击的位置距离当前窗口左边的距离
+    // clientY  : 当前鼠标点击的位置距离当前窗口上边的距离
+    // pageX /pageY  : 在IE678 不存在
+    // pageX : 当前鼠标点击的位置距离body左边的距离
+    // pageY : 当前鼠标点击的位置距离body上边的距离
+
+    //  type : 事件类型
+
+    // target  : 事件源，（当前事件被触发开始的那个元素）
+    // srcElement : IE678 下的事件源；
+
+    // e.preventDefault : 阻止事件的默认行为   e.returnValue = false;
+    // e.stopPropagation : 阻止事件冒泡传播的方法  e.cancleBubble = true;
+
+
+
+
+
+</script>
+</body>
+</html>

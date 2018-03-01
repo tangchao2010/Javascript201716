@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 面向对象     商品排序 （数据绑定、DOM映射、JSON）   正则
+
+    // 面向对象： 类的继承 封装 多态
+    // 对象 ： 万物皆对象
+    // 类： 类是对象的一个细分
+    // 实例： 代表类的一个具体事物
+
+
+    // 单例模式 --> 工厂模式 --> 构造函数模式---> 原型模式
+
+//    var  obj = {
+//        name:"a"
+//    }
+//
+//    var  obj1 = {
+//        name:"b"
+//    }
+
+    //
+//    function create() {
+//        var obj = {};
+//
+//
+//
+//
+//        return  obj;
+//    };
+//    create();
+//    create();
+    // 把实现统一功能的代码放在函数中，当实现类似功能时，直接执行这个函数即可，实现了函数的封装，减少代码的冗余；低耦合高内聚；
+
+
+    // 构造函数模式
+
+//    function create() {
+//       // var obj = {}   并且让这个函数中的this指向这个obj
+//
+//        this.a = 10;
+//        var a = 1000;
+//        // 默认把这个对象return出来；
+//        // 构造函数的返回值就是当前这个实例；
+//        return  12;
+//
+//    }
+//    new create;
+    // 函数一旦被new，那么当前这个函数就变成一个构造函数或者类
+    // instanceof  : 检测当前实例是否属于某个类的方法；返回是一个布尔值；
+
+
+    // 类 ： 内置类  、 自定义类
+//    // Number  String  Boolean  Null  Undefined  Object  Array  RegExp  Date  Function ...
+//    var  ary = []
+//    var a  = {};
+//
+//    console.log(ary instanceof Array);// true;
+//    console.log(a instanceof Array);// false
+//    console.log(ary instanceof Object);// true;
+    // typeof  Object.prototype.toString.call();'[object 类]'
+    //instanceof  constructor
+//    var  a = 1;
+//    console.log(a instanceof Number);// false;
+//    var a  = [];
+//
+//    // constructor
+//    console.log(a.constructor === Array);
+    // Array.prototype原型扩展可能导致检测结果不够准确；
+
+    // hasOwnProperty : 检测是否是私有属性；
+
+
+
+    // 原型模式
+
+//    function Fn() {
+//
+//    };
+//    Fn.prototype.sum = function () {
+//
+//    };
+//    var  f = new Fn;
+//    var  h = new Fn;
+//    //
+//    f.sum()
+////    Fn.sum()
+//    Fn.prototype.sum();
+//    Fn.prototype = {
+//        // constructor : Fn,
+//    }
+//    Array.prototype={};
+//
+//    Array.prototype.sum = function () {
+//        this--->a
+//    }
+//    var a  = [];
+//    Array.prototype.sum()
+//    a.sum()
+    // 原型中this
+    // 类中this指向实例
+
+    // Function  Object;
+
+//    function f(){
+//
+//    }
+//    var p = new f;
+//
+//    // 函数的三种角色
+//    // 函数  类  对象
+//    f()
+//    new f;
+//    f.a =10;
+
+    // 商品排序
+    // call  apply bind （预处理this。ie8以下不兼容）
+//    function fn() {
+//        console.log(1);
+//    }
+//    fn.bind([])
+//    fn()// window
+
+    // sort 深入  JSON Ajax  数据绑定  DOM映射
+
+    // ary.sort(function(a,b){return a-b;})
+    // [{a:1},{a:2},{a:3}]
+
+    // JSON  : 是一种数据格式'{"a":1}'
+
+    // JSON.parse
+    // JSON.stringify()
+    // eval
+
+    // ajax : 四步
+    // 1.创建ajax对象
+    // 2.打开路径xhr.open("get","url",false);
+    // 3.监听数据是否请求成功 xhr.responseText;
+    // 4.发送请求
+//    var a;
+//    function buy() {
+//        setTimeout(function () {
+//             a = 10;
+//
+//        },1000);
+//    }
+//    buy()
+//    function fn() {
+//        console.log(a)
+//    };
+
+    // 数据绑定
+
+    // 1. 原生
+    // 2.字符串拼接
+    // 3.es6模板字符串；
+    //`` ${}
+
+    // DOM 映射
+
+
+    // 正则 ： 字符串规则；一般处理复杂字符串
+
+    // test:匹配、检测   exec： 把字符串符合正则内容的找出来，以数组形式返回
+
+    // 正则的组成
+    //  [xyz] x|y  [^xyz];
+
+    // 创建正则 的方式
+//    var reg = /^\d$/;
+//    console.log(reg.test("zhufeng2018"));// true
+//    console.log(reg.test("99"));// false
+  // 实例创建
+//    var name = "peixun"
+//    var reg = new  RegExp('\\d'+name);
+    // 实例创建可以引入变量
+
+    // 正则 的分组 ()
+    // 1. 分组的引用 \1
+    // 2.改变正则的优先级
+    // 3.捕获时，小正则也要进行捕获
+    var reg = /^[+-]?(\d|([1-9]\d+))(\.\d+)?$/;
+
+    // 捕获
+
+    // 1.懒惰性 g   i  m
+    // 2.贪婪性 问号放到量词的后面，取消捕获的贪婪性
+    // ?:  只匹配不捕获
+    // ?=  : 正向预查
+    // ?! : 负向预查
+
+    // replace  : 字符串方法  替换
+
+    var str = "2017zhufeng2017peixun";
+//    str.replace("2017","2018");
+    str.replace(/\d+/,function(){
+        // 1. 捕获几次，函数执行几次
+        // 2. arguments : 捕获到的内容
+        // 3.return 出的内容是对原有字符替换；
+    });
+
+
+
+
+
+
+</script>
+</body>
+</html>

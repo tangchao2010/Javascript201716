@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="box"></div>
+</div>
+
+<input type="text" id="inp">
+<script src="jquery-1.11.3.js"></script>
+<script>
+    var oInput = document.getElementById("inp");
+
+    //什么是事件
+    //元素天生自带事件行为，当操作元素时，会触发相应的事件；
+    // 元素的这种事件行为跟后期属性赋值没有任何关系，是浏览器赋值给他的这种行为；
+    // 一般情况下，元素的事件行为被触发，只不过没有相应的方法执行，默认值是null，不进行任何操作；
+
+    var oBox = document.getElementById("box");
+    //事件绑定
+    //DOM0级事件绑定；属性值是一个函数，如果不是函数，那么不会改变天生属性值null；
+    // 如果给一个元素的相同的事件行为绑定不同的方法，那么后面的方法会把前面绑定的方法覆盖；
+    //     oBox.ondblclick = function(){
+    //         console.log(1);
+    //     }
+
+
+    // DOM2级事件绑定
+    // DOM2事件可以给一个元素相同的事件行为绑定多个方法；
+    // EventTarget
+    // addEventListener(type[事件类型]，function[方法]，true/false[冒泡、捕获])
+    //    oBox.addEventListener("click",function () {console.log(1)},false);
+    //    oBox.addEventListener("click",function () {console.log(2)},false);
+
+    // addEventListener 在IE678 浏览器不兼容
+    //  attachEvent(type[on+"type"],function(){})
+    // 绑定的顺序和执行顺序不一致；
+    //    oBox.attachEvent("onclick",function () {
+    //        console.log(1)
+    //    })
+    //    oBox.attachEvent("onclick",function () {
+    //        console.log(2)
+    //    })
+
+    //    oBox.onclick = function () {
+    //        console.log(1);
+    //    };
+    //    oBox.onclick = null;
+    //    oBox.onmouseover = function () {
+    //        console.log(2);
+    //    };
+
+
+    // 常见的事件行为
+    // onclick  onmouseover  onmouseout  onscroll  onload  onfocus  onblur
+
+
+    // input相关的事件行为
+    // onfocus  : 获取鼠标焦点
+    // onblur : 失去鼠标焦点
+    // oninput :当input框内容发生改变时
+
+    // onkeydown : 键盘按下
+    // onkeyup : 键盘抬起
+    // onkeypress :  在keydown 事件触发之后才会触发，在keyup 抬起前触发（中文状态下，不会被触发）
+    // keycode : enter : 13  左：37  上 38  右 39  下 40  空格：32
+
+
+    // onclick  : 单击
+    // ondblclick: 双击
+    // onmouseover : 鼠标滑过
+    // onmouseout :鼠标滑出
+    // onmouseenter : 鼠标滑入(阻止事件的冒泡传播)
+    // onmouseleave : 鼠标离开
+    // onmousmove : 鼠标移动
+    // onmousedown : 鼠标左键按下
+    // onmouseup : 左键抬起；
+
+
+    // onload  : 加载成功
+    // onscroll : 滚动条滚动
+    // onresize : 当前窗口大小发生改变
+
+    // 移动端  ：
+
+    // 单手指：touchstart  touchmove  touchend
+    // 多手指 ： gesturestart   gesturechange   getstureend
+    // click  : 移动端点击 ，等待300ms延迟；
+
+
+    //    oBox.ondblclick = function(){
+    //        console.log(100);
+    //    }
+    oBox.onmouseover = function () {
+        console.log(1);
+    }
+    oBox.onmouseenter = function () {
+        console.log(2);
+    }
+    oBox.onmousemove = function () {
+        console.log(3);
+    }
+
+    //    oInput.onkeydown= function(){
+    //        console.log(1);
+    //    }
+    //    oInput.onkeyup = function(){
+    //        console.log(2);
+    //    }
+    //    oInput.onkeypress = function(){
+    //        console.log(3);
+    //    }
+
+    //   oInput.onfocus = function () {
+    //       console.log(1);
+    //   }
+    //    oInput.onblur = function () {
+    //        console.log(2);
+    //    }
+    //    oInput.oninput = function () {
+    //        console.log(3);
+    //    }
+    //   oInput.onfocus();
+    //    $("#inp").focus()
+
+</script>
+</body>
+</html>

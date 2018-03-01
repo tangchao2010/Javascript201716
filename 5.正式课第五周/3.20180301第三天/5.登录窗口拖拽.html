@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            /*left:50%;*/
+            /*top :50%;*/
+            /*margin-left:-150px;*/
+            /*margin-top:-150px;*/
+            width:300px;
+            height:300px;
+            background: #ffaa2a;
+
+        }
+        #box h2{
+            background:#008CD7;
+            height:30px;
+            line-height: 30px;
+            padding:0 10px;
+            font-size:14px;
+            color:white;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <h2>珠峰培训---登录</h2>
+</div>
+
+<script>
+    var oBox = document.getElementById("box");
+    var login = oBox.getElementsByTagName("h2")[0];
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var winH = document.documentElement.clientHeight || document.body.clientHeight;
+    // 获取盒子的宽高
+    var boxW = oBox.offsetWidth,boxH = oBox.offsetHeight;
+    oBox.style.left = (winW -boxW)/2 + "px";
+    oBox.style.top = (winH-boxH)/2 + "px";
+
+    // 事件 onmousedown    onmouseup   onmousemove
+    // 盒子移动的距离跟鼠标按下的位置没有任何关系，跟鼠标横向和纵向改变的距离有关；
+    // 1. 鼠标按下获取当前鼠标的位置，记录鼠标的初始位置；
+    // 2. 当鼠标移动，不断触发onmousemove，在这个方法中不断获取鼠标最新的位置，计算出鼠标横向和纵向移动的距离；并且设置盒子当前最新的位置；
+
+    login.onmousedown = function (e) {
+        // 把鼠标按下时鼠标的横向纵向的坐标放在h2元素对象上；
+        // this --->h2
+        e = e || window.event
+        // 鼠标的初始位置记录
+        this["strX"] = e.clientX;
+        this["strY"] = e.clientY;
+        // 盒子的初始位置的记录
+        this["startX"] =parseFloat(oBox.style.left);
+        this["startY"] = parseFloat(oBox.style.top);
+        // 当鼠标按下时，给元素h2绑定onmousemove；
+        this.onmousemove = move;
+        this.onmouseup =up;
+    }
+    function move(e) {
+        e = e || window.event;
+        var changeL = e.clientX - this["strX"];
+        var changeT = e.clientY  -this["strY"];
+        var  left = this["startX"] + changeL;
+        var top  = this["startY"] + changeT
+        //临界的计算；
+        var minL = 0;
+        var maxL = winW -boxW;
+        var minT = 0;
+        var maxT = winH - boxH;
+        if(left < minL){
+            left = minL;
+        }else if(left >maxL){
+            left = maxL;
+        }
+       if(top<minT){
+            top = minT;
+       }else if(top > maxT){
+           top = maxT;
+       }
+       // 设置盒子最新的位置；
+        oBox.style.left =  left+ "px";
+        oBox.style.top = top + "px";
+    }
+   // 解除当前元素onmousemove和onmouseup事件行为的方法；
+    function up() {
+        this.onmousemove = null;
+        this.onmouseup = null;
+    }
+    // 鼠标丢失；
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width:300px;
+            height:300px;
+            background: lightblue;
+            margin: 30px auto;
+        }
+        #inner {
+            width:200px;
+            height:200px;
+            background: lightgreen;
+            margin:auto;
+        }
+        #center {
+            width:100px;
+            height:100px;
+            background: lightpink;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+<script>
+//    var outer = document.getElementById("outer");
+//    var inner = document.getElementById("inner");
+//    var center = document.getElementById("center");
+
+//    outer.onclick = function (e) {
+//        e = e || window.event;
+//        e.stopPropagation?e.stopPropagation():e.cancelBubble =true;
+//        console.log("outer")
+//    }
+//    inner.onclick = function (e) {
+//        e = e || window.event;
+//        e.stopPropagation?e.stopPropagation():e.cancelBubble =true;
+//        console.log("inner")
+//    }
+//    center.onclick = function (e) {
+//        e = e || window.event;
+//        e.stopPropagation?e.stopPropagation():e.cancelBubble =true;
+//        console.log("center")
+//    }
+    //给body绑定的onclick事件行为绑定方法，那么当点击这个三个盒子任意一个，都会触发body的onclick事件，那么事件源是不一样的，根据事件源不同，执行不同的代码；
+    document.body.onclick = function (e) {
+        e = e || window.event;
+//        console.log(e.target);
+        if(e.target.id==="outer"){
+            console.log("outer")
+        }else if(e.target.id === "inner"){
+            console.log("inner")
+        }else if(e.target.id==="center"){
+            console.log("center")
+        }else{
+            console.log("body");
+        }
+//        if(e.target === outer){
+//
+//        }
+        console.log(e.target === outer);
+    }
+    //{} === {}
+//    var a = b = {}
+
+    // 事件委托： 利用事件冒泡传播的机制，给最外层元素的事件行为绑定对应的方法，当触发里面元素的事件行为时，那么最外层元素的事件跟着触发，根据事件源的不同执行不同的功能；
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="http://www.baidu.com" id="clickBtn">点我</a>
+<script>
+    // a 标签有默认跳转行为；这种a标签自带的跳转是a 标签的默认事件行为；
+    var A= document.getElementById("clickBtn");
+    A.onclick = function (e) {
+        e = e || window.event;
+//        console.log(e);
+//        e.preventDefault();// 阻止事件的默认行为
+//        e.returnValue = false;
+        // 在IE7678，e.preventDefault 这个方法不存在，需要通过改变returnValue的值为false，同样可以阻止事件的默认行为；
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        console.log(1);
+    }
+</script>
+</body>
+</html>

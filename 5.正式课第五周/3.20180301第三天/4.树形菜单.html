@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /**{*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
+        #box{
+            width:500px;
+            background: -webkit-linear-gradient(-45deg,lightpink,lightseagreen,lightblue,lightyellow,lightcyan);
+            background: linear-gradient(-45deg,lightpink,lightseagreen,lightblue,lightyellow,lightcyan);
+        }
+        #box span{
+            display: block;
+            height:35px;
+            line-height: 35px;
+        }
+        /*伪类控制+-符号*/
+        #box  span.close:before{
+            content:"+";
+            font-weight: bold;
+            font-size: 20px;
+            color:red;
+        }
+        #box  span.open:before{
+            content:"-";
+            font-weight: bold;
+            font-size: 30px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<ul class="box" id="box">
+    <li><span>第一级菜单</span>
+        <ul>
+            <li><span>第二级菜单</span>
+                <ul>
+                    <li><span>第三级菜单</span>
+                        <ul>
+                            <li><span>第四级菜单</span></li>
+                            <li><span>第四级菜单</span></li>
+                        </ul>
+                    </li>
+                    <li><span>第三级菜单</span></li>
+                    <li><span>第三级菜单</span></li>
+                    <li><span>第三级菜单</span></li>
+                </ul>
+            </li>
+            <li><span>第二级菜单</span>
+                <ul>
+                    <li><span>第三级菜单</span></li>
+                    <li><span>第三级菜单</span></li>
+                    <li><span>第三级菜单</span></li>
+                    <li><span>第三级菜单</span></li>
+                </ul>
+
+            </li>
+            <li><span>第二级菜单</span>
+            </li>
+            <li><span>第二级菜单</span></li>
+        </ul>
+    </li>
+    <li><span>第一级菜单</span></li>
+    <li><span>第一级菜单</span></li>
+    <li><span>第一级菜单</span></li>
+</ul>
+<script>
+    //1.获取所有的span；循环所有的span；
+    //2.判断当前span有没有兄弟元素节点，如果有并且是ul,那么给当前span加上close，并且让这个span的兄弟ul隐藏；
+    var oBox = document.getElementById("box");
+    var spans = document.getElementsByTagName("span");
+    for(var i=0;i<spans.length;i++){
+        var next = spans[i].nextElementSibling;
+        // 如果当前span有兄弟元素节点并且是ul的，新增class类名close；并且让当前这个ul隐藏；
+        if(next&&next.nodeName=== "UL"){
+            spans[i].className = "close";
+            next.style.display ="none";
+        }else{
+            spans[i].className = "open";
+        }
+    }
+    // 利用事件委托的原理
+    oBox.onclick = function (e) {
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        // 点击的e.target.nodeName.toLowerCase() ==="span"
+        // 事件源是span
+        // 点击span，判断当前事件源的class;
+        // 如果class是close，改变当前的class为open,并且让兄弟元素节点display:block;
+
+        // 如果当前的class是open，改变当前的class是close，并且让兄弟节点ul收起来，并且让这个兄弟中的所有的ul收起来；
+        var cur= e.target;
+        if(cur.nodeName.toLowerCase() === "span"){
+
+            if(cur.className === "close"){
+                // 当前span是一个有兄弟元素节点的元素；
+                cur.nextElementSibling.style.display = "block";
+                cur.className = "open";
+            }else if(cur.className === "open"){
+                var  next = cur.nextElementSibling
+                if(next){
+                    cur.className = "close";
+                    next.style.display = "none";
+                    // 关闭当前ul中所有打开的ul；
+                    var ouls = next.getElementsByTagName("ul");
+                    for(var i=0;i<ouls.length;i++){
+                        ouls[i].style.display = "none";
+                        ouls[i].previousElementSibling.className = "close";
+                    }
+                }
+            }
+        }
+
+    }
+
+
+
+
+</script>
+</body>
+</html>

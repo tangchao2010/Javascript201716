@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.js盒子模型     封装     延迟加载
+
+    // 盒子模型
+
+    //  clientWidth  clientHeight
+    //  clientTop  clientLeft  : 边框
+    //  offsetWidth  offsetHeight  : 盒子总宽度
+    //  scrollWidth  scrollHeight//  溢出  不溢出
+
+    // offsetParent : 父级参照物
+    // offsetLeft
+    // offsetTop
+
+    // scrollTop  scrollLeft
+
+
+
+    // offset  win
+    function offset(curEle) {// curEle : 当前元素
+        var l = curEle.offsetLeft;
+        var  t = curEle.offsetTop;
+        var p = curEle.offsetParent;
+        while(p){
+            if(!/MSIE 8/.test(navigator.userAgent)){
+                l+=p.clientLeft;
+                t += p.clientTop;
+            }
+            l += p.offsetLeft;
+            t+= p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {left:l,top:t};
+    }
+
+    function win(attr,val) {
+        if(typeof val === "undefined"){
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

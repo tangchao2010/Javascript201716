@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  git   变量提升   作用域   this   面向对象
+
+    // git  svn  (团队开发)管理代码工具
+    // 开发工具 ： webstorm  hBuilder  DreamWeaver  subline
+    // 测试bug系统
+    // 拉取
+    // git  pull origin（远程仓库地址的简称） master
+
+    // 提交
+    // git add -A/.
+    // git  commit -m"注释"
+    // git push origin master
+
+    // git  remote  -v : 查看远程仓库关联情况
+    // git  config  --list : 查看当前本地仓库绑定的具体信息
+
+    // 发布项目
+
+
+    // 变量提升:  在当前作用域下，代码运行之前，把带var和function的关键字的变量进行提前的声明，（告诉当前作用域有这么一个变量），带function的不仅要进行声明，而且还要进行定义，那么这个阶段就是变量提升阶段；
+    // 变量 ：
+    //    console.log(a);
+    //    var  a = 10;
+    //    var  a = 1;
+    //    console.log(b);
+    //    let  b = 10;// let 不进行变量提升
+    //    let  b = 0;// let 定义的变量不可以重复声明
+
+    //    if(true){
+    //        var a =100;
+    //    }
+    //    console.log(a);// 100
+    //    if(1){
+    //        // let 定义的变量只在当前块级作用域内有效
+    //        let c = 0;
+    //        console.log(c);
+    //    }
+    //    let  c = 100;
+    //    console.log(c)// c  is not  defined
+    //    console.log(a);
+    // 全局变量和私有变量：
+    // 1. 全局变量给window新增一个键值对
+    // 2. 全局变量可以被私有作用域访问，但是外界访问不到私有的变量；
+
+//    var a = 100;
+//    function fn(a) {//fn=xxxfff000
+////         私有变量
+    //  1. 首先看是否是形参
+    //  2.当前作用域中是否被var 或function过；
+
+////        var  a = 10
+////        console.log(a);// 函数体
+//        function a() {
+//
+//        }
+////        var a=10;
+//    }
+//    a()
+//    fn(1);
+    // 函数执行：
+    // 1. 形成私有作用域 ---> 形参赋值--> 变量提升--> 代码从上到下运行--> 作用域是否销毁
+
+
+    // "闭包"
+//    var  a = 0
+//    function fn(a) {
+//        console.log(a);// undefined
+//        a = 10
+//    }
+//    fn()
+
+    // 1.变量提升的特殊情况
+    // 1. 不管条件是否成立，都要进行变量提升；
+        // 1.老版本浏览器： 带function是声明+定义
+        // 2.新版本浏览器，只声明；
+    // 2. 变量只发生等号的左边
+    // 3. return 后面不进行变量提升，但是下面的代码需要进行变量提升
+    // 4. 如果变量名字重复，不再重复声明，但要重新定义
+    // 5.匿名函数不进行变量提升
+
+//    var fn = function () {
+//
+//    }
+//
+//    function fn() {
+//
+//    }
+//        (function () {
+//            //
+//
+//        })();
+
+//        var  obj = {
+//            a : 1,
+//            fn:(function () {
+//                var b =10;
+//                console.log(b);
+//                return function () {
+//                    return 100;
+//                }
+//            })()
+//        };
+//    console.log(obj.fn);
+
+
+    // 3. 作用域(栈内存）
+    // 栈内存 堆内存
+    // 栈内存 ： 提供代码运行环境，存储基本数据类型值
+
+    // 堆内存：存储引用数据类型值
+//
+//    var obj = {};// xxxfff000;
+//    var obj1 = {};// xxxfff111;
+//    var ary = [];
+//    function fn() {
+//
+//    }
+//    fn()// 栈内存
+
+    // 作用域分全局和私有
+
+   function f() {
+
+   }
+   f();
+   var  v = 10;
+   function fn() {
+       var v = 0;
+       // 不销毁
+       return function () {
+           console.log(v)// 0
+       }
+   }
+   var  a = fn();
+   a();
+   fn()(); //不立即销毁；
+    // 1. return出一个引用数据类型值，
+    // 2.并且被外界接收；
+    // 函数每执行一次，都会形成一个新的私有作用域；
+    // 上一级作用域： 跟函数在那定义有关，跟函数在哪执行没有任何的关系；
+
+
+    // this  --> 函数执行主体，谁调用这个函数，函数主体就是谁；
+
+
+    // 1. 全局下的this指向window
+    // 2. 看函数执行前有没有“.”,有点的话点前面是什么，this就是谁，没有的话，this指向window
+    // 3.自执行函数的this永远指向window
+    // 4.回调函数的this指向window
+    // 5.给DOM元素绑定事件时，方法中this指向被绑定的元素
+    // 6.类中的this指向当前实例
+    // 7.call 和apply改变this指向call和apply的第一个参数
+
+//    oBox.onclick = function () {
+//     this ---> oBox
+//    }
+//    var  arr = [];
+//    arr.call();
+//    function fn(m,n) {
+//
+//    }
+//    fn.call(12,"a")// call 方法中this--> fn；call方法改变了fn中的this指向call的第一个参数；并且让call中的this（fn）z执行；
+//    fn.apply(null,[])
+//    var  ary = [12,8,9,6];
+//    Math.max.apply(null,ary)
+
+
+
+
+
+
+</script>
+</body>
+</html>
