@@ -58,56 +58,50 @@
     <img src="img/iphone_big.jpg" alt="">
 </div>
 <script>
-    var  oBox = document.getElementById("box");
-    var  mark;
-    var  bigBox = document.getElementById("bigBox");
-    var  oImg =bigBox.getElementsByTagName("img")[0];
-    var l = oBox.offsetLeft;
-    var t = oBox.offsetTop;
+    var oBox = document.getElementById("box");
+    var l = oBox.offsetLeft,t = oBox.offsetTop;
+    var mark;
+    var bigBox = document.getElementById("bigBox");
+    var bigImg = bigBox.getElementsByTagName("img")[0];
 
     oBox.onmouseenter = function () {
-        var newMark = document.createElement("div");
-        newMark.id = "mark";
-        this.appendChild(newMark);
-        mark = document.getElementById("mark");
+        mark = document.createElement("div");
+        mark.id = "mark";
+        this.appendChild(mark);
         bigBox.style.display = "block";
-
     }
     oBox.onmousemove = function (e) {
         e = e || window.event;
-        computed(e,mark);
-    };
-    function computed(e,mark) {
         var  minL = 0;
-        var maxL = oBox.offsetWidth/2;
-        var left = e.clientX - l - mark.offsetWidth/2;
-        var top = e.clientY - t - mark.offsetWidth/2;
+        var maxL = oBox.offsetWidth- mark.offsetWidth;
+        var minT = 0;
+        var maxT = oBox.offsetHeight - mark.offsetHeight;
+        var  left =  e.clientX - l - mark.offsetWidth/2;
+        var top = e.clientY - t - mark.offsetHeight/2;
         if(left < minL){
-            left = minL;
-        }else if(left>maxL){
-            left =maxL;
+            left  = minL;
         }
-        if(top<minL){
-            top = minL;
-        }else if(top>maxL){
-            top = maxL;
+        if(left > maxL){
+            left = maxL;
+        }
+
+        if(top < minT){
+            top = minT;
+        }
+        if(top > maxT){
+            top = maxT;
         }
         mark.style.left = left+ "px";
-        mark.style.top = top + "px";
-
-        oImg.style.left = -2*left + "px";
-        oImg.style.top = -2*top + "px";
+        mark.style.top =top + "px";
+        bigImg.style.left = -2*left + "px";
+        bigImg.style.top = -2*top + "px";
     }
-
     oBox.onmouseleave = function () {
-        console.log(mark);
         if(mark){
-           this.removeChild(mark);
-       }
+            this.removeChild(mark);
+        };
         bigBox.style.display = "none";
-
     }
-
 </script>
 </body>
 </html>

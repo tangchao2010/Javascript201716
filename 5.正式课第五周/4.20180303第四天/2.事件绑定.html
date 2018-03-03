@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">你很帅</div>
+<script>
+    // 事件 ： 天生自带的一种行为
+    // 事件的默认属性值是null；
+    // 事件绑定
+    var oBox = document.getElementById("box");
+    // DOM0级事件绑定： 给一个元素的同一个事件行为绑定不同的方法，那么后面方法会把前面的覆盖；
+    // 元素.事件行为 = fn
+    //    oBox.onclick = function () {
+    //        console.log(1);
+    //    }
+    //
+    //    oBox.onclick  = function () {
+    //        console.log(2);
+    //    }
+    //    oBox.onmouseover = function () {
+    //        console.log("over");
+    //    }
+
+    // DOM2级事件绑定
+    // 可以给一个元素相同的事件行为绑定不同的方法；
+    // 元素.addEventListener(type,fn,true/false)
+    // 第三个参数如果不传，那么默认就是false;
+    //    console.log(oBox.hasOwnProperty("addEventListener"));
+    // addEventListener  在eventTarget 这个类的原型上；
+    // 在IE678 下是不兼容的；
+//        oBox.addEventListener("click",fn1,false)
+//        oBox.addEventListener("click",fn2,false)
+        //oBox.addEventListener("click",fn1,false)
+
+    function fn1() {
+        // addEventListener这个方法给元素事件行为绑定的方法，方法中this同样指向这个元素
+        console.log(this);
+        console.log("1")
+    }
+    function fn2() {
+        console.log("2")
+    }
+    function fn3() {
+        console.log("3")
+    }
+    // attachEvent
+    // 元素.attachEvent("on"+type,fn)
+    // 1.顺序问题： attachEvent绑定方法跟绑定的顺序没有关系；
+    // 2. this 问题  方法中的this指向window；
+    // 3.重复问题 ： attachEvent 不会对同一个元素同一个事件行为同一个方法进行过滤，重复绑定问题；
+    oBox.attachEvent("onclick", fn1)
+    oBox.attachEvent("onclick", fn1)
+    oBox.attachEvent("onclick", fn3)
+
+
+</script>
+</body>
+</html>

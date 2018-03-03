@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 事件对象：
+    // 当元素的事件行为被触发，对应的绑定方法执行，那么浏览器会默认给当前方法传进一个事件信息值，是一个对象数据类型值；这个值是事件对象；
+    var oBox = document.getElementById("box");
+
+    oBox.onclick = function (e) {
+        // mouseEvent  : 鼠标事件信息
+        // IE 678 事件对象e没有被赋值,把当前鼠标信息存储到了window的一个属性上
+        // window.event
+//        e = e || window.event;
+//        console.log(window.event);
+//        console.log(e.type);
+        // e.type : 事件类型
+        // clientX :当前鼠标点击的位置距离屏幕窗口左边的横坐标
+        // clientY :当前鼠标点击的位置距离屏幕窗口上边的纵坐标
+        // pageX ,pageY 在IE678 不存在
+        // pageX : 当前鼠标点击的位置距离body左边的横坐标
+        // pageY :当前鼠标点击的位置距body上边的纵坐标
+//        e.pageX = e.clientX +  document.body.scrollLeft;
+//        e.pageY = e.clientY +  document.body.scrollTop;
+        // e.target : 事件源   事件触发的源头；
+//         e.target = e.target || e.srcElement;
+
+        // stopPropagation : 阻止事件的冒泡传播
+        // IE阻止事件冒泡传播
+        e.cancelBubble = true;
+        e.stopPropagation? e.stopPropagation() :e.cancelBubble = true;
+        // e.preventDefault : 阻止事件的默认行为；
+        e.returnValue = false;
+        console.log(e);
+        console.log(e.preventDefault);
+
+        if(!e){
+            e = window.event;
+            e.target = e.srcElement;
+            e.pageX = e.clientX +  document.body.scrollLeft;// 兼容(IE6)
+            e.pageY = e.clientY + document.body.scrollTop;
+            e.stopPropagation = function () {
+                e.cancelBubble = true;
+            }
+            e.preventDefault = function () {
+                e.returnValue = false;
+            }
+        }
+        e.stopPropagation();
+    }
+
+</script>
+</body>
+</html>

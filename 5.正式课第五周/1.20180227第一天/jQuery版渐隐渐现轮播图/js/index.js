@@ -11,6 +11,7 @@ var $oImgs;
 var maxLength;
 
 // 请求数据
+
 $.ajax({
     url:"./data.json",// 路径
     type:"get",// 请求方式
@@ -32,8 +33,9 @@ function bindData(data) {
     var liStr = "";
     // $.each : jQuery 的私有属性  遍历数组和对象
     // $.each([]/{},function(index,item){})
-    $.each(data, function (index, item) {
-        imgStr += '<img data-src=' + item.img + '>';
+    $.each(data, function (index) {
+        //
+        imgStr += '<img data-src=' + data[index].img + '>';
         liStr += '<li></li>'
     });
     $swip.html(imgStr);
@@ -44,6 +46,7 @@ function bindData(data) {
     delayImg();
 }
 function delayImg() {
+    // 通过jQuery的实例调用，调用的加jQuery原型上方法
     $oImgs.each(function (index) {
         //console.log(this);// 当前每一张图片
         // console.log(index);

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="http://www.baidu.com" id="twice">百度两下</a>
+<form action="http://www.baidu.com">
+    <label for="">用户名</label>
+    <input type="text" name="username">
+    <label for="">密码</label>
+    <input type="text" name="password">
+    <input type="submit">
+</form>
+<script>
+    var a  = document.getElementById("twice");
+    a.onclick = function (e) {
+        // 先输出后跳转
+        e = e || window.event;
+        // 阻止a标签的默认行为
+        e.preventDefault?e.preventDefault() : e.returnValue = false;
+        console.log(1);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">你很帅</div>
+<!--<input type="file" id="btn" style="display: none">-->
+<input type="text" id="btn">
+<script>
+    var oBox = document.getElementById("box");
+    var  oBtn = document.getElementById("btn")
+    // 理解事件：
+    //元素天生自带的一种行为，也叫事件行为，当操作元素，会触发元素对应的事件行为上的方法；事件行为默认的属性值是null；
+    oBox.onfocus = function () {
+        // 当点击oBox这个盒子时，方法执行；
+        console.log(1);
+    }
+
+    // input
+    // onfocus : 获取鼠标焦点
+    // onblur : 失去鼠标焦点
+    // oninput : 当input框内容发生改变就会执行这个方法
+    // 鼠标
+    // onclick  ondblclick   onmouseover   onmouseout  onmouseenter  onmouseleave  onmousedown  onmousemove  onmouseup
+
+    //  键盘
+    // 每一个键盘按键，都有一个keycode与之对应；
+    // onkeydown  : 键盘按下
+    // onkeyup : 键盘抬起
+    // onkeypress :切换成中文输入法，会触发这个事件
+
+
+
+    // onload  : 加载成功
+    // onscroll： 滚动条发生变化
+    // onresize: 当窗口大小发生变化
+
+    // 移动端
+    // 触摸事件
+    // ontouchstart  ontouchmove  ontouchend
+    // 多手指
+    // gesturestart  getsturechange   gestureend
+
+    //  click  : 默认延迟300ms
+
+
+    window.onresize = function () {
+        console.log("大小变了")
+    }
+
+//    oBtn.onkeydown =function () {
+//        console.log("key")
+//    }
+//    oBtn.onkeypress =function () {
+//        console.log("down")
+//    }
+//    oBox.onkeydown = function () {
+//        console.log("1111")
+//    }
+
+//    document.body.onkeydown = function () {
+//        console.log(1)
+//    }
+
+    //    oBtn.onfocus = function () {
+//        console.log("input")
+//    }
+//    oBtn.onclick = function () {
+//        console.log("input1")
+//    }
+//    oBtn.onblur = function () {
+//        console.log("input")
+//    }
+//    oBtn.oninput = function () {
+//        console.log("事件")
+//    }
+</script>
+</body>
+</html>
