@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let  const
+    //let : 1. let 声明的变量只在当前作用域内有效；
+    //      2. let 声明的变量不存在变量提升；
+    //      3. let 定义变量在当前作用域内不允许重复声明,函数体内不能重新声明参数；
+    //    console.log(num);
+    //    let num =0;
+    //console.log(num);// undefined
+    //    console.log(n);
+    // if条件以及for循环都会形成块级作用域；
+    //    if (true) {
+    //        console.log(n);// n is  not  defined
+    //        console.log(num);
+    //        var num = 0;
+    //        let n = 10;
+    //        console.log(n);// 10
+    //    }
+    //console.log(n);// n is  not  defined
+    //    var a = {};
+    //    var i =0;
+    //   for(var i=0;i<5;i++){
+    //       a[i] = function () {
+    //           console.log(i)
+    //       }
+    //   }
+    //   a[3]();// 5
+    //    console.log(i);
+    // 1.存储到自定义属性
+    // 2.闭包储存值；
+    // 3.let形成的块级作用域在for循环中，起到储存值的作用；
+    // for 循环执行首先会形成一个父作用域，然后每一轮循环都会形成子作用域，那么在当前子作用域中，会默认存储当前变量i的值；
+    //    for (let i = 0; i < 5; i++) {
+    //        a[i] = function () {
+    //            console.log(i)
+    //        }
+    //    }
+    //    (function () {
+    //        let i = 3;
+    //        a[3] = function () {
+    //            console.log(i)
+    //        }
+    //    })();
+    //    a[3]();// 3
+    //    a[0]()// 0
+    //    console.log(i);// i is not defined  for循环中用let定义变量i,当前i不会泄露成全局变量；那么这个i仅在当前代码块内有效；
+    //    for(var i=0;i<9;i++){
+    //
+    //    }
+    //    for(i=0;i<3;){
+    //
+    //    }
+
+    //    var  a =0;
+    //    var  a =1;
+    //    let  a = 2;
+    //    let  a = 3;//Identifier 'a' has already been declared
+
+    //      if(1){
+    //          let  a = 0;
+    //          let  b = 19;
+    //          a =10;
+    //      }
+    //      let  a = 1;
+    for (let i = 0; i < 5; i++) {
+        let i = 1;
+    }
+
+    // const  : 声明一个常量，不变的量
+    // 1. 没有变量提升
+    // 2. 不可以在相同作用域内重复声明；
+    // 3. 只在当前代码块内有效；
+
+
+    //    const  m = 3.14;
+    //    const m = 1;
+    //    if(true){
+    //        const m = 100;
+    //    }
+
+    var tmp = new Date();
+
+    function f() {
+        console.log(tmp);
+        if (false) {
+            var tmp = 'hello world';
+        }
+    }
+    f();
+    console.log(tmp);
+
+
+    // var  function   let  const   class  import
+    //    let  a = 1;
+    //    function fn() {
+    //        console.log(a)
+    //    }
+    //    fn()
+
+
+</script>
+</body>
+</html>

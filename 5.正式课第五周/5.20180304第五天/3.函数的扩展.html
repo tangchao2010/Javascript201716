@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // es6 之前，在形参位置赋默认值
+
+//   function fn(x,y=0) {
+//       console.log(y);// 10
+//       return x + y;
+//
+//   }
+//   fn(88,10);
+//   fn(88)
+//       function fn(x,y=0) {
+//           // 在当前作用域中，变量名字不允许和形参名字一样
+//           //let x = 0;// Identifier 'x' has already been declared
+//           if(true){
+//               let x = 0;
+//           }
+//           console.log(y);// 10
+//           return x + y;
+//       }
+//       fn();
+      // 在有参数默认值时，参数不允许出现同名参数；
+//       function fn(x,x,y) {
+//
+//       }
+//       fn()
+//    function foo({x, y = 5}) {
+//        console.log(x, y);
+//    }
+//
+//    foo({}) // undefined 5
+//    foo({x: 1}) // 1 5
+//    foo({x: 1, y: 2}) // 1 2
+//    foo()// 报错
+
+    // 函数length的值是函数中参数没有被赋值的个数、
+
+    // rest : 参数 ...变量名 ； 可以函数中多余的参数；
+//   function add(...val) {
+//       // val  : 数组的形式
+//       console.log(val);
+//
+//   }
+//   add(1,2,3)
+
+    // 箭头函数
+    //
+    // 如果箭头函数的参数只有一个，那么小括号可以省去；
+    // 函数体中只有一条语句，并且不是return语句，那么大括号可以省去；
+    // 函数体中只有一条return语句，可以把大括号和return都省去；
+
+//    function fn() {
+//
+//    }
+//    let  fn = function (m,n) {
+//
+//    }
+//    let fn = (m) => {console.log(m)}
+//    let  fn  = m=> {return m};
+//      let  fn = m =>console.log(m);
+
+//    console.log(fn(1, 2));// 1
+//
+//    [1,2,3].map(function (item) {
+//        console.log(item)
+//    })
+//
+//    [1,2,3].map(item=>console.log(item))
+    //
+    // 1.箭头函数中没有this, 箭头函数this指向上级作用域中的this；
+    // 2.箭头函数不可以构造函数，不能new;
+    // 3.箭头函数中没有arguments；
+
+    let fn =()=>{
+        console.log(arguments);
+        console.log(this);
+    }
+    fn();
+//    new  fn;
+//    var obj = {
+//        num:1,
+//        fn: function () {
+//            // this --> obj
+//            setTimeout(()=>{
+//                console.log(this)//
+//            },1000)
+//        }
+//    }
+//    obj.fn()
+
+
+
+
+</script>
+</body>
+</html>
