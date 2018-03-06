@@ -45,8 +45,8 @@
     // 冒泡阶段 ： 由内向外依次执行
     outer.addEventListener('click',fn2,false);// 冒泡阶段执行
     outer.addEventListener("click",fn1,true);
-    inner.addEventListener("click",fn3,true) // 捕获阶段执行
-    inner.addEventListener("click",fn4,false) // 捕获阶段执行
+    inner.addEventListener("click",fn3,true); // 捕获阶段执行
+    inner.addEventListener("click",fn4,false); // 捕获阶段执行
     center.addEventListener("click",fn6,false);
     center.addEventListener("click",fn5,true);
 

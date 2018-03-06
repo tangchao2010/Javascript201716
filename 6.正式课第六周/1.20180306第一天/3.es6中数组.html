@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //... 扩展运算符
+
+    //   console.log(...[1,2,4])
+    //    console.log(1,...[1,2,3],4)
+    function add(x, y) {
+        return x + y;
+    }
+    //    console.log(add(...[1, 2]));
+    // 替换apply方法
+    // 封装bind；
+    //    function fn(a,b,c,d,e) {
+    //
+    //    }
+    //    var f = fn.bind(1,28,90,8)
+    //    f(28,30)
+    //
+    //    Function.prototype.myBind = function () {
+    //
+    //    }
+
+    // apply  : 改变this关键字、 改变传参形式；
+    //    Math.max.apply(null,[1,2,8,88,9,0])
+    //    console.log(Math.max(...[1, 2, 8, 88, 9, 0]));
+
+    // Array.from :  把类数组转换成真正的数组
+
+    // 类数组转数组： try  catch   slice.call()   for循环
+    //    function fn() {
+    ////        console.log(arguments);// 对象数据类型
+    ////        arguments.__proto__ = Array.prototype;
+    ////        [].pop.call(arguments)
+    //        var a = Array.from(arguments);
+    //
+    //        console.log(a);
+    //    }
+    //    fn(1,2,3,4,5)
+
+    // 元素集合
+
+    // 2.Array.of: 把一组值转换成数组
+
+    console.log(Array.of(1, 2, 3));
+    //Array : 如果只有一个参数，参数会赋值给数组的length；大于等于两个，那么成为数组成员项；
+
+    // find  :查找回调函数第一个返回true的成员，找到后把当前成员返回；回调函数不再执行；如果找不到，那么返回值是undefined；
+    //    let  a =[5,7,8,11,12].find((item)=>{
+    //        console.log(1)
+    //        return item >10;
+    //    });
+    //
+    //    console.log(a);// 11
+
+    // filter :过滤  把符合条件的数组成员以新数组返回，原有数组不变；
+    var ary = [1, 8, 10, 16, 66, 88];
+    //    let a = ary.filter((item)=>{
+    //        return  item > 8 &&  item < 30;
+    //    })
+    //    console.log(a);
+    //    console.log(ary);
+
+
+    // forEach  ： 遍历  没有返回值，默认返回值是undefined；
+    //   let b = ary.forEach((item)=>{
+    //       return 1;
+    //   })
+    //    console.log(b);
+
+
+    //find : 找true，找第一次符合条件的数组成员，
+    // every : 找false，只要找到不符合条件的数组成员，回调函数不再执行，如果所有的数组成员，整体返回值是true；
+
+
+    // every  :
+
+    var ary = [1, 8, 10, 16, 66, 88];
+    let c = ary.every((item) => {
+        console.log(1);
+        return item > 0;
+    })
+    console.log(c);
+    // indexOf :返回数组成员第一次出现的索引，没有返回-1；
+    // includes : 是否包含某个数组成员项，包含返回true，不包含返回false
+    console.log(ary.includes(100));
+    // some  every   reduce  map
+
+
+
+
+</script>
+</body>
+</html>

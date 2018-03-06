@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  1. let  const  解构赋值  函数
+    // let  : 1. 没有变量提升
+    //        2.只在当前代码块内有效
+    //        3.在同一个作用域下，不可以重复声明；
+//    console.log(a);
+//    let  a=100;
+//    let b = 10;
+//    if([]==![]){
+//        //  暂时性死区
+//        console.log(b);
+//        let b = 1;
+//        console.log(b);
+//    }
+//    console.log(b);
+
+//   "use strict"
+//    for(let i=0;i<19;i++){
+//
+//    }
+//    console.log(i);
+
+    // const  : 定义一个常量
+//    const  a = {};// a 存储的是一个空间地址；
+//    a.b = 1;
+//    console.log(a);
+
+
+    // 解构赋值
+
+//    let [a,b,c] = [1, ,3];
+//    let [a,[b],c] = [1,[12,45] ,3];//Identifier 'a' has already been declared
+
+//    let {a,b=10} = {a:1,b:undefined}
+//    console.log(a);
+//
+//    console.log(b);//undefined
+
+//    function fn([x,y]) {
+//        return x+y;
+//    }
+//    fn([10,20])
+
+
+    // 函数
+//    function fn(x,y=10) {
+//
+//    }
+    // 箭头函数
+
+//    let  fn = (x,y=10)=>{console.log(y)}
+//
+//    let  fn = x =>console.log(arguments);// arguments is not defined
+//    let  fn = x =>x;
+//    console.log(fn(1));
+//    fn(1)
+
+    // 1.  箭头函数中没有this，函数中this指向外层作用域中的this
+    // 2.  不能作为构造函数
+    // 3. 箭头函数中没有arguments
+
+
+//    setTimeout(function () {
+//        console.log(this)// window
+//    })
+//    setTimeout(()=>console.log(this))
+
+//    var  obj = {
+//        fn : function () {
+//            console.log(this);// obj
+//            setTimeout(()=>console.log(this),1000)// this--->obj
+//        }
+//    }
+//    obj.fn();
+
+
+//    var  obj = {
+//        fn : function () {
+//
+//        }
+//    };
+    var obj = {
+        fn(){
+            console.log(1);
+        }
+//        fn:()=>{
+//            console.log(1);
+//        }
+    }
+    obj.fn()
+
+
+</script>
+</body>
+</html>
