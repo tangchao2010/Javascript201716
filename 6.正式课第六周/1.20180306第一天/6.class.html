@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let  const  import  class
+    // class  : 定义一个类；
+//    function fn(x,y) {
+//        this.x = 100;
+//        this.y = 10;
+//    };
+//    fn()
+//    new  fn;
+//    fn.a = 10;
+//    fn.prototype.getX = function () {
+//
+//    }
+
+
+    // class
+    // public a  = 10;
+//    var  a = 10;
+//    var a = "10";
+    class Fn{
+        constructor(x,y){
+            var b  =0;
+            this.x = 10;
+            this.y = 2;
+        }
+        // 原型上的方法
+        getX(){
+            console.log(this.x)// this --> 指向实例；
+        }
+    }
+
+   let  a = new  Fn(1,2);
+    a.getX();
+    console.log(a);// {x: 100, y: 10}
+
+    // 继承 : 不仅继承公有属性，而且还继承私有属性；
+    class A extends Fn{
+        constructor(x){
+            super(x);// 把Fn中this，拿到当前作用域；
+            this.z = 100;
+        }
+    };
+    let  b= new A(2);
+    b.getX();
+    console.log(new A(2));
+    console.log(Gn);//  Gn is not defined
+    // class 定义这个类不存在变量提升
+
+    class Gn{
+
+    }
+
+</script>
+</body>
+</html>

@@ -7,11 +7,23 @@
 <body>
 <script>
     // Es6引入了一种新的数据类型，表示独一无二的值；
-    let s  = Symbol();
-    let a = Symbol();
-    console.log(a == s);// false
-    console.log(typeof  s);// "symbol"
+//    let s  = Symbol();
+//    let a = Symbol();
+//    console.log(a == s);// false
+//    console.log(typeof  s);// "symbol"
 
+
+    //  Set  数据结构， 类似于数组，但set成员是唯一的；没有重复的；
+//    add(value)添加某个值，返回 Set 结构本身。
+//    delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
+//    has(value)：返回一个布尔值，表示该值是否为Set的成员。
+//    clear()：清除所有成员，没有返回值。
+    let  s  = new  Set();
+    s.add(10).add(2);
+    s.delete(2);
+    console.log(s.has(10));
+    s.clear();//
+    console.log(s);
 
 
 </script>

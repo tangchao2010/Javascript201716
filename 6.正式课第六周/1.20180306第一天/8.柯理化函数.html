@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // myBind  :
+    // bind  : 改变this指向
+    function fn(a,b,c) {
+        console.log(this);
+        console.log(a, b, c);
+    };
+    // call
+//    fn.call(12)
+    // apply
+//    fn.apply(12,[1,2,3])
+    // bind : 改变this关键字， IE8以及不兼容，预处理this
+//    fn.bind(12,90)(1,2);
+//    document.body.onmousemove =function () {
+//        move.call(_this)
+//    };
+    Function.prototype.myBind = function () {
+        // 保存this
+        var _this = this;
+       var that = arguments[0];
+       var  arguments1 = [].slice.call(arguments,1);
+        return  function () {// 起保护作用
+            // 把两个函数中arguments拼接到一起；
+            var cur =arguments1.concat([].slice.call(arguments));
+            _this.apply(that,cur);
+        }
+    }
+    fn.myBind(12)(9,1,2);
+//    fn.call(12)
+
+//    function f() {
+//        console.log([0].concat([].slice.call(arguments)));
+//    }
+//   f(1,2,3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
