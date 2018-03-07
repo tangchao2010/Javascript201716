@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            position:absolute;
+            width:100px;
+            height:100px;
+            background: pink;
+            border-radius: 50%;
+            -webkit-user-select: none;
+        }
+        #div1{
+            top:50px;
+        }
+        #div2{
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<script src="2.event.js"></script>
+<script src="animate.js"></script>
+<script src="drag.js"></script>
+
+<script>
+    var div1 =document.getElementById("div1");
+    var div2 =document.getElementById("div2");
+    $event.on(div1,'mousedown',down)
+    $event.on(div2,'mousedown',down)
+    // 自定义的事件中订阅方法；
+    // 发布订阅 ： 可以不同模块之间相互配合使用，既不相互影响，又能结合起来一块应用；
+    $event.on(div2,'selfDragStart',getSpeed);
+    $event.on(div2,"selfDragMove",fly);
+    $event.on(div2,"selfDragMove",drop);
+
+</script>
+</body>
+</html>

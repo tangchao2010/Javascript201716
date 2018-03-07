@@ -10,10 +10,24 @@
         }
     }
     function on(curEle,type,fn) {
+        // 自定义事件绑定
+        if(/^self/.test(type)){
+            if(!curEle['pool'+type]){
+                curEle['pool'+type] = [];
+            }
+            var ary = curEle['pool'+type];
+            for(var i=0;i<ary.length;i++){
+                if(ary[i] === fn){
+                    return;
+                }
+            }
+            ary.push(fn);
+            return;
+        }
         if(curEle.addEventListener){
             curEle.addEventListener(type,fn,false);
             return;
-        }
+        };
         if(!curEle['pool'+type]){
             curEle['pool'+type] = [];
             document.body.attachEvent('on'+type,run.myBind(curEle));
@@ -55,8 +69,17 @@
             }
         }
     };
+    function selfrun(curEle,type) {
+        var  ary = curEle['pool'+ type];
+        if(ary){
+            for(var i=0;i<ary.length;i++){
+                ary[i].call(curEle);
+            }
+        }
+    }
     window.$event = {
         on : on,
-        off : off
+        off : off,
+        selfrun: selfrun
     }
 }()
