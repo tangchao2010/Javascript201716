@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            position:absolute;
+            width:100px;
+            height:100px;
+            background: pink;
+            border-radius: 50%;
+        }
+        #div1{
+            top:50px;
+        }
+        #div2{
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    var div1 =document.getElementById("div1");
+    var div2 =document.getElementById("div2");
+    function down(e) {
+        e = e || window.event;
+        this.mx= e.clientX;
+        this.my = e.clientY;
+        this.lx = parseFloat(this.offsetLeft);
+        this.ly = parseFloat(this.offsetTop);
+       if(this.setCapture){
+           this.setCapture();
+           this.onmousemove  = move;
+           this.onmouseup = up;
+       }else{
+           // 事件委托
+           var _this = this;
+           document.onmousemove = function (e) {
+               move.call(_this,e);
+           }
+           document.onmouseup = function (e) {
+               up.call(_this,e);
+           }
+       }
+    }
+    function move(e) {
+        e = e || window.event;
+        var maxL = document.documentElement.clientWidth - this.offsetWidth;
+        var maxT = document.documentElement.clientHeight - this.offsetHeight;
+        if(e.clientX - this.mx+this.lx > maxL){
+            this.style.left = maxL + "px";
+        }else if(e.clientX - this.mx+this.lx<=0){
+            this.style.left = 0+"px";
+        }else{
+            this.style.left = e.clientX - this.mx+this.lx+ "px"
+        }
+
+        if(e.clientY -this.my + this.ly>maxT){
+            this.style.top = maxT + "px";
+        }else if(e.clientY -this.my + this.ly<=0){
+            this.style.top = 0 + "px";
+        }else{
+            this.style.top = e.clientY -this.my + this.ly+ "px";
+        }
+
+    }
+    function up() {
+        if(this.releaseCapture){
+            this.releaseCapture();
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }else{
+            document.onmousemove  = null;
+            document.onmouseup = null;
+
+        }
+        drop.call(this);
+    }
+    div1.onmousedown = down;
+    div2.onmousedown = down;
+
+    //
+    function drop() {
+        // this --> 当前元素；
+        if(!this.dropSpeed){// 第一次执行drop时，给当前垂直方向速度初始化值是2；
+            this.dropSpeed =2;
+        }else{
+           this.dropSpeed += 9.8;
+           clearTimeout(this.droptimer);
+        }
+        // 让当前速度有个衰减指数；
+//        this.dropSpeed *=0.98;
+        var curPo = this.offsetTop + this.dropSpeed;
+        var  maxT  = document.documentElement.clientHeight - this.offsetHeight;
+        console.log(maxT);
+        if(curPo +10 >= maxT){
+            // 500  -500  -492 ... 0   9.8  19.6
+            this.style.top = maxT + "px";
+            this.dropSpeed *= -1;
+            // 只要flag连续两次++ ； 说明盒子已经在最底端；
+            this.flag ++;
+        }else{
+            this.style.top = curPo + "px";
+            this.flag = 0;
+        }
+       // this --> this指向外层作用域 中的this---curEle
+        if(this.flag<2){
+            this.droptimer  = setTimeout(handThis(this,drop),18);
+        }
+
+
+    }
+    function handThis(obj,fn) {
+        return function () {
+            fn.call(obj)
+        }
+    }
+
+</script>
+</body>
+</html>
