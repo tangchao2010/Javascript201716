@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        html,body{
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // DOM2级 addEventListener（标准浏览器）   attachEvent（IE10及以下） ： 给同一个元素的同一个事件行为绑定多个方法；
+   // removeEventListener      detachEvent;
+    // 1. 顺序问题
+
+    // 2. 重复绑定
+
+    // 3. this
+
+//    document.body.addEventListener('click',fn1,false);
+//    document.body.addEventListener('click',fn2,false);
+//    document.body.addEventListener('click',fn3,false);
+//    document.body.addEventListener('click',fn4,false);
+//    document.body.addEventListener('mouseover',fn4,false);
+    Function.prototype.myBind = function () {
+        var arg1 = arguments[0];
+        var _this = this;
+        var a = [].slice.call(arguments,1);
+        return function () {
+            var arg2 = [].slice.call(arguments);
+            var cur = a.concat(arg2);
+            _this.apply(arg1,cur);
+        }
+    }
+    function fn1(e) {
+        console.log(1)
+    }
+
+    function fn2() {
+        console.log(2)
+    }
+    function fn3() {
+
+        console.log(3)
+    }
+
+    function fn4() {
+        console.log(4)
+    }
+    function fn5(e) {
+
+        console.log(5)
+    }
+    function fn6(e) {
+        console.log(6)
+        off(document.body,'click',fn4)
+        off(document.body,'click',fn5);
+    }
+    function fn7(e) {
+
+        console.log(7)
+    }
+    function fn8(e) {
+
+        console.log(8)
+    }
+    function fn9(e) {
+
+        console.log(9)
+    }
+
+//    document.body.attachEvent('onclick',fn5)
+
+    // 2.自定义事件池；
+
+    // 把要绑定的方法放进对应自定义事件池中；
+    function on(curEle,type,fn) {// curEle: 当前元素  type : 事件类型  fn : 绑定的方法；
+        if(curEle.addEventListener){
+            // 这是标准浏览器执行此处
+            curEle.addEventListener(type,fn,false);
+            return;
+        }
+        // 自定义属性
+        if(!curEle['pool'+type]){
+            // 第一次进来绑定执行
+            curEle['pool'+type] = [];
+            document.body.attachEvent('on'+type,run.myBind(curEle));
+        };
+        var  ary = curEle['pool'+ type];
+        for(var i=0;i<ary.length;i++){
+            if(fn === ary[i]){
+                return;
+            }
+        }
+        ary.push(fn);
+    }
+
+    // run : 让对应的事件池中的方法挨个执行
+    function run(e) {
+        e.target = e.srcElement;
+        e.pageX = e.clientX + document.body.scrollLeft;
+        e.pageY = e.clientY + document.body.scrollTop;
+        e.stopPropagation = function () {
+            e.cancelBubble = true;
+        }
+        e.preventDefault = function () {
+            e.returnValue  = false;
+        }
+        //this-->curEle
+        var a = this['pool'+e.type];
+        for(var i=0;i<a.length;i++){
+            if(ary[i]===null){
+                ary.splice(i,1);
+                i--;
+                continue;
+            }
+            a[i].call(this,e);
+        }
+    }
+
+
+    on(document.body,'click',fn1)
+    on(document.body,'click',fn2)
+    on(document.body,'click',fn3)
+    on(document.body,'click',fn4)
+    on(document.body,'click',fn5)
+    on(document.body,'click',fn6)
+    on(document.body,'click',fn7)
+    on(document.body,'click',fn8)
+    on(document.body,'click',fn9)
+
+    // 方法解除
+    function off(curEle,type,fn) {
+        var  ary = curEle['pool'+type];
+        for(var i=0;i<ary.length;i++){
+            if(ary[i] === fn){
+//                ary.splice(i,1);
+                // 数组塌陷；
+                ary[i] = null;// 占位作用；防止数组塌陷；
+                return;
+            }
+        }
+    }
+//    on(oBox,'click',fn2);
+//    var obj = {};
+//    if(obj["pool" + 12]){
+//
+//    }
+
+
+
+
+
+
+</script>
+</body>
+</html>
