@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // class
+//    function fn() {
+//        this.x = 100;
+//    }
+//    new  fn;
+    class Fn{
+        constructor(){
+            this.x = 100;
+        }
+        a(){
+            console.log(1);
+        }
+
+    }
+
+//    console.log(new Fn);
+
+    //console.log(Fn());// 报错
+
+    class A extends Fn{
+        constructor(){
+            super()
+        }
+        a(){
+            console.log(2);
+        }
+    }
+    var  a = new A;
+    a.a();
+
+</script>
+</body>
+</html>

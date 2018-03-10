@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  for  while  for in
+//    var obj = {a:1,b:2}
+//    for(var key in obj){
+//        console.log(key);
+//    }
+    let arr = [122,77,9,3,10]
+//    for(var key of arr){
+//        console.log(key);// 数组成员
+//
+//    }
+//    for(var key of arr.keys()){
+//        console.log(key);// 数组成员
+//
+//    }
+//    for(var key of arr.entries()){
+//        console.log(key);// 数组成员
+//
+//    }
+
+//    for(var i=0;i<arr.length;i++){
+//        var  ary = [];
+//        ary.push(i,arr[i]);
+//        console.log(ary)
+//    }
+
+
+    // es6 对象
+
+
+//    let obj = {
+//        fn() {
+//            console.log(1);
+//        },
+//        a:1
+//    };
+//    obj.fn();
+    //Object.assign
+    const target = { a: 1 };
+
+    const source1 = { b: 2 };
+    const source2 = { c: 3 };
+
+    console.log(Object.assign(target, source1, source2));//{a: 1, b: 2, c: 3}
+   // 方法的第一个参数是目标对象，后面的参数都是源对象。
+</script>
+</body>
+</html>
