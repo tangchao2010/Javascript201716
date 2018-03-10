@@ -3,15 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
 </head>
 <body>
+<div id="box"></div>
+<script src="event.js"></script>
 <script>
+
+    var oBox = document.getElementById("box");
+    function f() {
+
+    }
+    f.myBind();
+
     // addEventListener(type,fn,false)  removeEventListener()
     // attachEvent("on"+ type,fn)   detachEvent("on"+ type,fn)
-
+    // 事件池： addEventListener把fn1  fn2放在当前这个元素oBox的内置click事件池中，当触发当前元素的onclick事件行为，那么会去click这个事件中让这些方法依次执行；
+//   oBox.addEventListener('click',fn1,false)
+//   oBox.addEventListener('click',fn1,false)
+//   oBox.addEventListener('click',fn2,false)
     // 1. this问题
     // 2.重复绑定问题
     // 3.执行顺序问题；
+    // 解决IE678 下预处理this问题；
+
+   Function.prototype.myBind = function () {
+       // arguments
+       var  trueThis = arguments[0];
+       // bind 中参数；
+       var a = [].slice.call(arguments,1);
+       // this --> fn
+       var _this = this;
+       return function () {
+           var  b = [].slice.call(arguments);
+           _this.apply(trueThis,a.concat(b));
+       }
+   };
+    function on(curEle,type,fn) {
+
+      // curEle: 元素  type: 事件类型  fn ： 方法
+       // 解决IE678 DOM2事件绑定问题，把方法放入自定义的事件池中
+        if(curEle.addEventListener){
+            curEle.addEventListener(type,fn,false);
+            return;
+        }
+        // IE 678
+        if(!curEle['pool'+type]){// 获取当前对象属性名对应的属性值
+            curEle['pool'+type] = [];
+            curEle.attachEvent("on"+type,run.myBind(curEle))
+        }
+        var  ary = curEle['pool'+type];
+        // for 循环解决重复绑定问题；
+        for(var i=0;i<ary.length;i++){
+            if(ary[i] === fn){
+                return;
+            }
+        }
+        ary.push(fn);
+
+    }
+    // 把自定义事件池中方法挨个执行
+    function run(e) {
+        // this --> curEle
+        e = window.event;
+        e.target = e.srcElement;
+        var ary = this["pool"+e.type];
+        if(ary){
+            for (var i = 0; i < ary.length; i++) {
+                // 真正的移出在执行run时；
+                if(ary[i] === null){
+                    ary.splice(i,1);
+                    i--;
+                    continue;
+                }
+                ary[i].call(this,e);
+            }
+        }
+    }
+    // 把要移出的方法从自定义事件池中删除
+    function off(curEle,type,fn) {
+        if(curEle.removeEventListener){
+            curEle.removeEventListener(type,fn,false);
+            return;
+        }
+        var ary = curEle['pool'+type];
+        for(var i=0;i<ary.length;i++){
+            if(fn === ary[i]){
+                //ary.splice(i,1)  数组塌陷
+                ary[i] = null;
+            }
+        }
+    }
+    function fn1(a,b,c,d) {
+        console.log(1);
+        console.log(this)
+    }
+    function fn2() {
+        console.log(2);
+    }
+    function fn3() {
+        console.log(3);
+    }
+    on(oBox,'click',fn1)
+    on(oBox,'click',fn1)
+    on(oBox,'click',fn2)
+    on(oBox,'click',fn3)
+
+
 
 
 </script>
