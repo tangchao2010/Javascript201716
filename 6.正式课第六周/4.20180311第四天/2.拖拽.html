@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: lightgreen;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            color:blue;
+            cursor: move;
+            user-select: none;
+        }
+        #box1{
+            top:20px;
+        }
+        #box2{
+            top:150px;
+        }
+        #box3{
+            top:350px;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">你很帅</div>
+<div id="box2">我很帅</div>
+<div id="box3">你最帅</div>
+<script src="event.js"></script>
+<script src="animate.js"></script>
+<script src="drag.js"></script>
+<script>
+    var oBox1 = document.getElementById("box1");
+    var oBox2 = document.getElementById("box2");
+    var oBox3 = document.getElementById("box3");
+
+    // 鼠标横向或纵向改变的坐标，就是盒子横向和纵向移动的距离；
+
+    $event.on(oBox1,'mousedown',down);
+    $event.on(oBox2,'mousedown',down);
+    $event.on(oBox3,'mousedown',down);
+
+
+    // 订阅  oBox1 ： 发布者  getSpeed、fly、drop： 观察者
+    $event.on(oBox1,"selfanimatestart",getSpeed);
+    $event.on(oBox1,"selfanimatestarting",fly);
+    $event.on(oBox1,"selfanimatestarting",drop);
+
+    // 1.定时器
+    // 2.位置设置
+
+
+</script>
+</body>
+</html>
