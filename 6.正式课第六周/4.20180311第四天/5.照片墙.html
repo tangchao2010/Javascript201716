@@ -77,10 +77,14 @@
         // 清空所有的margin；
         oLis[i].style.margin = 0+"px";
 
-        new  Drag(oLis[i]).on('selfdragStart',isHit.myBind(null,oLis[i]));
+        new  Drag(oLis[i]).on('selfdragStart',isHit).on('selfdragdown',increaseZindex).on('selfdragend',changePosition);
     }
     // 判断当前盒子是否和其他盒子发生碰撞检测，如果有碰撞，返回true，没有碰撞返回false；
-    function isHit(ele) {// ele : 当前被拖拽这个元素对象
+
+    function isHit() {// ele : 当前被拖拽这个元素对象
+        //Drag 这个类的实例；
+        this["hited"] = [];
+        var  ele = this.ele;
         for(var i=0;i<oLis.length;i++){
             var  cur = oLis[i];
             if(ele ===cur)continue;
@@ -90,9 +94,36 @@
             }else{
                 //碰撞
                 oLis[i].style.background = "pink";
-
+                this["hited"].push(cur);
             }
         }
+    }
+    // 改变当前盒子的index
+    var zIndex = 1;
+    function increaseZindex() {
+        this.ele.style.zIndex = ++zIndex;
+
+    }
+    function changePosition() {
+        // this
+        var  ary = this['hited'];
+        for(var i=0;i<ary.length;i++){
+            var  cur = ary[i];// 每一个碰撞li;
+            cur.distance = Math.pow(this.ele.offsetLeft-cur.offsetLeft,2) + Math.pow(this.ele.offsetTop-cur.offsetTop,2);
+            cur.style.background = "";
+        }
+        ary.sort(function (a,b) {
+            return a.distance-b.distance;
+        });
+       if(ary.length){
+           this.ele.style.left = ary[0].style.left;
+           this.ele.style.top = ary[0].style.top;
+           ary[0].style.left = this.startX + "px";
+           ary[0].style.top= this.startY + "px";
+       }else{
+           this.ele.style.left =this.startX + "px"
+           this.ele.style.top =this.startY + "px"
+       }
     }
 
 

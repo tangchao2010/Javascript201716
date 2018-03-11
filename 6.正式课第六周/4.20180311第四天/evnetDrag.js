@@ -25,6 +25,7 @@ EventFire.prototype.selfrun = function (type) {
             ary[i].call(this);
         }
     }
+
 }
 EventFire.prototype.off = function (type,fn) {
     var  ary = this[type];
@@ -57,6 +58,7 @@ Drag.prototype.down = function (e) {
     // 绑定move up;
     $event.on(document,'mousemove',this.MOVE)
     $event.on(document,'mouseup',this.UP)
+    this.selfrun("selfdragdown");
 }
 Drag.prototype.move = function (e) {
     //this -- document
@@ -69,5 +71,6 @@ Drag.prototype.move = function (e) {
 }
 Drag.prototype.up = function () {
     $event.off(document,'mousemove',this.MOVE)
-    $event.off(document,'mouseup',this.UP)
+    $event.off(document,'mouseup',this.UP);
+    this.selfrun("selfdragend");
 };
