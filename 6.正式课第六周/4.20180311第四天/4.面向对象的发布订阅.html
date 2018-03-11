@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 定义一个发射类，把on  selfrun  off  放在这个方法的原型上
+
+    function EventFire() {}
+    EventFire.prototype.on = function (type,fn) {
+        // 把要订阅的方法，放到this上；
+        if(/^self/.test(type)){
+            if(!this[type]){
+                this[type] = [];
+            }
+            var a = this[type];
+            if(a){
+                for(var i=0;i<a.length;i++){
+                    if(a[i] === fn){
+                        return;
+                    }
+                }
+                a.push(fn);
+            }
+        }
+        return this;// 把函数调整跑哪个thisreturn出去，可以继续调用on方法；
+
+    }
+    EventFire.prototype.selfrun = function (type) {
+        var  ary = this[type];
+        if(ary){
+            for(var i=0;i<ary.length;i++){
+                ary[i].call(this);
+            }
+        }
+    }
+    EventFire.prototype.off = function (type,fn) {
+        var  ary = this[type];
+        if(ary){
+            for(var i=0;i<ary.length;i++){
+                if(ary[i] === fn){
+                    ary[i] = null;
+                }
+            }
+        }
+    }
+    function Kettle() {
+
+    }
+    Kettle.prototype = new  EventFire;
+    // 原型继承： 继承私有和公有
+//    function A() {
+//        // getY  : 私有属性
+//        this.getY = function () {
+//        }
+//    }
+//    A.prototype.getX = function () {
+//
+//    }
+//    function B() {
+//
+//    }
+//    B.prototype = new  A;
+//    var  b = new B;
+//    b.getX();
+//    b.getY();
+    // call  继承
+    // 中间类继承 __proto__
+    // 寄生组合式继承 ： call  Object.create()
+    //  es6  class A extends B {}
+    var  k1 = new  Kettle();
+    k1.on('selfboiling',fn1).on('selfboiling',fn2).on('selfbackhome',fn3);
+//    k1.on('selfboiling',fn2);
+//    k1.on('selfbackhome',fn3);
+    function fn1() {
+        console.log("水开了")
+    }
+    function fn2() {
+        console.log("水凉了")
+    }
+    function fn3() {
+        console.log("扫地")
+    }
+    k1.selfrun('selfbackhome');
+    setTimeout(function () {
+        k1.selfrun("selfboiling");
+    },3000)
+
+</script>
+</body>
+</html>
