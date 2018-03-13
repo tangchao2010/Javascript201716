@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .inputBox{
+            width:200px;
+            height:40px;
+            position: relative;
+            margin:20px;
+        }
+        .inputBox input,.inputBox .placeSpan{
+            width:180px;
+            height:30px;
+            line-height: 30px;
+            padding:0 10px;
+        }
+        .inputBox .placeSpan{
+            position: absolute;
+            left :0;
+            top : 2px;
+            z-index:100;
+            cursor: text;
+            padding:0 15px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="inputBox">
+    <input type="text" data-place="请输入用户名">
+</div>
+<div class="inputBox">
+    <input type="password" data-place="请输入密码">
+</div>
+<div class="inputBox">
+    <input type="text" data-place="请输入用户名">
+</div>
+<div class="inputBox">
+    <input type="text" a="1">
+</div>
+
+
+
+<script>
+    // 自定义一个行内属性  data-place
+    var  inputList = document.getElementsByTagName("input");
+    var ary = [];
+    // 遍历页面中所有包含data-place行内属性的input，并且data-place带有值；
+    for(var i=0;i<inputList.length;i++){
+        var item = inputList[i];
+        if(item.getAttribute("data-place")){
+            ary.push(item);
+        }
+    }
+//    console.log(navigator.userAgent);
+    // 排除IE浏览器
+    if(!/(MSIE|Trident)/.test(navigator.userAgent)){
+        for(var i=0;i<ary.length;i++){
+            var  cur = ary[i];
+            cur.placeholder = cur.getAttribute("data-place");
+        }
+    }else{
+        for(var k = 0;k<ary.length;k++){
+            var curInput = ary[k];
+            var curText = curInput.getAttribute("data-place");
+            var  curspan = document.createElement("span");
+            curspan.className = 'placeSpan';
+            curspan.innerText = curText;
+            curInput.parentNode.appendChild(curspan);
+            curInput.index = curspan.index = k;
+            // 把当前的span的地址存储到当前这个input自定义属性
+            curInput.span = curspan;
+            curspan.onclick = function () {
+                ary[this.index].focus();
+            }
+            // onkeydown : 触发时获取的是键盘按下之前input框的值
+            // onkeyup : 触发时，获取的是当前键盘按下之后当前input框的值；
+            curInput.onkeyup = curInput.onkeydown = function () {
+                this.span.style.display = this.value.length>0?"none":"block";
+            }
+        }
+    }
+
+    // 解决IE的placeholder;
+    // for所有带有data-place ,每一个input需要创建出一个span；
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

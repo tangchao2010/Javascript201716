@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // es6     DOM2级兼容   发布订阅   拖拽  照片墙；
+
+    // 面向对象 ：  类的继承 封装 多态；
+
+    //Array.prototype   find   filter   every  some  forEach includes
+
+    //  [].find()
+    //    var ary1 =[1,2,4];
+    //
+    //    var ary2 =[1,2,19];
+
+    //
+    //    let  a = 10;
+    //    if(true){
+    //        let  a = 10;
+    //    }
+    //    let i=3;
+    //    while(i<4){
+    //        // 块级作用域；
+    //        let a = 100;
+    //        i++;
+    //    }
+    //    let num = 1;
+    //    switch (num){
+    //        // 块级作用域；
+    //        case 1:
+    //            let  a = 10;
+    //            break;
+    //        default:
+    //            let b = 100;
+    //    }
+
+    //    var obj = {}
+
+    // let  箭头函数 ；
+    //
+    //    let a = new  Proxy({},{
+    //        // 获取a下对应的属性名时，执行get方法；
+    //        get :function () {
+    //
+    //            return  1
+    //        },
+    //        // 设置实例的属性名属性值时触发set函数；
+    //        set:function () {
+    //            console.log(2);
+    //        }
+    //    });
+    //    console.log(a.time);// undefined
+    //    a.time = 1;
+    //    a.time ++;
+
+    //  class  ：定义类    继承 ： extends
+
+
+    //  DOM2 级事件
+    // attachEvent :
+
+    oBox.attachEvent("onclick",fn1)
+    oBox.attachEvent("onclick",fn1)
+    oBox.attachEvent("onclick",fn2)
+    // this : window
+    // 顺序问题
+    // 重复绑定问题；
+    // DOM2 级兼容处理  :  on   run   off
+    // 发布订阅 ： 自定义事件  on  selfrun  off ;
+    //
+    //
+    Function.prototype.myBind = function () {
+        var _this = this;
+        var that = arguments[0];
+        var arg = [].slice.call(arguments, 1);
+        return function () {
+            _this.apply(that, arg.concat([].slice.call(arguments)))
+
+        }
+    }
+    function on(curEle, type, fn) {
+        if(/^self/.test(type)){
+            if(!curEle[type]){
+                curEle[type] =[];
+            }
+            var  a = curEle[type];
+            if(a.length){
+                for(var i=0;i<a.length;i++){
+                    if(a[i] === fn){
+                        return;
+                    }
+                }
+                a.push(fn);
+            }
+            return;
+        }
+        if (curEle.addEventListener) {
+            curEle.addEventListener(type, fn, false);
+            return;
+        };
+        if (!curEle['pool' + type]) {
+            curEle['pool' + type] = [];
+            curEle.attachEvent('on' + type, run.myBind(curEle))
+        };
+        var ary = curEle['pool' + type];
+        if (ary) {
+            for (var i = 0; i < ary.length; i++) {
+                if (ary[i] === fn) {
+                    return;
+                }
+            }
+            ary.push(fn);
+        }
+    }
+    function run(e) {
+        e = window.event;
+
+        var cur = this["pool" + e.type];
+        if (cur) {
+            for (var i = 0; i < cur.length; i++) {
+                if(cur[i]===null){
+                    cur.splice(i,1);
+                    i--;
+                    continue;
+                }
+                ary[i].call(this,e)
+            }
+        }
+    }
+
+    function off(curEle,type,fn) {
+        if(curEle.removeEventListener){
+            curEle.removeEventListener(type,fn);
+            return;
+        }
+        var eventPool = curEle["pool" + type];
+        if(eventPool){
+            for(var i=0;i<eventPool.length;i++){
+                if(eventPool[i]===fn){
+                    eventPool[i]=null;
+                }
+            }
+        }
+    }
+    // DOM2事件绑定不能通过赋值为null形式进行移除
+    oBox.addEventListener("click",fn1,false);
+    oBox.onclick = null;// 冒泡阶段
+    // 内置事件池
+    on(oBox,"click",fn1)
+    //
+    on(oBox,'selfdrag',fn2)
+    function on () {// 订阅
+
+    }
+   function selfrun() {// 发布
+
+   }
+
+</script>
+
+
+</body>
+</html>
