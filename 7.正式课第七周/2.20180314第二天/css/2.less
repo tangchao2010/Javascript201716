@@ -1,0 +1,35 @@
+ //less 中的函数和类；
+.public{
+  width:100px;
+  height:100px;
+  margin: 20px auto;
+}
+.box1{
+  // 类的调用；
+  .public;
+  background: red;
+}
+.box2{
+  .public;
+  background: blue;
+}
+
+
+// less函数首先参数支持赋值默认值
+// less 函数中存在arguments,代表参数集合；
+// 函数不进行编译；带括号的叫函数，不带括号是类；
+.transition(@property:all,@time:1s,@move:linear,@delay:0s){
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+
+//.box{
+//  .transition(@time:2s);
+//}
+//.box2{
+//  .transition(@time:3s);
+//}

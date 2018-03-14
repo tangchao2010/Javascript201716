@@ -1,0 +1,25 @@
+@w:100px;
+//在less中定义变量，用@；
+// 定义变量，一些公共的值，具有代表性的值才定义成变量；
+// 优势： 当变量发生变化，所有的值随之改变；
+
+// 变量可以运算；
+
+@obj-key:16;
+@newobj : (@obj-key)-10;
+
+
+@imgurl : "../public/img";
+
+.box{
+  width:@w;
+  background: url("@{imgurl}/1.png");
+}
+
+.header{
+  height:50px;
+  // unit : 加单位；有单位，那么会默认去单位，如果没有单位，那就是加上单位；
+  width:unit(@newobj,px);
+}
+// 编译时，注释不需要编译
+// 变量不再CSS中体现；

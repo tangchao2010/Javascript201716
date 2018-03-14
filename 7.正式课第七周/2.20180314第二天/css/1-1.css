@@ -1,0 +1,8 @@
+.box {
+  width: 100px;
+  background: url("../public/img/1.png");
+}
+.header {
+  height: 50px;
+  width: 6px;
+}
