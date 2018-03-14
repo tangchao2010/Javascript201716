@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab {
+            width: 400px;
+            height: 300px;
+            margin: 30px auto;
+        }
+
+        #tab ul {
+            list-style: none;
+            overflow: hidden;
+        }
+
+        ul li {
+            width: 80px;
+            height: 30px;
+            border: 1px solid red;
+
+            float: left;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #tab li.select {
+            background: lightgreen;
+
+        }
+
+        #tab div {
+            display: none;
+            width: 400px;
+            height: 300px;
+            border: 1px solid lightcoral;
+            line-height: 300px;
+            text-align: center;
+        }
+
+        #tab :target{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li><a href="#box1">A</a></li>
+        <li><a href="#box2">B</a></li>
+        <li><a href="#box3">C</a></li>
+    </ul>
+    <div id="box1">HTML</div>
+    <div id="box2">JAVAscript</div>
+    <div id="box3">NODE VUE</div>
+</div>
+
+</body>
+</html>

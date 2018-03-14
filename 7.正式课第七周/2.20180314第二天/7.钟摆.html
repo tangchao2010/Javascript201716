@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            background: url(img/clock.png) no-repeat;
+            width:120px;
+            height:300px;
+            margin:30px auto;
+
+            -webkit-animation:yaobai 1.5s linear infinite ;
+            animation: yaobai 1.5s linear infinite;
+            transform-origin :center top;
+        }
+        @-webkit-keyframes yaobai {
+            0%{
+                transform: rotate(45deg);
+            }
+            50%{
+                transform: rotate(-45deg);
+            }
+            100%{
+                transform: rotate(45deg);
+            }
+        }
+        @keyframes yaobai {
+            0%{
+                transform: rotate(45deg);
+            }
+            50%{
+                transform: rotate(-45deg);
+            }
+            100%{
+                transform: rotate(45deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

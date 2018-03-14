@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #oul li{
+            width:200px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        /*#oul li:nth-child(2n){*/
+            /*!*第一个子元素，从1开始*!*/
+           /*background: lightgreen;*/
+        /*}*/
+        /*#oul li:nth-child(2n+1){*/
+            /*background: lightcyan;*/
+        /*}*/
+        #oul div:nth-of-type(1){
+            /**/
+            background: lightgreen;
+        }
+        div[name*=a]{
+            width:100px;
+            height:100px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+  <div  name="cab">
+      <ul id="oul">
+          <li>你</li>
+          <div>111</div>
+          <li>我</li>
+          <li>他</li>
+          <li>谁</li>
+          <li>它</li>
+      </ul>
+  </div>
+  <div name="a"></div>
+  <script>
+      //
+
+
+
+  </script>
+</body>
+</html>
