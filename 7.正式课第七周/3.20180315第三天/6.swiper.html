@@ -38,20 +38,20 @@
             <!--<div class="swiper-lazy-preloader"></div>-->
         </div>
         <div class="swiper-slide">
-            <img src="banner/banner2.jpg" alt="" class="swiper-lazy">
-            <!--<div class="swiper-lazy-preloader"></div>-->
+            <img data-src="banner/banner2.jpg" alt="" class="swiper-lazy">
+            <div class="swiper-lazy-preloader"></div>
         </div>
         <div class="swiper-slide">
-            <img src="banner/banner3.jpg" alt="" class="swiper-lazy">
-            <!--<div class="swiper-lazy-preloader"></div>-->
+            <img data-src="banner/banner3.jpg" alt="" class="swiper-lazy">
+            <div class="swiper-lazy-preloader"></div>
         </div>
         <div class="swiper-slide">
-            <img src="banner/banner4.jpg" alt="" class="swiper-lazy">
-            <!--<div class="swiper-lazy-preloader"></div>-->
+            <img data-src="banner/banner4.jpg" alt="" class="swiper-lazy">
+            <div class="swiper-lazy-preloader"></div>
         </div>
         <div class="swiper-slide">
-            <img src="banner/banner5.jpg" alt="" class="swiper-lazy">
-            <!--<div class="swiper-lazy-preloader"></div>-->
+            <img data-src="banner/banner5.jpg" alt="" class="swiper-lazy">
+            <div class="swiper-lazy-preloader"></div>
         </div>
 
     </div>
@@ -70,10 +70,25 @@
 
     var mySwiper = new Swiper ('.swiper-container', {
         loop: true,
+//          无缝滚动
         effect:"slide",
-        autoplay:2000
-
+        // slide : 左右轮播   fade : 渐隐渐现  coverflow ： 3d流
+//        direction:"vertical",
+        // 垂直方向的轮播’；
+        autoplay:2000,
+        //autoplay  : 自动轮播 ，  可以设置每张图片的轮播时间，单位毫秒
+        pagination: '.swiper-pagination',
+        // 控制分页导航属性
+        autoplayDisableOnInteraction: false,
+        // 当操作轮播图之后，会重新启动autoplay;让轮播图自动继续执行；
+        lazyLoading : true
     });
+
+
+
+    //  如果昨天是明天的话就好了，那么今天就是周五了；
+    // 今天周几？
+    //
 
 </script>
 </body>
