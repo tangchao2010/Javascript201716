@@ -97,6 +97,7 @@ html,body{
     width:100%;
     top:0;
     left:0;
+    transition: .3s;
 }
 .main .wrapper p{
     height:.84rem;
@@ -107,7 +108,7 @@ html,body{
     letter-spacing: .04rem;
     color:rgba(255,255,255,.5);
 }
-.wrapper .wrapper p.select{
+.wrapper  p.select{
     color:#31C27C;
 }
 .footer{
@@ -138,6 +139,11 @@ html,body{
     margin: .15rem auto;
     /*position: absolute;*/
     /*top:.25rem;*/
+}
+.progress .already{
+    background: #31C27C;
+    height:100%;
+    width:0;
 }
 
 .footer .down{
