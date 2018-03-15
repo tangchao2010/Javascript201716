@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*all : 所有的设备 print  screen */
+        /*max-width:1200px  当前屏幕最大是1200px；当前样式有效*/
+        #box{
+            width:100px;
+            height:100px;
+            background: lightgreen;
+        }
+        @media all and (max-width:1200px){
+            /*当屏幕宽度小于1200px时，此处样式有效*/
+            #box{
+                background: lightblue;
+            }
+        }
+        @media  all and (min-width:800px){
+            /*当屏幕宽度大于800px时，此处样式生效；*/
+            #box{
+                background: red;
+            }
+        }
+
+    </style>
+
+</head>
+<div id="box"></div>
+<body>
+<script>
+
+    // PC  pad  手机；
+
+    // 响应式布局：
+    // 流式布局 ： 盒子的百分比；
+    // 媒体查询；
+
+    //  canvas   微信小程序
+
+    //  APP  ： Android （java-native）  iOS (object-c)  原生APP；
+
+    // 移动端：
+    //H5  ： 把HTML5页面嵌套在web-view;
+    //  web-view : 类似浏览器；可以让前端开发的h5在软件中显示正常的页面；
+    // 这种开发模式成为"Hybird"模式；
+
+
+
+
+
+
+</script>
+</body>
+</html>
