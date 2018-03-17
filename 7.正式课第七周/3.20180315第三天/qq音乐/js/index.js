@@ -67,14 +67,14 @@ function bindHtml(data) {
     musicAudio.play();
     $musicBtn.addClass("select");
 }
-
+//
 musicAudio.addEventListener('canplay',function () {
     autoTimer=setInterval(computedTime,1000);
 })
 
 function formatTime(time) {
     var  min = Math.floor(time/60);
-    var  sec = Math.ceil(time-min*60);
+    var  sec = Math.round(time-min*60);
     min < 10? min = "0"+ min : null;
     sec <10 ? sec = "0" + sec : null;
 
@@ -86,12 +86,12 @@ $musicBtn.tap(function () {
     if(musicAudio.paused){
         musicAudio.play();
         $musicBtn.addClass("select");
-        clearInterval(autoTimer)
+        autoTimer=setInterval(computedTime,1000);
         return;
     }
     musicAudio.pause();
     $musicBtn.removeClass("select");
-    autoTimer=setInterval(computedTime,1000);
+    clearInterval(autoTimer);
 });
 var  curTop = 0;
 var  step = 0;
@@ -108,10 +108,10 @@ function computedTime() {
         return;
     }
     $already.css("width",curTime/durTime*100 + "%");
-    var  cur = formatTime(curTime)
+    var  cur = formatTime(curTime);
     $duration.html(formatTime(durTime));
     $current.html(cur);
-    var  ary = cur.split(":")
+    var  ary = cur.split(":");
     var  min =ary[0];
     var sec = ary[1];
     // filter : 通过属性过滤；
@@ -122,7 +122,7 @@ function computedTime() {
     // data-min = 00
     var curP = $wrapper.find("p").filter('[data-min="'+min+'"]').filter('[data-sec="'+sec+'"]');
     if(curP.length>0){
-        curP.addClass("select").siblings().removeClass("select");
+        curP.addClass("select").siblings().removeClass('select');
         step ++;
         if(step>=4){
             curTop-= .84;

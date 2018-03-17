@@ -1,0 +1,7 @@
+.box {
+  width: 100px;
+  background: url('../publi1/img/1.png');
+}
+.box .con {
+  height: 200px;
+}

@@ -1,0 +1,42 @@
+// 样式类
+//.box{
+//  width:100px;
+//  height:100px;
+//  background: red;
+//}
+//.container{
+//  .box;
+//  width:200px;
+//  background: red;
+//}
+
+// 变量 : 通过@ 来定义变量； 不进行编译；
+
+//  定义一些公用的值；方便后期的维护；
+// url(../public/img/1.png)
+
+
+@img-url:"../img";
+
+// less中变量是可以运算的;存在变量提升；
+
+// 作用域 函数；
+
+
+@w-d: 200;
+.box{
+     width:unit((@w-d)-100,px);
+     background: url('@{url}/1.png');
+     .con{
+       height:unit(@w-d,px);
+     }
+}
+
+.header {
+   .box{
+       .first{
+
+       }
+   }
+}
+@url : '../publi1/img';

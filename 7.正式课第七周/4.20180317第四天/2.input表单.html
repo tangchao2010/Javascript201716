@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--display : inline-block-->
+</head>
+<body>
+<form action="https://www.baidu.com/" method="post">
+    <!--get ： 把参数拼到当前的路径后面,一般用于获取数据-->
+    <!--post ： 把参数进行了隐藏，安全系数高，一般用于修改-->
+    <!--<input type="email">-->
+    <!--<input type="url">-->
+    <!--<input type="number">-->
+    <!--<input type="range">-->
+    <!--<input type="color" id="color">-->
+    <!--<input type="week">-->
+    <input type="username" name="username" placeholder="请输入用户名" data-place="" autocomplete="off" id="user" pattern="\d{1,6}">
+    <input type="password" name="password" autocomplete="on">
+    <input type="submit" value="提交">
+</form>
+<!--<input type="text">-->
+<!--<input type="text">-->
+<!--<input type="button">-->
+<!--<input type="">-->
+<!--<button></button>-->
+
+<script>
+    // button
+    // text
+    // submit
+    // username
+    // password
+    //
+
+//var  color = document.getElementById("color");
+//color.onclick = function () {
+//    console.log(this.value);
+//}
+//    var  user = document.getElementById("user");
+//    user.focus();// 自动获取鼠标焦点；
+//
+//    localStorage.setItem("a",18332569711);
+    sessionStorage.setItem("a","b");
+</script>
+</body>
+</html>
