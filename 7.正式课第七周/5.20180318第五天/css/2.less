@@ -1,0 +1,47 @@
+//@w: 100;// 公共的值；
+//@b : white;
+// 可以进行运算，而且还存在变量提升的机制；
+// ../public/img
+//.box{
+//  width:@w;
+//}
+
+
+//less 中的函数
+// 1.函数不进行编译
+// 2.less中函数支持arguments；加上@arguments
+// 3. 小括号中内容是参数；可以赋值默认值；
+
+.transition(@property:all,@duration:1s,@timing:linear,@delay:0s){
+
+
+  //-webkit-transition: @property  @duration  @timing @delay;
+  //-moz-transition: @property  @duration  @timing @delay;
+  //-ms-transition: @property  @duration  @timing @delay;
+  //-o-transition: @property  @duration  @timing @delay;
+  //transition: @property  @duration  @timing @delay;
+  -webkit-transition: @arguments;
+  -moz-transition:@arguments;
+  -ms-transition:@arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+// less中的类；需要进行编译；
+// less 中的类中不存在arguments;
+.transform{
+  -webkit-transform: translate(100px);
+  -moz-transform: translate(100px);
+  -ms-transform: translate(100px);
+  -o-transform: translate(100px);
+  transform: translate(100px);
+
+}
+//.box{
+//  width: 200px;
+//  .transition(@duration: 2s,@delay: 1s);
+//}
+//
+//.box2{
+//  .transition(@property: width);
+//  .transform;
+//}

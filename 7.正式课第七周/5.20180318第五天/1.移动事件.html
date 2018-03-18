@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        html{
+            font-size: 100px;
+        }
+        #box{
+            width:2rem;
+            height:2rem;
+            background: lightcoral;
+
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var  oBox = document.getElementById("box");
+    // 鼠标相关的onmouseover  onmouseenter onmouseout    onmousedown onmouseup  onmousemove
+    // 键盘 ： onkeyup  onkeydown
+    //  移动端事件： onclick (点击事件) onload  onscroll onfocus  onblur  oninput (代替了onkeydown、onkeyup)
+
+    // 触摸事件：必须通过addEventListener 去给这些事件行为绑定方法；
+    // touch事件 ： ontouchstart (触摸开始)  ontouchmove   ontouchend  ontouchcancle
+
+    // 多手指： gesturestart  gesturechange   gestureend;
+
+
+    // 点击和双击： （300ms）;
+    // 长按 （750ms）
+    // 滑动：当x轴方向移动大于30px时，就是右滑；
+    // click :  移动端click事件存在300ms延迟； 在点击第一次之后，没有立即执行当前行为上的方法，而是等待300ms之后，如果没有触发第二次点击，那么才会执行这个方法；
+
+    // fastclick.js : 可以解决鼠标点击300ms延迟；
+
+//    oBox.onTouchStart = function () {
+//        console.log(1);
+//    }
+
+
+    function fn1() {
+        console.log(1);
+    }
+    oBox.onclick = function () {
+        console.log(1);
+    }
+//    oBox.addEventListener('touchstart',fn1,false)
+</script>
+</body>
+</html>

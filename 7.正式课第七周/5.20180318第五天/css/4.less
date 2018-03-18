@@ -1,0 +1,31 @@
+//  函数的继承
+
+.public{
+  width:100px;
+  height:100px;
+  color:red;
+  font-size:12px;
+  font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+}
+
+.private{
+  //.public;// 会把public类中所有的样式copy一模一样的放在这个css 中；会产生大量多余的css代码；
+  &:extend(.public);
+  // 通过：extend;继承哪个类的样式；
+  &:hover{
+
+  }
+  & > .next{
+
+  }
+
+  // & : 连接
+}
+.private > .next{
+
+}
+.private:hover{
+
+}
+
+// ：extend(公共类)

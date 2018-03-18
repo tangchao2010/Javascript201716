@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        html{
+            font-size: 100px;
+        }
+        #box{
+            width:1rem;
+            height:1rem;
+            background: lightcoral;
+            opacity:.3;
+            margin:.2rem auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var  oBox = document.getElementById("box");
+    // 点击让当前盒子旋转；
+    // 滑动让盒子透明度增加到1； 滑动【当x轴或y轴方向移动大于30px，就是滑动】
+//    oBox.onclick = function () {
+//        console.log(2);
+//    };// 存在300ms延迟；
+    // 触摸开始
+    oBox.addEventListener('touchstart',function (e) {
+//        console.log(e.touches);
+        // e.touches: 记录当前手指触摸的一些信息；距离屏幕x轴或y轴方向距离屏幕左边或上边的距离；
+
+        // 事件对象： 事件源、阻止事件的冒泡传播，事件的默认行为
+        // 移动端：TouchEvent
+        // Pc : MouseEvent;
+        console.log(e);
+        var point = e.touches[0]
+        this['startX'] = point.clientX;
+        this['startY'] = point.clientY;
+        this.style.transition = "all 0s";
+        this.style.transform = 'rotate(0deg)';
+    })
+    // 触摸中 ： 手指移动才会执行这个方法；
+    oBox.addEventListener('touchmove',function (e) {
+//        console.log(e);
+        var point = e.touches[0];
+        // e.touches[0]: 单手指的信息集合；
+        if(Math.abs(point.clientX-this['startX'])>30 ||Math.abs(point.clientY - this['startY']) >30){
+            // 当x轴或y轴单方向移动大于30px，则给当前盒子一个自定义属性；用来标识这个盒子是否符合滑动
+            this['move'] = true;
+        }
+    })
+    // 触摸结束
+
+    oBox.addEventListener('touchend',function (e) {
+//        console.log(e);
+        // touches[0] : 这个属性只有当手指触摸屏幕时，才会有这个属性；touchend,手指离开屏幕，导致方法获取不到这个属性；
+        // changedTouches[0] : 在touchend想获取手指的触摸信息，需要changedTouches
+
+        if(this["move"]){
+            this.style.opacity = 1;
+            this.style.transition = "all 1s linear";
+            this['move'] = false;
+        }else{
+            this.style.transition = 'all 1s linear';
+            this.style.transform = 'rotate(540deg)';
+            // rotate回到0deg;
+//            setTimeout(()=>{
+//                this.style.transition = "all 0s";
+//                this.style.transform = 'rotate(0deg)';
+//            },1000)
+        }
+    })
+
+
+
+
+
+</script>
+</body>
+</html>

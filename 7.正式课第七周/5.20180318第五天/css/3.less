@@ -1,0 +1,42 @@
+// less中的作用域
+//less 中的注释同样不进行编译；
+
+// 类中是存在作用域的；
+// 变量在作用域中存在变量提升的机制
+// 如果变量在当前作用域不存在，那么会默认向上一级查找；如果最外层也没有，则会报错；
+
+// css  : 标记语言
+// less : 编程语言；预处理CSS；
+//@a:100px;
+//.vue{
+//    width:@a;// 10px
+//    .react{
+//      height:@a;// 10px;
+//      @a:10px;
+//    }
+//}
+.font{
+  color:red;
+  font-size:12px;
+  font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+}
+.container{
+   .swiper-slide{
+     .div{
+       width:50px;
+       .box{
+         width:100px;
+         .font;
+       }
+     }
+   }
+ }
+.container{
+
+}
+.container .swiper-slide .div{
+  width:50px;
+}
+.container .swiper-slide .div .box{// 不会出现css优先级的问题；
+  width:100px;
+}

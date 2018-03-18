@@ -1,0 +1,25 @@
+
+@import "2";// 导入less文件；
+.clomun(@a) when (@a<4){
+  .box@{a}{
+    width:unit(@a*100,%);
+    .transition(@property: width)
+  }
+  .clomun(@a+1);
+}
+.clomun(1);
+//
+//.public(@a)  when (isnumber(@a)){
+//  // 条件满足，样式成立；
+//  background: blue;
+//}
+//
+//.box{
+//  background: red;
+//  .public("sss");
+//}
+// less中默认提供的方法；
+//isnumber  istring  iscolor  isfunction
+
+
+

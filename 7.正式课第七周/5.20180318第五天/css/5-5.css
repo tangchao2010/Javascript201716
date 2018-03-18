@@ -1,0 +1,51 @@
+.transform {
+  -webkit-transform: translate(100px);
+  -moz-transform: translate(100px);
+  -ms-transform: translate(100px);
+  -o-transform: translate(100px);
+  transform: translate(100px);
+}
+.box {
+  width: 200px;
+  -webkit-transition: all 2s linear 1s;
+  -moz-transition: all 2s linear 1s;
+  -ms-transition: all 2s linear 1s;
+  -o-transition: all 2s linear 1s;
+  transition: all 2s linear 1s;
+}
+.box2 {
+  -webkit-transition: width 1s linear 0s;
+  -moz-transition: width 1s linear 0s;
+  -ms-transition: width 1s linear 0s;
+  -o-transition: width 1s linear 0s;
+  transition: width 1s linear 0s;
+  -webkit-transform: translate(100px);
+  -moz-transform: translate(100px);
+  -ms-transform: translate(100px);
+  -o-transform: translate(100px);
+  transform: translate(100px);
+}
+.box1 {
+  width: 100%;
+  -webkit-transition: width 1s linear 0s;
+  -moz-transition: width 1s linear 0s;
+  -ms-transition: width 1s linear 0s;
+  -o-transition: width 1s linear 0s;
+  transition: width 1s linear 0s;
+}
+.box2 {
+  width: 200%;
+  -webkit-transition: width 1s linear 0s;
+  -moz-transition: width 1s linear 0s;
+  -ms-transition: width 1s linear 0s;
+  -o-transition: width 1s linear 0s;
+  transition: width 1s linear 0s;
+}
+.box3 {
+  width: 300%;
+  -webkit-transition: width 1s linear 0s;
+  -moz-transition: width 1s linear 0s;
+  -ms-transition: width 1s linear 0s;
+  -o-transition: width 1s linear 0s;
+  transition: width 1s linear 0s;
+}
