@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+        html{
+            /*方便计算，rem取值一般都是100px*/
+            font-size: 100px;
+        }
+        .first{
+            float:left;
+            width:1.35rem;
+            height:1.35rem;
+            background: red;
+            margin-left:.05rem;
+        }
+    </style>
+</head>
+<body>
+<div class="first"></div>
+<div class="first"></div>
+<div class="first"></div>
+<div class="first"></div>
+<div class="first"></div>
+<script>
+    // 移动端： 手机，ipad;屏幕大小不一样；
+
+    // 设计稿：   640：
+    //  750 :
+    // rem : 相对值单位。 相对于html的font-size属性值；
+    // 根据屏幕的宽度计算出rem的值；屏幕越大，rem越大
+
+    // 750px     1.5rem        150px    1rem =100px;
+    // 320px     1.5rem        64px;    1rem = 42px
+
+    //计算最新的HTML的font-size属性值；
+//    var  rem = document.documentElement.clientWidth /750 *100;
+  function computed() {
+      var winW = document.documentElement.clientWidth;
+      var  fontSize = winW/7.2;
+      console.log(fontSize);
+      document.documentElement.style.fontSize  = fontSize + "px";
+  }
+    computed();
+  // onresize : 当浏览器窗口大小发生变化，就会触发这个事件行为的方法；
+  window.onresize = computed;
+
+
+
+
+
+</script>
+</body>
+</html>

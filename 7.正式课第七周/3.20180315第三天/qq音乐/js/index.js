@@ -1,16 +1,22 @@
 var  $musicAudio = $("#musicAudio"),
+    //获取音乐audio的原生对象；play pause;paused
     musicAudio = $musicAudio[0],
     $musicBtn = $(".musicBtn"),
     $header = $(".header"),
     $main = $(".main"),
     $wrapper = $(".wrapper"),
     $footer = $(".footer"),
+    // 获取底部的进度条；播放时间和结束时间；
     $current = $footer.find(".current"),
     $duration = $footer.find(".duration"),
     $already = $footer.find(".already");
+// 定义全局变量；
 var autoTimer;
+// 计算main；当前页面中间的部分页面盒子的高度；
 function computedMain() {
+    // 获取屏幕的总高度；
     var  winH = document.documentElement.clientHeight;
+    // 获取当前 屏幕下rem;
     var  rem   = parseFloat(document.documentElement.style.fontSize);
     var  hei = winH - $header[0].offsetHeight - $footer[0].offsetHeight - rem*0.6;
     $main.css("height",hei/rem + "rem");
@@ -32,10 +38,13 @@ $.ajax({
 function bindHtml(data) {
 
     data=data.replace(/&#(\d+);/g,function(res,a){
+        // 第一个参数： 大正则捕获的内容
+        // 第二个参数： 第一个分组捕获的内容；
+        // 回调函数中的return;   那捕获的内容用返回值进行替换
         // console.log(res);
         switch (parseFloat(a)){
             case 32:
-                return ' ';
+                return ' ';// &#32;
                 break;
             case 40:
                 return "(";
@@ -56,7 +65,7 @@ function bindHtml(data) {
             second:sec,
             value:val
         })
-    })
+    });
     var str = ``;
     for(var i=0;i<ary.length;i++){
         var item = ary[i];
@@ -64,10 +73,12 @@ function bindHtml(data) {
         str+=`<p data-min="${item.minute}" data-sec="${item.second}">${item.value}</p>`
     }
     $wrapper.html(str);
+    // 手动让音乐播放；
     musicAudio.play();
     $musicBtn.addClass("select");
 }
 //
+// 音乐标签的canplay : 当音乐开始播放，就会触发这个事件行为的方法；
 musicAudio.addEventListener('canplay',function () {
     autoTimer=setInterval(computedTime,1000);
 })
@@ -81,8 +92,9 @@ function formatTime(time) {
     return min + ":" + sec;
 }
 
-
+ // 移动端的点击 ： tap；
 $musicBtn.tap(function () {
+
     if(musicAudio.paused){
         musicAudio.play();
         $musicBtn.addClass("select");

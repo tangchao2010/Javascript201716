@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- 让当前视口变成理想视口；会随着手机的屏幕分辨率而改变-->
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/reset.min.css">
     <link rel="stylesheet" href="css/index.css">
     <script>
         (function () {
+            //  给window的onresize事件绑定computedSize这个方法；当屏幕窗口大小发生变化，则触发这个行为
             window.addEventListener('resize',computedSize,false);
             function computedSize() {
+                // 对当前屏幕下rem的计算；
                 var  winW = document.documentElement.clientWidth;
                 document.documentElement.style.fontSize = winW/640*100 + "px";
             }

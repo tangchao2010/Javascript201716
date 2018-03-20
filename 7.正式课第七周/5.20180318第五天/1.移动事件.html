@@ -18,9 +18,11 @@
     </style>
 </head>
 <body>
-<div id="box"></div>
+<!--<div id="box"></div>-->
+<a href="http://www.baidu.com:443/?username=122&password=555" id="box"></a>
 <script>
     var  oBox = document.getElementById("box");
+    console.log(oBox.search);
     // 鼠标相关的onmouseover  onmouseenter onmouseout    onmousedown onmouseup  onmousemove
     // 键盘 ： onkeyup  onkeydown
     //  移动端事件： onclick (点击事件) onload  onscroll onfocus  onblur  oninput (代替了onkeydown、onkeyup)
@@ -43,12 +45,12 @@
 //    }
 
 
-    function fn1() {
-        console.log(1);
-    }
-    oBox.onclick = function () {
-        console.log(1);
-    }
+//    function fn1() {
+//        console.log(1);
+//    }
+//    oBox.onclick = function () {
+//        console.log(1);
+//    }
 //    oBox.addEventListener('touchstart',fn1,false)
 </script>
 </body>
