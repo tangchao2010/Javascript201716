@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function CodingMan(name) {  // 这是一个普通函数
+        // 函数执行返回一个实例；但不能return函数自己；不能递归；
+        // 需要重新定义一个类；
+        var t;
+        function Man(name) {
+            // 面向对象  js运行机制 （同步和异步）
+            // 这是一个类；
+            // 如果当前方法既不想等待，又称为等待任务队列，那么给定时器设置时间0；
+            setTimeout(function () {
+                console.log(`Hi! This  is  ${name}`);
+            },0);
+        }
+        Man.prototype.sleep = function (time) {
+            t = time*1000;
+            // 等待任务队列；
+            setTimeout(function () {
+                console.log(`Wake Up after ${time}`)
+            },t);
+            return this;// --> this-->Man的实例；
+        };
+        Man.prototype.eat = function (food) {
+            setTimeout(function () {
+                console.log(`Eat ${food}~~`);
+            },t);
+            return this;
+        };
+        Man.prototype.sleepFirst = function (time) {
+            // 5秒之后执行；并且让当前称为主任务队列；
+//            setTimeout(function () {
+//                console.log(`Wake Up after ${time}`)
+//            },time*1000);
+            var  curTime  = new Date();
+            var  delay = time*1000;
+            // 同步的
+            while(new Date()-curTime<delay){};
+            // 大于5秒之后，代码开始往下执行；
+            //阻塞主线程队列任务执行；
+            console.log(`Wake Up after ${time}`);
+            return this;
+        }
+        return new  Man(name);
+    }
+//    CodingMan("Peter");
+//    CodingMan("Peter").sleep(3).eat('dinner');
+//    CodingMan("Peter").eat('dinner').eat('supper');
+    CodingMan("Peter").sleepFirst(5).eat('supper');
+
+
+</script>
+</body>
+</html>

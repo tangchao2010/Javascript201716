@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+     var url = 'http:www.zhufengpeixun.com?username=16qi&password=6688?_=dshudtlasjd89#video';
+     function queryUrl(url) {
+         var  a = document.createElement("a");
+         a.href = url;
+         // a标签search属性值会自动过滤域名留下参数；
+        var  str = a.search;
+        var newStr =str.substring(1, str.lastIndexOf("?"));
+        var  ary =newStr.split("&");
+        var  a = [];
+         for(var i=0;i<ary.length;i++){
+             var  cur = ary[i];
+             var  arr = cur.split("=");
+             var obj = {};
+             obj[arr[0]] = arr[1];
+             a.push(obj);
+         }
+     };
+     queryUrl(url);
+     // 1. toUpperCase
+    // toLowerCase
+    // charAt
+    // charCodeAt
+    // substring
+    // substr
+    // slice
+    // split
+    // replace
+    // trim  trimLeft   trimRight
+    // indexOf
+    // lastIndexOf
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
