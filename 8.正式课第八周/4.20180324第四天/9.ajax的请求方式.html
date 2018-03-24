@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // get   : 1.客户端从服务器获取大量的数据 ；
+    // 2.get请求会把数据拼接到url上；浏览器对url的大小有限制，把多余的部分进行截取；
+    // 3.  安全系数比较低；
+    // 4.get 一般容易走缓存； 在地址的后面拼一个时间戳；防止缓存；
+    //
+    // delete  put
+    //
+    // post ：一般用于客户端向服务端发送大量数据； post把参数放在请求体中，没有大小的限制；post相对于get更加安全；
+    // post 不会走缓存
+    $.ajax({
+        url:"",
+        type:"post",
+        data:{
+            user:"",
+            id:100
+        },
+        dataType : "json",
+        success:function (data) {
+
+        }
+    });
+    
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 前后端交互的代码；
+    // ajax  async  javascript  and  xml ;
+
+    // xml :  可扩展的标记语言； xml;  json; 局部刷新
+
+    let  xhr = new  XMLHttpRequest();// 创建一个ajax的实例
+    console.log(xhr.readyState);// 0
+     xhr.open('get','./tsconfig1.json',true); // 同步；
+    console.log(xhr.readyState);// 1
+    xhr.onreadystatechange = function () {// 当xhr的readyState的值发生变化时，当前事件行为的函数会被触发；
+//        console.log(xhr.readyState);// 2 3 4 ;
+
+        // 0 : 初始化ajax 的实例
+        // 1.实例打开路径；
+        // 2. 返回响应头
+        // 3.  响应体在传输过程中；
+        // 4. 客户端成功接收到响应体；
+
+        //
+    };
+//    xhr.onload = function () {// onload : 当客户端成功接收到响应体执行此处回调函数；
+//        console.log(xhr.responseText);
+//
+//    };
+//    // 只有发生了网络层级别的异常才会触发此事件，对于应用层级别的异常 ;
+//    xhr.onerror = function (err) {
+//        console.log(err);
+//    }
+    xhr.send(null);// 把参数放进请求体；
+
+
+</script>
+</body>
+</html>

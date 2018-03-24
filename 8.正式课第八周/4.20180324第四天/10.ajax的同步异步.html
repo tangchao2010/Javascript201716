@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 同步 ： 同步的任务都会放在主任务队列
+
+    // 异步 ：放在等待任务对列中；
+    // 只有当所有的主任务队列执行完成，才会执行等待任务队列
+    // 异步 ： 不需要等待执行完，继续下面的内容；
+//    setTimeout(function () {
+//        console.log(100);
+//    },1000)
+    // 1.定时器
+    // 2. 给元素事件行为绑定方法
+    // 3. ajax
+    // 4.回调函数；
+//    console.log(1);
+//    let  vegetable = "";
+//    function cookie() {
+//        console.log("拍"+vegetable);
+//    }
+//    function buy(callback) {
+//        // 需要两秒才能购买成功；
+//        setTimeout(function () {
+//            vegetable = "黄瓜";
+//            callback();
+//        },2000);
+//    }
+//    buy(cookie);
+    const promise = new Promise(function (resolve,reject) {
+        if(Math.random()>0.5){
+            resolve("今天我请客")// then 中的第一个参数
+        }else{
+            reject("明天我请客")
+        }
+    }).then(function (val) {
+        // 成功执行此回调
+         console.log(val)
+    },function (val) {
+        // 失败执行此回调
+        console.log(val)
+    })
+
+
+
+
+</script>
+</body>
+</html>
