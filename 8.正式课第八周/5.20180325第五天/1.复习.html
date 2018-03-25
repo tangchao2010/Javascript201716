@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // node  ajax
+    // 全局环境叫global   全局最大的对象
+    // 内置模块  fs  url  http;
+    //  自定义模块
+    // 第三方模块  npm    npm install  xxx  --save-dev    package.json
+
+    //  // fs   : readFile  readFileSync   writeFile  writeFileSync  readdir  readdirSync
+
+
+    //url  : url.parse(url)  返回值是一个对象    pathname   query: 参数
+
+    // http  : createServer : 创建服务
+    http.createServer(function (req,res) {//当访问一次执行
+        // req : 请求的所有信息
+        // res : 响应的信息，响应回去的方法
+        res.end();// return  把响应内容返回；结束响应； 字符串；
+        let  type = 'application/json';
+        res.writeHead(200,{"content-type":type+';charset=urf-8'})
+
+    }).listen(8080,function () {
+
+    });
+
+
+    // ajax  :  readyState  status    局部刷新；
+//    let xhr = new  XMLHttpRequest();
+//
+//    xhr.open()
+//    // 1
+//    xhr.onreadystatechange = function () {
+//         //1-->2
+//    }
+//    xhr.send();
+
+    $.ajax({
+        url:"../con/student",
+        type:"post",
+        data:{
+            user:11,
+            pass:22
+        },
+        dataType:"json",
+        async : true,
+        success:function (data) {
+            // this--> ajax的实例
+            console.log(data)
+        }
+    })
+
+    function ajax(options) {
+        // 初始化默认的对象
+        var  _default = {
+            url:"",
+            type:"get",
+            async:true,// 布尔值
+            data:null,
+            dataType:"json",
+            success:null
+        };
+        //
+         // 遍历options的属性，赋值给默认这个对象；
+        for(var key in options){
+            if(options.hasOwnProperty(key)){
+                _default[key] = options[key];
+            }
+        }
+        //
+        let  xhr = new  XMLHttpRequest();
+        xhr.open(_default.type,_default.url,_default.async);
+        xhr.onreadystatechange = function () {
+            let  val="";
+            if(xhr.readyState === 4&& /^2\d{2}$/.test(xhr.status)){
+                val = xhr.responseText;
+            }
+            if(_default.dataType==="json"){
+                val = JSON.parse(val);
+            }
+            _default.success.call(xhr,val);
+        };
+        xhr.send(_default.data);
+
+
+
+
+
+
+    }
+    ajax({
+
+    })
+
+
+
+</script>
+</body>
+</html>

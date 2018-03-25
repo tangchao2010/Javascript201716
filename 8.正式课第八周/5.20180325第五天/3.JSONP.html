@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="ajax.js"></script>
+<script>
+    // 跨域 ：
+    // ajax  : 同源策略；
+    // 同源： 同一个源头
+    // 非同源：
+    // 同源： 协议    域名    端口号 必须完全一致；只要有一个不同，就是非同源；
+
+    // 解决跨域的方式1、 通过jsonp跨域； 项目中用最广泛的就是JSONP ;
+//    2、 document.domain + iframe跨域
+//    3、 location.hash + iframe
+//    4、 window.name + iframe跨域
+//    5、 postMessage跨域
+//    6、 跨域资源共享（CORS）
+//    7、 nginx代理跨域
+//    8、 nodejs中间件代理跨域
+//    9、 WebSocket协议跨域
+    // JSONP 原理： JSONP 利用了script标签的src属性；这个src可以进行非同源的请求，只要是一个正常的合理路径，都可以把相应的数据请求到；
+
+    // 1. 把地址给script 的src属性，并且在这个地址拼一个回调函数callback=fn；
+
+   // 2. 当src发送请求，服务器接收到请求之后，判断地址后面的回调函数；会把数据通过http形式进行传输给客户端；并且把数据放在回调函数的参数中；fn({});
+
+    // 3. 回调函数执行时，把相应的数据得到；
+    // JSONP 只支持get请求，不支持post请求；
+    // The 'Access-Control-Allow-Origin' header has a value 'http://sports.qq.com' that is not equal to the supplied origin. Origin 'http://localhost:63342' is therefore not allowed access.
+
+    //跨域；
+
+    //   ajax({
+    //       url :'http://matchweb.sports.qq.com/kbs/calendar?columnId=100000',
+    //       type:'get',
+    //       dataType:"json",
+    //       success:function (data) {
+    //           console.log(data);
+    //       }
+    //   })
+    function fn(data) {
+        console.log(data)
+    }
+//    console.log(1);
+
+    // JSONP 的原理
+    // 跨域的原理几种方式；
+
+</script>
+<script src="http://matchweb.sports.qq.com/kbs/calendar?columnId=100000&callback=fn"></script>
+</body>
+</html>

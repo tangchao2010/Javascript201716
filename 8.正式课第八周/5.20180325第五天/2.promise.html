@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // es6新增的一个类，Promise是一个构造函数。是异步解决的一种方案; 之前在promise通过回调函数和事件可以解决；
+    // Promise  ： pending (进行时) fulfilled(已成功)  rejected(已失败)  ； 三个瞬间状态；
+
+    //resolve : 成功态   reject ： 失败态；
+    // 异步： 等待任务队列，不会等待；
+    //   const  promise = new Promise(function (resolve,reject) {
+    //       // resolve  : 函数
+    //       // reject： 函数
+    //       let  vegetable;
+    //       setTimeout(function () {
+    //           vegetable = "豆角";
+    //           if(vegetable){
+    //               resolve(vegetable)
+    //           }else{
+    //               reject()
+    //           }
+    //       },2000);
+    //
+    //    });
+    //   // then 所有的promise的实例都有一个then方法；
+    //    // 接收两个回调函数，第二个函数是可选的；
+    //    then方法产生新的promise实例；可以继续调用then，可以链式写法；
+    //   第一个回调函数执行完成会将返回结果【return出的值；】传给第二个回调函数；
+
+    // catch  :捕获的是上一个回调函数发生的错误
+    //
+    //    promise.then(function () {
+    //        // 变为成功态执行；  resolve进行调用
+    //        console.log("可以炒豆角了")
+    //
+    //    },function () {
+    //        // 变为失败态执行； reject进行调用
+    //        console.log("不要着急")
+    //    })
+
+
+    //    function timeout(ms) {
+    //        return new Promise((resolve, reject) => {
+    //            setTimeout(resolve, 1000, 'done');
+    //        });
+    //    }
+    //
+    //    timeout(1000).then((value) => {
+    //        console.log(value);
+    //    });
+    //
+    //    setTimeout(function (a) {
+    //        console.log(a)
+    //        // 第三个参数作为回调函数的实参；
+    //    },1000,true);
+    let promise = new Promise(function (resolve, reject) {
+        // new Promise  之后回调函数马上执行
+        console.log('Promise');
+        resolve();
+    });
+
+    promise.then(function () {
+        //这是一个异步的回调函数函数
+        console.log('resolved.');
+    }).then(function () {
+        
+    }).catch(function (err) {
+        
+    });
+
+    //    console.log('Hi!');
+    //
+    //    function a(b) {
+    //        b()
+    //    }
+    //    a(function () {
+    //        console.log(1);
+    //    })
+    //    console.log(2);
+</script>
+</body>
+</html>
