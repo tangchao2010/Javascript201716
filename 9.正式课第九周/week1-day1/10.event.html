@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!-- v-on:事件行为  属性值是绑定的方法；方法放在methods这个对象中；-->
+   <!--v-on: 可以利用@进行替换-->
+    <!--keydown : 获取的是上一次input的值-->
+    <!--keyup : 获取的是这一次input的值-->
+    <!--需要传参，给一个$event进行占位；-->
+    <input type="text" @keydown="fn($event,1)" v-model="val">
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            val:""
+        },
+        methods:{
+            // methods中方法名不能和data中属性名相同；
+            fn(b){
+                // a : 事件对象，如果绑定时什么也不传，那么默认会给当前方法传进来一个事件对象
+//                console.log(1);
+//                console.log(a);// 事件对象，参数；
+                console.log(b);
+                // this --> vue的实例；
+//                console.log(this.val);
+            }
+        }
+    });
+</script>
+</body>

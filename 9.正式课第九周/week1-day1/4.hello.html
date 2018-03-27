@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!-- 可以进行运算，还支持三元运算符；-->
+    <!--{{msg+1}}-->
+    <!--不能用于标签行间属性或属性值-->
+    {{msg>90?"OK":"NO"}}
+    <!--小胡子语法 moustache-->
+</div>
+<div id="app1">
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+
+    // VUE  : 声明式渲染; 不关心原理，只关注视图层；大家需要多记忆；
+    // REACT  ： 编程式；原生js;
+    // angular
+    // 文件夹名字： 数字和字母- _; 不可以有空格； 不要有汉字；
+    // npm  init  -y; 初始化配置
+    // npm install  vue : 通过npm安装第三方模块；
+
+    // Vue  : 构造函数；创建一个vue的实例；
+    // 在vue中数据绑定经常使用双大括号语法；把vue中data的值拿到DOM结构中；
+    // 一个页面中可以利用多个VUE的实例；方便页面的模块化开发；
+    let vm = new Vue({// 实参： 是一个对象；
+        el: '#app',// 选择器；
+        data: {
+            // 属于挂载到vm的属性上； 当改变vm的属性时，那么页面也会跟着发生变化；
+            // 双向数据绑定的顶点
+            //MVVM  model  view   vm
+            //
+            msg:100,
+            name:"zf"
+        }
+    });
+    let vm1 = new Vue({
+        el: '#app1',// 选择器；
+        data: {}
+    });
+</script>
+</body>

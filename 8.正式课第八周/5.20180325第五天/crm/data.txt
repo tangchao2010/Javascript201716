@@ -59,7 +59,7 @@ url : "addInfo" POST
     "msg" : ""
     }’
 5、删除客户
- URL ："/removeInfo"  GET
+ URL ："/removeInfo/ ?id=xx;"  GET
  参数 ： ?id=xx;
  返回：‘{
      "code" : 0,

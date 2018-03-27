@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--VUE的指令： 定义在DOM标签的行间属性，以V- 开头，具有一定的特殊意义的一些指令；-->
+    <!--v-model: 双向的数据绑定，经常用于input框-->
+
+    <!--<input type="text" v-model="msg">{{msg}}-->
+    <!--&lt;!&ndash;v-once 只绑定一次，后期不会数据变化而变化；&ndash;&gt;-->
+    <!--<div v-once>-->
+        <!--{{msg}}-->
+    <!--</div>-->
+    <!--v-text： 只能识别文本，不会识别出标签来-->
+    <!--v-html: 指令可以识别数据中的标签-->
+    <!-- v-text 和v-htmlDOM中不能有其他的标签，否则会被覆盖掉；-->
+    <div v-text="m">
+
+    </div>
+    <div v-html="m"></div>
+
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            m:"<p>今天很暖和</p>"
+        }
+    });
+</script>
+</body>

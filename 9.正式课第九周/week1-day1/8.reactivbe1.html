@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    {{arr}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            arr:[9,2,3,4]
+        }
+    });
+//    vm.arr.length-=2;
+//    vm.arr[0] =100;
+    // 以上修改数组的方法是错误的；
+    // 但是数组原型中修改原数组的方法；
+    // pop  push  shift  unshift  splice  reverse sort
+//    vm.arr.sort();
+    //地址可以进行替换；
+    vm.arr = vm.arr.filter(item=>item>3);
+</script>
+</body>

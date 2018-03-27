@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--v-model : 把变量name抓到input的value中,v-model属性值不再是一个简单字符串；-->
+    <input type="text" id="input">
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let obj = {};
+    let temp = {};//
+    //    obj.name = 100;
+    //    obj['name'] = 200;
+    //    console.log(obj);
+    Object.defineProperty(obj, "name", {// 定义属性； 当获取name这个属性时，会触发这个对象中get方法；当设置name属性值时，会默认调用set方法；
+        // defineProperty ： 给对象新增属性
+        // 监听obj 的name属性；获取就执行get，设置或修改name值触发set方法；
+        get(){
+            // 不能获取自己的属性；
+            return temp['name'];
+        },
+        set(val){// set
+            // 不能设置自己的属性；
+            console.log(val);
+            temp['name'] = val;
+            input.value = val;
+        }
+    });
+    input.value = obj.name;
+    //  当input值发生变化时执行；
+    input.addEventListener('input', function () {
+        obj['name'] = input.value;
+    })
+
+</script>
+</body>

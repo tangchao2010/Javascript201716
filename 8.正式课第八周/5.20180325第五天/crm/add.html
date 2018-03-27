@@ -27,8 +27,73 @@
 </div>
 <script type="text/javascript" src="ajax.js"></script>
 <script type="text/javascript">
+   let submit = document.getElementById("submit");
+    let userName = document.getElementById("userName");
+    let userAge = document.getElementById("userAge");
+   let userPhone = document.getElementById("userPhone");
+   let userAddress = document.getElementById("userAddress");
 
+   let urlObj = window.location.href;
+   console.log(urlObj);
+   let index=urlObj.indexOf("=") // 28;获取当前等号的索引
+   let id = urlObj.substr(index+1);
+   let isFlag = index<0?false:true;
 
+   if(isFlag){
+       ajax({
+           url:"/getInfo?id="+id,
+           type:"get",
+           success:function (data) {
+               if(data.code===0){
+                   let  datacur = data.data;
+                   userName.value =datacur.name;
+                   userAge.value =datacur.age;
+                   userPhone.value =datacur.phone;
+                   userAddress.value =datacur.address;
+               }
+           }
+           
+       })
+   }
+   submit.onclick = function () {
+       // 修改某个客户信息；
+       if(isFlag){
+            ajax({
+                url:"/updateInfo",
+                type:"post",
+                data:{
+                    id:id,
+                    name:userName.value,
+                    age:userAge.value,
+                    phone:userPhone.value,
+                    address:userAddress.value
+                },
+                success:function (data) {
+                    if(data.code===0){
+                        window.location.href='index.html';
+                    }
+                }
+            })
+           return;
+       }
+       // 新增客户
+       ajax({
+           url:"/addInfo",
+           type:'post',
+           data:{
+               name:userName.value,
+               age:userAge.value,
+               phone:userPhone.value,
+               address:userAddress.value
+           },
+           success:function (data) {
+               if(data.code===0){
+                   window.location.href='index.html';
+               }
+           }
+       })
+       
+   }
 
 
 </script>

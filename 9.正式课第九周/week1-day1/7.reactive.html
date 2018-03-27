@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--把data中变量响应DOM结构中；当data中数据发生改变，DOM也会随着发生变化；-->
+     {{a.add}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 给vue中的data数据中每一个属性，新增一个getter 和setter；
+    // Object.definedProperty();
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            // a 挂载vm这个对象上吧；
+            a:{
+                // 如果属性是后期新增的；那么当前这个属性没有响应式的特点；
+            }
+
+        }
+    });
+//    vm.a.add ="霍营";
+    // $set : 可以data中的属性新增响应式的属性
+    vm.$set(vm.a,"add","昌平");
+
+
+</script>
+</body>

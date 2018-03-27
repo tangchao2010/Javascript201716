@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<!--innerHTML-->
+<div id="app">
+    <!--v-for : 循环-->
+    <!--循环谁，就把这个指令放进行间属性中-->
+    <ul>
+
+        <li v-for="(b,index) in fruit">{{index+1}}.{{b.name}}
+            <ul>
+                <li v-for="(a,childIndex) in b.color">
+                   {{index+1}}.{{childIndex+1}}{{a}}
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 原生中绑定数据： 循环，拼接，最后放进DOM中；
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            fruit:[{name:"apple",color:['red','green',"yellow"]},
+                    {name:"banana",color:["yellow"]},
+                    {name:"orange",color:['green',"yellow"]}
+                  ]
+//            fruit:[1,2,3]
+        }
+    });
+</script>
+</body>

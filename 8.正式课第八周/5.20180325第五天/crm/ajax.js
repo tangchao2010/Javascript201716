@@ -22,13 +22,15 @@ function ajax(options) {
         let  val="";
         if(xhr.readyState === 4&& /^2\d{2}$/.test(xhr.status)){
             val = xhr.responseText;
+            if(_default.dataType==="json"){
+                val = JSON.parse(val);
+            }
+            _default.success.call(xhr,val);
         }
-        if(_default.dataType==="json"){
-            val = JSON.parse(val);
-        }
-        _default.success.call(xhr,val);
+
+
     };
-    xhr.send(_default.data);
+    xhr.send(JSON.stringify(_default.data));
 }
 
 
