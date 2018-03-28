@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+     <ul>
+         <!--v-for: 要循环就把v-for放在哪个元素上-->
+         <!--<li v-for="(a,index) in arr">{{a}}{{index}}</li>-->
+         <!--<li v-for="(a,key) in  obj">{{key}} : {{a}}</li>-->
+         <!--<li v-for="(a,index) in  str">{{a}}{{index}}</li>-->
+         <li v-for="(n,index) in num">{{n}}{{index}}</li>
+     </ul>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            arr:[1,2,3,8],
+            obj:{name:'zf',age:9},
+            str:"todayiswe",
+            num :10
+        }
+//        不仅可以遍历数组，对象；还可以字符串，还有数字；
+    });
+</script>
+</body>

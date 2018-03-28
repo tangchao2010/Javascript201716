@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!-- 复选框-->
+    <!-- 如果只有一个复选框时，会把v-model默认转换布尔类型值进行选中；-->
+    <!--<input type="checkbox" v-model="a" value="1">吃西瓜-->
+    爱好：<input type="checkbox" v-model="b" value="跑步">跑步
+    <input type="checkbox" v-model="b" value="游泳">游泳
+    <input type="checkbox" v-model="b" value="爬山">爬山
+    {{b}}
+    <!-- 如果多个复选框的话，v-model 会把这几个checkbox默认分成一组，需要转换成数组数据类型的；-->
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            a: false,
+            b:["跑步"]
+        }
+    });
+</script>
+</body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" @keyup.enter="add" v-model="val">
+    <ul>
+        <!-- 索引： todo每一项的索引；-->
+        <li v-for="(a,index) in todo">{{a}}<button @click="remove(index)">删除</button></li>
+    </ul>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            todo:[],
+            val:""
+        },
+        methods:{
+            add(){
+                this.todo.push(this.val);
+                this.val = "";
+                //
+            },
+            remove(a){
+                console.log(a);
+                // 当点击时触发该事件
+                //  过滤：留下返回值是true每一项；
+               this.todo= this.todo.filter((item,index)=>index!==a);
+            }
+
+        }
+    });
+</script>
+</body>

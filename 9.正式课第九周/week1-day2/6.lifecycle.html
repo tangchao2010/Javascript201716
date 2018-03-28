@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="a in arr">{{a}}</li>
+    </ul>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+
+        beforeCreate:function () {
+            console.log(1);
+        },
+        created:function () {
+            // 一般用于请求数据；
+            console.log(2);
+        },
+        // 挂载数据
+        beforeMount:function () {
+            console.log(3);
+        },
+        mounted:function () {
+            console.log(4);
+        },
+        // 数据更新前
+        beforeUpdate:function () {
+            // 数据改变之前，执行此函数
+            console.log(5);
+        },
+        // 数据更新之后
+        updated:function () {
+            // 数据更新之后，执行这个函数
+            console.log(6);
+        },
+        beforeDestroy:function () {
+            console.log(7);
+        },
+        destroyed:function () {
+            console.log(8);
+        },
+        data: {
+            arr:[1,2,3,4]
+        }
+    });
+    // 让实例销毁；销毁之后数据改变之后不再影响视图；
+  vm.$destroy();
+</script>
+</body>

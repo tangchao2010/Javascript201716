@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--{{fn}}-->
+    <input type="text" v-model="arr" @click = "fn($event,1)">{{arr}}
+</div>
+
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    //    let app = document.getElementById("app");
+    //    console.log(app.getAttribute("v-html"));
+    // vue 渐进式框架    MVVM   react
+    let vm = new Vue({
+        el: "#app",// 选择器
+        data: {
+            // a,arr,str 会被vm所代理；
+            a: "<p>1999</p>",
+            arr: [1, 3, 4],
+            str: ""
+        },
+        methods: {
+            fn(e,a){// 这里面不允许用箭头函数; 箭头函数中没有this；
+                //this  ---> vm
+//                console.log(this.a);
+                console.log(e);// 事件对象  如果@click="fn";一个参数也没有，那么默认传进来的第一个参数就是事件对象
+
+                console.log(this);// 指向当前的vue实例；
+
+            }
+        }
+        // data中属性和methods中属性不能重名；
+    })
+    //    console.log(app.getAttribute("v-html"));
+    // {{fn}} :可以进行双向数据绑定；可以运算，支持三元运算符；
+    // 指令： 定义在DOM的行间属性；都是v-开头的；属性值都是变量；
+    // v-text：识别文本；
+    // v-html : 这个属性识别标签的；
+    // v-model : 双向数据绑定
+    // Object.definedProperty(obj,'name',{
+    //       get(){
+    // 获取obj这个对象的name属性时，会触发这个get
+    // },
+    // set(val){
+    // 设置obj的name属性时，会触发这个方法；
+    // }
+
+    //
+    //
+    // })
+
+    //    let obj = {};
+    //    Object.defineProperty(obj,'name',{
+    //        get(){
+    ////            console.log(1);
+    //            return 10;
+    //        },
+    //        set(val){// 将要设置或修改的值；或等号右边的值；
+    ////            console.log(val)
+    //        }
+    //    });
+    //    console.log(obj.name);// 19
+    //    obj.name = 10;
+    //    console.log(obj.name);// 19
+
+    // 事件 : 所有的方法放在methods中；
+
+    // v-for : 循环；
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+     <ul>
+         <li v-for="a in  products">{{a.productName}}</li>
+     </ul>
+</div>
+<script src="ajax.js"></script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        created:function () {
+            // 钩子函数中this指向实例；
+//            console.log(this);
+            ajax({url:"./carts.json"}).then(val=>{
+               // this--> vm
+                this.products = val;
+            });
+        },
+        data: {
+            products : []
+        }
+    });
+</script>
+</body>

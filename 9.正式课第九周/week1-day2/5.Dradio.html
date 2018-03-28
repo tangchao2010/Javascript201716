@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style>
+        #a{
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--select绑定v-model 的数据是一个数组；数组成员是下面option中的value值；-->
+    <!--<select id="a" v-model="b" multiple>-->
+        <!--<option value="" disabled>请选择</option>-->
+        <!--<option value="1">游泳</option>-->
+        <!--<option value="2">睡觉</option>-->
+        <!--<option value="3">跑步</option>-->
+    <!--</select>{{b}}-->
+  <!--一般应用于表单元素；checbox  radio  text  select-->
+    <input type="radio" v-model="sex" value="1">男
+    <input type="radio" v-model="sex" value="2">女
+
+    {{sex}}
+
+    <input type="text" v-model="val">
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            b:["2"],
+            sex:1
+        }
+    });
+</script>
+</body>
