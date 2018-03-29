@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style>
+        div>div{
+            background: red;
+            width:100px;
+            height:100px;
+        }
+        /*zf-enter-active: 动画进来开始的状态*/
+        /*zf-enter-to: 动画进来结束最终的的状态*/
+        .zf-enter-active{
+            opacity: 0;
+        }
+        .zf-enter-to{
+            opacity: 1;
+            transition: all  1s  linear;
+        }
+        /*盒子离开时瞬间的状态*/
+
+        .zf-leave-to{
+            opacity: 0;
+            transition: all  1s  linear;
+        }
+    </style>
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.css">
+</head>
+<body>
+<div id="app">
+    <!--v-if: 如果条件为true，那么显示；操作的是DOM的节点；不是控制的样式-->
+    <!--<div v-if="Math.random()>0.5">1111</div>-->
+    <!--<div v-else-if="Math.random()<0.3">3333</div>-->
+    <!--<div v-else>222</div>-->
+
+
+    <!--v-show： 操作的是元素的样式；控制display；如果频繁操作；那么最好选用v-show;-->
+    <button @click="flag=!flag">显示/隐藏</button>
+    <!--<transition name="zf" enter-active-class="animated  bounceInUp">-->
+        <!--&lt;!&ndash;transition不会显示页面中；&ndash;&gt;-->
+        <!--&lt;!&ndash; 代表被包裹起来的元素有动画的效果；&ndash;&gt;-->
+        <!--<div v-show="flag">你很帅</div>-->
+    <!--</transition>-->
+    <transition-group tag="ul" name="zf">
+        <!--transition-group；每一个需要key属性 -->
+        <li v-for="item in items"  v-if="flag" :key="item.id">
+            {{ item.id }}
+        </li>
+    </transition-group>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            flag:true,
+            items:[{id:1},{id:2},{id:3}]
+        }
+
+    });
+</script>
+</body>

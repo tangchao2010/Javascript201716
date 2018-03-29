@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="a">{{msg}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        computed:{
+
+            checkAll:{
+                get(){
+
+                },
+                set(){
+
+                }
+            },
+            // 1.只会触发get  2. return
+            msg(){
+                //如果当前输入的内容长度大于5  msg  显示多了
+                //如果输入的内容小于3 ，显示少了
+                // computed 中的属性不支持异步；
+                console.log(1);
+                setTimeout(()=>{
+                    if(this.a.length>5)return "多了";
+                    if(this.a.length<3)return "少了";
+                },2000)
+
+            }
+        },
+        data: {
+            a:""
+        }
+    });
+</script>
+</body>

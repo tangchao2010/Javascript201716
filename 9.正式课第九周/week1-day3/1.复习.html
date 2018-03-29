@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="b" value="1">
+    <input type="checkbox" v-model="b" value="2">
+    <input type="checkbox" v-model="b" value="3">
+    <li v-for="(a,index) in arr">{{a}}{{index}}
+        <img :src="a" alt=""  :customId="index">
+    </li>
+
+
+</div>
+<div id=""></div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        filters:{
+
+        },
+        data: {
+
+
+            b:[],
+            arr:[1,2,3]
+        },
+        computed:{
+            // 1.计算属性  2. 最终会被vm代理，不能和data和methods重名；3. 会被缓存，当依赖的响应式属性发生变化时，就会重新计算
+            checkAll:{
+                get(){
+
+                },
+                set(val){// true
+                }
+            },
+            sum(){
+                // 如果是函数形式的话，默认执行get方法；也只能执行get；仅读取
+                return 18;
+            }
+        }
+    });
+    //  v-model：checkbox  radio  经常使用input\
+
+    // 生命的周期：钩子函数：函数体中this指向实例；
+    // beforeCreate   created  beforeMount  mounted
+//
+    // beforeUpdate updated  beforeDestroy  destroyed
+
+    // axios.get("./pakage.json").then((val)=>{   })
+
+    // v-for  : 要循环谁就把v-for放在哪；
+    // v-bind : 动态绑定数据；
+
+    // filter : {
+    //    toFixed(input,para){
+    //        return  input * para
+    // }
+    // }
+
+    // computed :{  计算属性
+      checkAll :{
+
+      }
+
+
+    // }
+
+
+
+
+</script>
+</body>
+</html>

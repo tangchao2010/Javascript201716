@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style>
+        [v-cloak]{display: none}
+       #app div{
+            width:100px;
+            height:100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--v-cloak: 解决{{}}闪烁问题； v-cloak:当数据没有成功渲染到DOM中时，当前元素不显示；-->
+    <!--<div v-cloak>{{flag}}</div>-->
+    <!--<input type="text">{{flag}}-->
+    <button v-color="flag">点我</button>
+    <div v-drag></div>
+    <div v-drag></div>
+    <div v-drag></div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    <!--v-model  v-for  v-html  v-text  v-if  v-show  v-once v-on  v-bind-->
+//    VUE ： 自定义指令；
+//   Vue.directive()
+    let vm = new Vue({
+        el: '#app',
+        directives:{
+            color(el,current){
+//                console.log(el);
+//                console.log(current.value);
+                el.style.color=current.value;
+            },
+            drag(el){
+                el.onmousedown = function (e) {// 事件对象
+                    var disX = e.pageX -el.offsetLeft;
+                    var disY = e.pageY-el.offsetTop;
+                    document.onmousemove = function (e) {
+                        el.style.left = e.pageX-disX+"px";
+                        el.style.top = e.pageY -disY + "px";
+                    }
+                    document.onmouseup = function () {
+                        document.onmousemove= document.onmousup = null;
+                    }
+                }
+            }
+        },
+        data: {
+            flag: "red"
+        }
+    });
+</script>
+</body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="a">{{msg}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        watch:{
+//             watch中属性 需要在data中或method中被定义过；
+            //一旦数据发生改变，才会执行这个方法；
+            // watch支持异步的；但是一般用computed；
+            a(newVal,oldVal){
+                console.log(newVal);// 当前值
+                console.log(oldVal);// 输入前上一次的值
+                this.msg='.......';
+                setTimeout(()=>{
+                    if(this.a.length>5){
+                        this.msg="多了"
+                    };
+                    if(this.a.length<3){
+                        this.msg="少了"
+                    };
+                },2000)
+                return this.msg;
+            }
+        },
+        data: {
+            a:"",
+            msg:""
+        }
+    });
+</script>
+</body>

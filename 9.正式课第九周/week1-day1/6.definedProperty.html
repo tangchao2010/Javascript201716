@@ -22,16 +22,18 @@
         // 监听obj 的name属性；获取就执行get，设置或修改name值触发set方法；
         get(){
             // 不能获取自己的属性；
+            console.log(1);
             return temp['name'];
         },
         set(val){// set
             // 不能设置自己的属性；
+            console.log(2);
             console.log(val);
             temp['name'] = val;
             input.value = val;
         }
     });
-    input.value = obj.name;
+//    input.value = obj.name;
     //  当input值发生变化时执行；
     input.addEventListener('input', function () {
         obj['name'] = input.value;

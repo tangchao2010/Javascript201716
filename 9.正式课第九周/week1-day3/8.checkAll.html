@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="checkAll">
+    <input type="checkbox" v-for="a in  products" v-model="a.isSelected">
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        computed:{
+          checkAll:{
+              get(){
+                  return  this.products.every(item=>item.isSelected)
+              },
+              set(val){
+                  this.products.forEach(item=>item.isSelected=val)
+              }
+          }
+        },
+        data: {
+            products:[{isSelected:true},{isSelected:true}]
+        }
+    });
+</script>
+</body>
