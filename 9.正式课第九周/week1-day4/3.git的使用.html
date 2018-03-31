@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // git  init : 初始化git ；让当前文件夹被git所管理；
+    // git  status : 查看当前git仓库状态；
+    // git  add  .  / -A  : 把工作区代码提交到暂存区；
+    // git  commit  -m"注释"
+    // 在工作区的文件时红色的，在暂存区中是绿色的； 而且git 不能直接从工作区提交到历史区；
+    // git  log  : 查看日志 ； 各个版本号；
+
+    // git  reset  HEAD 删除暂存区之前的提交状态
+
+    // git  checkout  1.txt : 把暂存区文件覆盖本地的文件；
+
+    // git  diff  : 工作区和暂存区的比较
+    // git  diff  --cached :暂存区和历史区比较
+    // git  diff  master : 工作区和历史区比较；
+
+
+    // git  rm  文件名； 删除本地文件；暂存区也消失；
+    // git  rm  --cached  "文件名"： 仅删除缓存区文件；
+
+   // 回滚；
+    // git checkout + commit_id  + 文件名； 从历史区恢复到工作区；
+    // git  reflog : 查看所有的日志记录；
+
+   //  git reset --hard commit_id : 按照某个提交版本号恢复本地文件；
+    // git  commit  -a -m"1" : 从工作区直接提交到历史区【文件必须提价过一次】
+
+</script>
+</body>
+</html>

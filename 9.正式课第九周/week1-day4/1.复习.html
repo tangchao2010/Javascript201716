@@ -2,9 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>珠峰培训</title>
 </head>
 <body>
+<div id="app">
+    <ul>
+        <li v-for="(a,index) in arr" @click="fn($event,12)">{{a}}{{index}}
+            <img :src="a.path" alt="">
+            <input type="text" v-model="val">
+            {{bbc}}
+        </li>{{sum | toFixed(2)}}
+    </ul>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        filters:{
+            toFixed(input,para){
+                return input.toFixed(2);
+            }
+        },
+        directives:{
 
+        },
+        //八个钩子函数 ：
+        created(){
+            // vue 实例的声明周期
+            //请求数据
+            axios.get('../').then(function (data) {
+                // 成功执行第一个
+            },function () {
+                // 请求失败
+            })
+        },
+        data: {
+            arr:[{path:"../image/1.png"}],
+            val:1,
+        },
+        methods:{
+            // 方法
+            fn(a,b){
+                //
+
+            }
+        },
+        computed:{
+//                数据缓存； 当依赖属性发生改变，需要重新计算；
+            checkAll:{
+                get(){
+                    // 获取checkAll 执行
+                },
+                set(){
+                    // 设置checkAll执行
+                }
+            },
+            sum(){
+
+                return 19;
+            }
+        },
+        watch:{
+            // 监听  支持异步；
+            val(newVal,oldVal){
+                return  this.val+ 19;
+            }
+        }
+    });
+
+    // 声明式  不需要关心vue如何去实现的；  数据的双向绑定
+    // v-  ： 指令 ； DOM行间的属性
+    // v-model   v-text  v-html  v-on（@）  v-for  v-bind: 动态绑定数据   v-if  v-show   v-cloak: 解决闪烁  v-once
+
+    //  事件 ： v-on  @
+
+    //   购物车  todoList
+
+
+
+
+
+
+</script>
 </body>
-</html>
