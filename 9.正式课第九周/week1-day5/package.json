@@ -1,0 +1,19 @@
+{
+  "name": "week1-day5",
+  "version": "1.0.0",
+  "main": "10.http.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0"
+  }
+}

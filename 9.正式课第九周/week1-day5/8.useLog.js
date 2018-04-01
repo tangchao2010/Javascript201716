@@ -3,3 +3,7 @@ let  tan = require('./7.dialog-es6');
 // console.log(tan.Dialog);
 new  tan.Dialog().show();// tan.Dialog.show :undefined
 // 阿里面试题；
+
+// 1.定义一个模块
+// 2.导出
+// 3.require  : 导入模块；
