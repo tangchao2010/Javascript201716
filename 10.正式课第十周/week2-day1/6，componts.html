@@ -12,33 +12,53 @@
 <script src="./node_modules/vue/dist/vue.js"></script>
 <script>
     let obj = {school:"zf"};
-    // 1. 创建一个组件
+    // 1.创建一个组件
     // 2.注册一个组件
     // 3.使用组件；
+    // 组件一般页面最上面；
+    //  每一个组件都有自己的一个作用域，而且每一个组件都有自己的生命周期的；
+    // 组件和组件（兄弟组件）之间不能互相访问对方的数据；
     let components1 = {
-        template:'<div @click="fn">{{school}}</div>',
+        template:'<div @click="fn">{{school}}{{age}}</div>',
         data(){
-            return  obj;
+            return  {school:"a",age:8};
+        },
+        created(){
+            //this-->当前的组件
+//            console.log(this);
+            console.log(1);
         },
         methods:{
             fn(){
+                // this  ---> 指向当前的实例；
                 this.school = "px";
             }
         }
     }
     let components2 = {
-        template:'<div>{{school}}</div>',
+        template:'<div>{{school}}<components1></components1></div>',
         data(){
             return  obj;
+        },
+        components:{
+            components1
         }
     }
-
     let vm = new Vue({
         el: '#app',
         data: {},
+        created(){
+            console.log(2);
+            //this-->vue的实例
+        },
         components:{
-            components1,components2
+            // 只要对象的属性名和属性值一样，那么可以省略一个；
+            // 注册组件
+            components1:components1,
+            components2:components2
         }
     });
+
+
 </script>
 </body>

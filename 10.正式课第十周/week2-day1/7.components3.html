@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--<parent></parent>-->
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // parent   son  grandson
+    let  grandson = {
+        template:'<div>grandson</div>'
+    };
+    let  son={
+        template:'<div>son<grandson/></div>',
+        components:{
+            grandson
+        }
+    };
+    let  parent = {
+        template:'<div>parent<son/></div>',
+       components:{
+            son
+       }
+    }
+    let vm = new Vue({
+        el: '#app',
+        data: {msg:"welcome"},
+        template:'<div><parent></parent><div>{{msg}}</div></div>',
+        components:{
+            parent
+        }
+    });
+</script>
+</body>

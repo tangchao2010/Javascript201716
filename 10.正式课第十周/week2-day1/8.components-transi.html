@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    {{money}}
+    <!--v-bind: 动态绑定数据；-->
+    <child :m="money"></child>
+    <!--<li v-for="a in  arr"></li>-->
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+//    let  child = {
+//        // money： 没有在这个child中定义过；
+//        template:"<div>{{money}}</div>"
+//    }
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            money:999
+        },
+//     只有一个根元素；
+//        template:'<div class="a">{{money}}</div>'
+        // 组件的实例的作用域是孤立的；组件和组件之间不能相互访问；父级需要把数据下发到子组件，通过props;
+        components:{// child 是vue#app 这个组件的子组件；
+            child:{
+//                props:['m'],
+                props:{
+                    m:{
+                        // 验证；会抛出警告，但不会影响页面的渲染；
+                        type:[String,Number,Object],
+                        required:true,
+                        validator(val){
+                            // 验证函数；
+                            return val > 500;
+                        }
+                    }
+                },
+                template:"<div>{{m}}{{money}}</div>",
+                data(){
+                    return {money:888}
+                }
+            }
+        }
+    });
+</script>
+</body>
