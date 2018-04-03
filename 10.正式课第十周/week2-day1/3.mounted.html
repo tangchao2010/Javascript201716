@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <div ref="wrap">
+        <div ref="mydiv"  v-for="a in arr">{{a}}</div>
+        <!--<div ref="mydiv"></div>-->
+        <!--<div ref="mydiv"></div>-->
+        <!--<div ref="mydiv"></div>-->
+        <!--<div ref="mydiv"></div>-->
+    </div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // vm.$set : 设置数据响应式的
+    // vm.$data : 获取所有的响应式数据
+    // vm.$el : 挂载的元素
+    // vm.$watch : 监听
+    // vm.$options :获取vue的所有的属性
+    // vm.$refs : 获取DOM元素的方法；
+    // vm.$nextTick : 异步的方法；
+    // vm.$mount : 挂载DOM元素；
+    let vm = new Vue({
+//        el: '#app',
+        data: {msg:'hello',arr:[1,2,3]},
+        created(){
+//            debugger
+            //console.log(this.$refs.wrap);// undefined
+            this.$nextTick()
+        },
+        mounted(){
+            // 当DOM渲染完成，会执行这个函数；
+            // 操作DOM的话，需要在这里进行操作；
+            this.arr.push(4);
+            this.$nextTick(()=>{
+                //数据更新完成后，会执行这个函数；
+                console.log(this.$refs.wrap.children.length);
+            })
+            console.log(this.$refs.wrap.children.length);
+        },
+        updated(){
+            console.log(this.$refs.wrap.children.length);
+        }
+    });
+    vm.$mount("#app");
+    console.log(vm.$data);
+    console.log(vm.$el);
+    console.log(vm.$options);
+
+
+</script>
+</body>

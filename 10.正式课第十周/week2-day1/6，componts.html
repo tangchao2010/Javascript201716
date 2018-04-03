@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <components1></components1>
+    <components2></components2>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let obj = {school:"zf"};
+    // 1. 创建一个组件
+    // 2.注册一个组件
+    // 3.使用组件；
+    let components1 = {
+        template:'<div @click="fn">{{school}}</div>',
+        data(){
+            return  obj;
+        },
+        methods:{
+            fn(){
+                this.school = "px";
+            }
+        }
+    }
+    let components2 = {
+        template:'<div>{{school}}</div>',
+        data(){
+            return  obj;
+        }
+    }
+
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        components:{
+            components1,components2
+        }
+    });
+</script>
+</body>

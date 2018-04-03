@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="a">
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 1.beforeCreate  created
+    // beforeMount     mounted
+    // beforeUpdate    updated
+    // beforeDestroy  destroyed
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            // 响应式变化
+        },
+        beforeCreate(){
+            alert(1)
+        },
+        created(){
+            alert(2)
+        },
+        beforeMount(){
+            // 没有什么实际的意义
+        },
+        mounted(){
+
+        },
+        computed:{
+            checkAll:{
+                get(){
+
+                },
+                set(){
+
+                }
+            },
+            sum(){
+                //自动调用get
+            }
+        },
+        // computed和methods的区别:不同的是计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时才会重新求值
+        // watch : 监听值；
+        watch:{
+            a(newVal,oldVal){
+
+            },
+            b:{
+                handler:function (newVal,oldVal) {
+
+                },
+                deep:true
+            }
+        }
+    });
+    // vue 声明周期；从vue实例开始创建，初始化数据，编译模板，挂载DOM--> 渲染，更新-->渲染,卸载这一系列的过程，称为vue的生命周期；
+    // 在生命周期的过程中，会默认调用一些钩子函数
+</script>
+</body>

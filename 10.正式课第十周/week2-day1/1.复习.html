@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="a in  arr">{{a}}</li>
+    </ul>
+    <!--@-v-on:click&ndash;&gt;-->
+    <!--指令: 后面的是变量-->
+    <button @click="add" aaa="ccc">新增</button>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+//   let oLis = document.getElementsByTagName('li');
+   // 可以用原生来获取元素，存在DOM映射，如果换做jQuery，只能获取一个；
+//   console.log(oLis);
+
+   let vm = new Vue({
+        el: '#app',
+        data: {
+            // 当初始化实例，在这个过程中，会遍历data中每一个属性，给当前属性新增getter/setter这两个方法；让当前属性具有响应式数据变化；
+            // 数据双向绑定原理
+            // vue的生命周期；
+            arr:[1,2,3]
+        },
+       directives:{
+
+       },
+       filters:{
+
+       },
+       created(){
+            //一般用于请求数据
+       },
+       mounted(){
+           // 当真实DOM渲染完成之后会触发这个方法；
+       },
+       methods:{
+            //  方法： 事件行为的方法；
+            add() {
+                //this--> vue实例
+                //  这种新增方法不是响应式；
+//                this.arr[this.arr.length] = 4;
+                this.arr.push(4)
+            }
+       },
+       computed:{
+
+       },
+       watch:{
+
+       },
+
+
+    });
+//function add() {
+//    console.log(1);
+//}
+</script>
+</body>
