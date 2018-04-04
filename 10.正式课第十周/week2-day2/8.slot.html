@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--属性名是子组件的，属性值是父组件的-->
+    <modal m="msg">
+        <h2 slot="header" @click="fn">你还好吗？</h2>
+        <p slot="header">确认</p>
+        <span>中午吃啥</span>
+        <span>晚上吃啥</span>
+        <p slot="footer">晚上会下雪吗？</p>
+    </modal>
+</div>
+<template id="abc">
+    <div class="container">
+        <div class="hea">
+            <slot name="header"></slot>
+        </div>
+        <div class="foo">
+            <slot name="footer"></slot>
+        </div>
+        <slot></slot>
+        <!-- 匹配没有slot属性的所有元素-->
+    </div>
+
+
+</template>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let  modal = {
+        template:'<div @click="fn"></div>',
+        methods:{
+
+        }
+    }
+    // 插槽；自定义的模板
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        components:{
+            modal
+        },
+        methods:{
+            fn(){
+                console.log("还好")
+            }
+        }
+    });
+</script>
+</body>

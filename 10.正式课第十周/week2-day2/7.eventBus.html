@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <blue></blue>
+    <red></red>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+
+    // 事件车：传递兄弟组件之间的数据
+    let  eventBus = new  Vue;
+    console.log(eventBus);
+    let  blue = {
+        template:'<div>{{color}}<button @click="changeBlue">变蓝</button></div>',
+        data(){
+            return {color:"蓝色",old:"蓝色"}
+        },
+        created(){
+            eventBus.$on('changeRed',(val)=>{this.color=val});
+        },
+        methods:{
+            changeBlue(){
+                // 发布： 事件行为；
+                eventBus.$emit('changeBlue',this.color);
+            }
+        }
+
+    }
+    let  red = {
+        template:'<div>{{color}}<button @click="changeRed">变红</button></div>',
+        created(){
+            // console.log(blue);
+            // 给当前eventBus新增一个监听的方法；
+            // $on两个参数： 1： 自定义事件名字  2. 自定义事件绑定的方法
+            eventBus.$on('changeBlue',(val)=>{this.color=val});
+        },
+        data(){
+            return {color:"红色",old:'红色'}
+        },
+        methods:{
+            changeRed(){
+                eventBus.$emit('changeRed',this.old);
+            }
+        }
+    }
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        components:{
+            blue,red
+        }
+    });
+    vm.$mount()
+</script>
+</body>

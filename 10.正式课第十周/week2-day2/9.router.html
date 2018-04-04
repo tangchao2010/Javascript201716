@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style>
+        .router-link-active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<!-- hash   historyAPI -->
+    <!-- to : 去哪；点击改变当前的hash值；可以修改当前标签-->
+    <router-link to="/home" tag="button">首页</router-link>
+    <router-link to="/list" tag="button">列表页</router-link>
+    <!--用来显示组件-->
+    <router-view></router-view>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="./node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    // 1.组件
+    // 2.routes : 注册组件，配置路径
+    // 3.router : 路由的管理者
+    // 4. route放在vue的实例中；
+    let  home = {template:"<div>home</div>"};
+    let  list = {template:'<div>list</div>'};
+   let routes = [
+       // 注册一些组件，数组的形式； 一组路由；配置每个组件的路径
+         // component : 是一个单数
+       {path:'/home',component:home},
+       {path:'/list',component:list}
+   ]
+   let router= new VueRouter({
+       // 作为组件的管理者；
+       routes
+   })
+
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        router,
+        components:{}
+    });
+</script>
+</body>
