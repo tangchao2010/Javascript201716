@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <!--<obj1 :s="msg" @update:s="val=>msg=val"></obj1>-->
+    <!-- s: 同步-->
+    <obj1 :s.sync="msg"></obj1>
+
+    <!--这是vue的一个语法糖；-->
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 局部组件的三部曲：
+    // 创建组件  注册组件  使用组件；
+    let obj1={
+        // 当前作用域不能访问父级组件
+        props:['s'],
+        template:'<div>{{a}}{{s}}<button @click="changeMsg">点我</button></div>',
+        data(){
+            return {a:1}
+        },
+        methods:{
+            changeMsg(){
+                // 发布
+                // this --> Vuecomponent组件的实例；有生命周期
+                // update：s: 更新s;
+                this.$emit('update:s',"world");
+            }
+        }
+    };
+//    let obj2={
+//        // 当前作用域不能访问父级组件
+//        template:'<div>{{a}}{{msg}}</div>',
+//        data(){
+//            return {a:1}
+//        },
+//        components:{
+//            obj1
+//        }
+//    };
+    let vm = new Vue({
+        el: '#app',// 这也是一个组件
+        data: {msg:"hello 16"},
+        components:{
+            // obj1 在这里注册，那么obj1就是这个实例的子组件
+            obj1
+        }
+    });
+</script>
+</body>

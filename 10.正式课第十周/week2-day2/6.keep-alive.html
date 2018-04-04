@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="radio" v-model="nav" value="home"> home
+    <input type="radio" v-model="nav" value="list"> list
+    <button @click="fn">aaaa</button>
+    <home></home>
+    <list></list>
+    <!--<keep-alive>-->
+        <!--&lt;!&ndash;包裹动态组件，会缓存不活动的组件实例；而不是销毁实例&ndash;&gt;-->
+        <!--<component :is="nav"></component>-->
+        <!--&lt;!&ndash;is: 判断让哪个组件显示出来&ndash;&gt;-->
+    <!--</keep-alive>-->
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 创建组件
+    // 当父组件的实例销毁之后，那么子组件的实例也会跟着销毁；
+    // 销毁之前： 毁坏数据的监听，子组件销毁，事件的监听；
+    let home={
+        template:"<div>home</div>",
+        mounted(){
+            // 初始化实例组件时执行；
+            alert("挂载home");
+        }
+    }
+    let list={
+        template:"<div>list</div>",
+        mounted(){
+            alert("挂载list")
+        },
+        destroyed(){
+            console.log(222);
+        }
+    }
+    let vm = new Vue({
+        el: '#app',
+        data: {nav:"home"},
+        components:{
+            home,list
+        },
+        methods:{
+            fn(){
+                this.$destroy();
+            }
+        }
+    });
+</script>
+</body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <add></add>
+</div>
+<div id="app1">
+    <add></add>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 对页面中公共部分进行抽离； 页面的结构
+    // 1.代码的复用
+    // 2. 提高开发的效率
+    // 3. 方便后期的维护；
+    // 全局组件
+    // 局部组件
+
+
+    // 工作中一般用全局组件；在各个地方都可以调用；
+    Vue.component('add',{
+        // 这个组件就是一个vue的实例；这是一个单独的作用域；
+        template:'<div @keyup="getAdd">{{add}}</div>',// 模板
+        data(){
+            // 组件中的data必须是一个函数数据类型的；
+            return {add:"回龙观"}
+        },
+        methods:{
+            getAdd(){
+
+            }
+        }
+    });
+    let vm = new Vue({
+        el: '#app',
+        data: {}
+    });
+    let vm1 = new Vue({
+        el: '#app1',
+        data: {}
+    });
+
+    // 局部组件 ：
+</script>
+</body>

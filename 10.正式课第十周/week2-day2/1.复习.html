@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    {{a}}
+   <!--<div @click="fn">2222</div>-->
+    <input type="text" v-model="a">
+    <div ref="div1"></div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+   // 1. 生命周期； 实例初始化、
+   // template: 不能是文本节点，覆盖原有的
+   //  销毁数据的监听，子组件和事的监听
+    let vm = new Vue({
+//        el: '#app',
+//        template:'<div @click="fn">1111</div>',// 只能有一个根元素
+        data: {
+            a:1000
+        },
+        watch:{
+          a(newVal,oldVal){
+              console.log(newVal)
+          }
+        },
+        methods:{
+          fn(){
+              console.log(1)
+          }
+        },
+        computed:{
+
+        },
+        created(){
+            this.$nextTick(()=>{
+                //this--> 实例 异步调用；
+                console.log(this.$refs.div1);
+            })
+            console.log(this.$refs.div1);// undefined
+        },
+        mounted(){
+            // 挂载完成，操作DOM一般在这里执行；
+            console.log(this.$refs.div1);
+        },
+        updated(){
+            console.log(this.$refs.div1);
+        }
+    });
+   vm.$mount("#app");
+   //    vm.$destroy();
+</script>
+</body>
