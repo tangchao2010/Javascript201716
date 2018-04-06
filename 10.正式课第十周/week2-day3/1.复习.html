@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<handsome></handsome>
+<div id="app">
+    <first></first>
+    <!--hash-->
+    <!--history-->
+    <router-link to="/second" tag="button">1</router-link>
+    <router-link to="/third">2</router-link>
+    <!--显示组件-->
+    <router-view></router-view>
+</div>
+<script>
+    // component  ：
+    //  全局组件  局部组件
+    Vue.component("handsome",{// 一个组件就是一个实例
+        template:'<div>{{msg}}</div>',// 只有一个根元素
+        data(){// 函数数据类型的
+            return {msg:1}
+        },
+        created(){
+            //this --> 当前组件的实例
+        },
+        methods:{
+
+        }
+    });
+    let first = {
+        template:""
+    }
+    // 局部组件 ： 创建一个组件，注册组件  使用组件
+    // 在各个vue实例中都可以使用
+    //  函数： js
+
+
+    //  Object.definedProperty : es5 方法；vue在IE8 以下不兼容的；
+
+    // VUE 路由； 指向  显示和隐藏
+
+    let second = {
+        template:"<div>Number Two</div>"
+    }
+
+    let third = {
+        template:"<div>Number three</div>"
+    }
+    // 第一层路由的/ 不能省去
+    // 路由映射表
+    let routes = [{path:'/second',component:second},{path:'/third',component:third,children:[{path:''}]}];
+
+    let router = new  VueRouter({
+        routes
+    });
+
+    let vm= new Vue({
+        el:"#app",
+        components:{
+            first
+        },
+        router
+    });
+
+
+
+
+</script>
+</body>
+</html>
