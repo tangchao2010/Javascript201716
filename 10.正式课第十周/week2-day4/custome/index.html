@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2" style="margin-top:60px">
+            <div class="col-md-5">
+                <span style="font-weight: bold">用户名</span>
+                <input type="text" id="user">
+            </div>
+            <div class="col-md-5">
+                <span style="font-weight: bold">密码</span>
+                <input type="text" id="pass">
+            </div>
+            <div>
+                <button class="btn btn-primary btn-ms" id="add">添加</button>
+            </div>
+        </div>
+        <ul class="list-group col-md-8 col-md-offset-2" id="oul"></ul>
+    </div>
+</div>
+<script>
+    (function () {
+        // fetch  : 基于promise的ajax
+//        console.log(fetch);
+        let  oUl = document.getElementById("oul");
+        let add = document.getElementById("add");
+        let user = document.getElementById("user");
+        let pass = document.getElementById("pass");
+        function render(data) {
+                let str =``;
+                for(let i=0;i<data.length;i++){
+                    let cur = data[i];
+                    str+=`<li class="list-group-item clearfix"><span>用户名：${cur.username}</span><span>密码：${cur.password}</span><button class="btn btn-danger pull-right" data-id="${cur.id}">删除</button></li>`
+                }
+            oUl.innerHTML = str;
+        }
+        // 初始化数据
+        function init() {
+            fetch('/user')
+                .then(res=>{return res.json()})
+                .then(data=>{render(data)});
+        }
+         init();
+        
+        add.onclick = function () {
+            fetch('/add',
+                {method:"POST",body:JSON.stringify({username:user.value,password:pass.value})})
+                .then(res=>{return res.json()})
+                .then(data=>{
+                    render(data);
+                })
+        }
+        oUl.onclick = function (e) {
+            if(e.target.tagName.toLowerCase()==="button"){
+                 let id = e.target.getAttribute('data-id');
+                 fetch('/delete?id='+id).then(res=>{return res.json()}).then(data=>{
+                     render(data)
+                 })
+            }
+        }
+
+    })()
+
+
+</script>
+</body>
+</html>
