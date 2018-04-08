@@ -40,3 +40,34 @@ import './abc.less';
 // npm  install  less --save-dev
 // npm  install  less-loader --save-dev
 
+
+// webpack
+// es6---> es5
+// babel-core babel-loader  babel-preset-es2015
+// es7--->es5
+// babel-preset-stage-0
+
+// css
+// css-loader   style-loader
+// less-css
+// less      less-loader
+
+//图片
+// 图片会默认编译base64格式的字符串；减少了页面的请求；如果图片比较大；不进行编译；超过8K（8192b）；
+// npm  install  file-loader  url-loader --save-dev
+
+
+// webpack会给当前项目启动一个服务；实时监听你的代码；
+//npm install webpack-dev-server --save-dev
+
+//webpack : 最新版本配备最新webpack-dev-server;
+
+
+
+
+//npm install webpack webpack-dev-server  babel-core bab
+// el-loader  babel-preset-es2015  babel-preset-stage-0  css-loader  style-loader  less  less-loader  file-loader html-webpack-plugin    url-loader --save-dev
+
+
+
+
