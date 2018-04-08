@@ -1,0 +1,20 @@
+{
+  "name": "week2-day5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vue": "^2.5.16",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "animate.css": "^3.6.1",
+    "vue-router": "^3.0.1"
+  }
+}

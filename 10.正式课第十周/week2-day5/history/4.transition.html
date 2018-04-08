@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="../node_modules/animate.css/animate.css">
+</head>
+<body>
+<div id="app">
+        <router-link to="/home">home</router-link>
+        <router-link to="/list">list</router-link>
+        <transition enter-active-class="animated bounceIn"
+                    >
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
+
+        </transition>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="../node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    let home = {template:"<div>首页</div>"}
+    let list = {template:"<div>列表</div>"};
+    let  routes = [
+        {path:'/home',component:home},
+        {path:'/list',component:list}
+    ];
+    let router = new VueRouter({
+        routes
+    })
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        router
+    });
+</script>
+</body>

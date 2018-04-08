@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/article/{}/a">商品1</router-link>
+    <router-link to="/article/2/b">商品2</router-link>
+    <router-link to="/article/3/c">商品3</router-link>
+    <router-view></router-view>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="../node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    let article = {
+        // $route.params : 获取路由的参数
+        template:'<div>第{{$route.params.c}}篇文章</div>'
+    }
+
+    let  routes = [
+           //  : 后面跟的是一个变量
+        {path:"",component:article},
+        {path:'/article/:c/:d',component:article},
+
+    ]
+    let  router  = new VueRouter({
+        routes
+    })
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        router
+    });
+</script>
+</body>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--<home></home>-->
+    <router-link to="/home">首页</router-link>
+    <router-link to="/list">列表</router-link>
+    <router-view></router-view>
+</div>
+<template id="box">
+    <div></div>
+</template>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+//    let vm = new Vue({
+//        el: '#app',
+//        data: {}
+//    });
+    // 组件   路由
+    // 全局组件
+//    Vue.component('handsome',{
+//        // vue 的实例,具有生命周期
+//        // 钩子函数
+//        // beforeCreate   created
+//        // beforeMount  mounted
+//        // beforeUpdate  updated
+//        // beforeDestroy  destroyed
+//
+//
+//        data(){
+//
+//        },
+//        template:'#box',
+//    });
+
+    //  局部组件
+    // 1. 创建组件  2. 注册   3.使用组件
+    let home = {
+        template:'<div>{{}}</div>',
+        created(){
+            //  组件初始化在使用时开始执行；
+            console.log(1)
+        },
+        mounted(){
+        },
+        data(){
+            return {}
+        }
+    };
+    new Vue({
+        el:"#app",
+        data:{msg:1},
+        components:{
+           home
+        }
+    });
+
+    //组件之间数据的传递
+    // 父子组件  props :
+    // 子传父--> 自定义事件（发布订阅）
+    // 兄弟传递 --> eventBus
+
+    //  路由 ： 指向；  hash值；
+    //1.定义组件
+    // 2. 匹配路径，路由映射表  routes
+    let home = {}
+    let  routes = [{path:'/home',component:home}];
+    let  router = new  VueRouter({
+        routes
+    });
+    new Vue({
+        el:"#app",
+        data:{msg:1},
+        components:{
+            home
+        },
+        router
+    });
+
+
+
+
+
+
+</script>
+</body>

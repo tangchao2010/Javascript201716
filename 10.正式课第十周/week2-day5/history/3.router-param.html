@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="../node_modules/animate.css/animate.css">
+</head>
+<body>
+<div id="app">
+    <!-- ：v-bind  : 绑定一个对象；-->
+    <router-link :to="{name:'first',params:{c:1,d:'a'}}">商品1</router-link>
+    <router-link :to="{name:'first',params:{c:2,d:'b'}}">商品2</router-link>
+    <router-link :to="{name:'first',params:{c:3,d:'c'}}">商品3</router-link>
+    <!--<keep-alive>-->
+        <!--z走缓存-->
+    <transition   name="zf" mode="out-in" appear enter-active-class="animated bounceIn" leave-class="animated bounceOut">
+        <router-view></router-view>
+    </transition>
+
+    <!--</keep-alive>-->
+
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="../node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    let article = {
+        template:'<div>第{{$route.params.d}}篇文章</div>'
+    }
+    let  routes = [
+        //  : 后面跟的是一个变量
+        // 如果:to 中是对象形式的；那么在这个路由中必须配置名字；
+        // path : 这个属性不能省
+        {path:"/:c",component:article,name:"first"},
+    ];
+
+    let  router  = new VueRouter({
+        routes
+    });
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        router
+    });
+</script>
+</body>
