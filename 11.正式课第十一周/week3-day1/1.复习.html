@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+
+    <home :m="msg"></home>
+
+    <router-link to="/home" tag="button">首页</router-link>
+    <router-link to="/home">列表页</router-link>
+    <router-view></router-view>
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    //  每一个组件都是一个实例；都有自己的生命周期；
+    let  home = {
+        props:{
+            m:{
+                type:[String],
+                default:"bbb"
+            }
+        },
+        template:"<div>{{m}}</div>",data(){return {}},methods:{},components:{}};
+    let  routes = [
+        {path:'/home',component:home}
+    ];
+    let router =  new VueRouter({
+        routes
+    });
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            msg:[1]
+        },
+        router,
+        components:{
+            home
+        }
+    });
+//    Vue.components("my-vue",{})
+    // components   router;
+    //
+    // 父传子  子->父   兄弟--> 兄弟
+    // 发布订阅
+    // eventBus
+
+    // router :
+    // vue-router
+
+
+
+
+
+</script>
+</body>
