@@ -1,45 +1,29 @@
 <template>
-    <div class="header">
-          123
-        <button @click="fn">{{msg}}</button>
+    <div class="a">
+        {{msg}}
+        <!--需要路由；-->
+        <router-view></router-view>
+        <button @click="show">说实话</button>
     </div>
 </template>
-<script>
 
+<script>
+    // 默认导出一个对象
     export default {
         data(){
-            // 对象数据类型，return + {}
-            return {msg:"你很帅"}
+            return {msg: "hello"}
         },
-        methods:{
-            fn(){
-                alert(1)
+        methods: {
+            show(){
+                //console.log(this);// 组件的实例；
+                this.$notify({delay:1000});
             }
         },
-        components:{
-
-        }
-
+        components: {},
+        computed: {}
     }
 </script>
-<style  scoped  lang="less">
-    /*让当前样式变成私有scoped*/
-    /*lang="less",支持less语法；*/
-    /*全局样式*/
-    .header{
 
-            width:300px;
-            line-height: 100px;
-            height:100px;
-            background: lightblue;
-            margin:auto;
-
-    }
-    /**{*/
-        /*margin:0;*/
-        /*padding:0;*/
-    /*}*/
-    /*a{text-decoration: none}*/
-    /*ul{list-style: none}*/
+<style scoped>
 
 </style>
