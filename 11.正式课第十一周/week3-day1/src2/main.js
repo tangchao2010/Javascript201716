@@ -12,7 +12,7 @@ import  Vue from  'vue';
 // }};
 import  App  from './App.vue';
 
-// console.log(App);
+// console.log(App);  默认导出的对象
 //  文件.vue;
 new Vue({
     data:{},
@@ -20,7 +20,8 @@ new Vue({
     // components:{home},
     // render : 把虚拟DOM渲染真实DOM；
     // 操作虚拟DOM效率非常高；
-    render:h=>h(App)
+    render:h=>h(App),
+    template:''
     // render(h)=>h(App)
 }).$mount('#app');
 

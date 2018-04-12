@@ -1,10 +1,10 @@
 <template>
     <div>
-      <MyHeader  back="true">列表</MyHeader>
+      <MyHeader>列表</MyHeader>
        <ul>
          <router-link
            v-for="(item,index) in  allBook"
-           to="/detail"
+           :to="{name:'/detail',params:{bid:item.bookId}}"
            tag="li"
            :key='index'>
            <img :src="item.bookCover" alt="">
@@ -13,6 +13,7 @@
              <p>{{item.bookInfo}}</p>
              <p class="price">{{item.bookPrice}}</p>
              <button class="btn"  @click.stop="remove(item.bookId)">删除</button>
+             <button class="btn btn-blue"  @click.stop="collect(item)">收藏</button>
            </div>
          </router-link>
 
@@ -23,7 +24,7 @@
 <script>
     // 默认导出一个对象
     import MyHeader from  '../base/header.vue'
-   import {getBooks,removeBook} from  '../api';
+   import {getBooks,removeBook,collectBook} from  '../api';
     export default {
         data(){
             return {allBook: []}
@@ -39,6 +40,9 @@
             async remove(bookId){
                 await removeBook(bookId);
                 this.allBook=this.allBook.filter(item=>item.bookId!=bookId)
+            },
+            async collect(current){
+                await  collectBook(current);
             }
         },
         components: {
@@ -76,8 +80,12 @@
          color:white;
          border:none;
        }
+       .btn.btn-blue{
+         background: green;
+       }
        div{
          padding-top:20px;
+         padding-left:5px;
        }
      }
 </style>

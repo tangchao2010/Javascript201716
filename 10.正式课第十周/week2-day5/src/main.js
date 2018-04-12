@@ -32,10 +32,6 @@ import './index.css';
 import './abc.less';
 // 把css 编译到页面中；
 // npm  install  css-loader  style-loader --save-dev
-// css-loader : css 解析器；
-// style-loader : 把编译出的css 插入到style中；
-
-
 // less 编译到页面中；
 // npm  install  less --save-dev
 // npm  install  less-loader --save-dev
@@ -67,6 +63,14 @@ import './abc.less';
 
 //npm install webpack webpack-dev-server  babel-core bab
 // el-loader  babel-preset-es2015  babel-preset-stage-0  css-loader  style-loader  less  less-loader  file-loader html-webpack-plugin    url-loader --save-dev
+
+
+
+
+// css-loader : css 解析器；
+// style-loader : 把编译出的css 插入到style中；
+
+
 
 
 

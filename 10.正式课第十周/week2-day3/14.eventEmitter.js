@@ -48,7 +48,7 @@ function eat() {
 function tea() {
     console.log("泡茶")
 }
-f.on('下班',fn)
+f.on('下班',fn);
 f.on('下班',eat)
 f.once("home",tea)
 f.emit("下班")

@@ -2,9 +2,9 @@
   <div id="app">
     <tab></tab>
     <div class="content">
+
       <router-view/>
     </div>
-
   </div>
 </template>
 

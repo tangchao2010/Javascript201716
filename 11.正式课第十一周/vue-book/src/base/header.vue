@@ -18,9 +18,9 @@
       props:['back'],
       methods: {
         goBack(){
-            //this.$router.history.go(-1);// 返回上一次的路由；
+            this.$router.history.go(-1);// 返回上一次的路由；
           // push : 直接到哪个路由
-          this.$router.history.push('/home')
+//          this.$router.history.push('/home')
 //          console.log(this.$router);
           // $router : 存储的是方法
           // $route : 存储的是一些属性；

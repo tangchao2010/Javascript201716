@@ -1,5 +1,5 @@
 <template>
-    <div class="a">
+    <div id="app">
         {{msg}}
         <!--需要路由；-->
         <router-view></router-view>

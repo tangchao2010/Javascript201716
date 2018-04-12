@@ -24,9 +24,9 @@ let read = util.promisify(fs.readFile);// 返回一个promise版
 
 //  async  await  :
  async function result(url) {
-    console.log(1);
-    let content = await  read(url,'utf8');
-    let  a =  await read(content,'utf8');
-    console.log(2);
+         console.log(1);
+         let content = await  read(url,'utf8');
+         let  a =  await read(content,'utf8');
+         console.log(2);
 }
 result('./1.txt');

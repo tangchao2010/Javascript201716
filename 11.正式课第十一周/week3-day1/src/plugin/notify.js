@@ -2,6 +2,12 @@ import  modal  from  './notify.vue';
 let  notify = {};
 notify.install = function (Vue,options={delay:3000}) {
     // VUe  是一个vue的构造器； Vue
+    // $mount
+    // $el
+    // $emit
+    // $on
+    // $refs
+
     Vue.prototype.$notify = function (opt) {
         // console.log(100);
         options ={...options,...opt};
@@ -16,7 +22,6 @@ notify.install = function (Vue,options={delay:3000}) {
             console.log(v.$el);// modal;
             document.body.removeChild(v.$el);
         },options.delay);
-
     }
 }
 export default  notify;

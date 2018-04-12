@@ -6,6 +6,7 @@
 </head>
 <body>
 <div id="app">
+    <!--替换的是app里面的内容-->
     <!--<parent></parent>-->
 </div>
 <script src="./node_modules/vue/dist/vue.js"></script>
@@ -29,7 +30,7 @@
     let vm = new Vue({
         el: '#app',
         data: {msg:"welcome"},
-        template:'<div><parent></parent><div>{{msg}}</div></div>',
+        template:'<div><parent></parent><div>{{msg}}</div></div>',// 这种替换方式，会替换掉所有的HTML元素；
         components:{
             parent
         }
