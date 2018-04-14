@@ -1,7 +1,7 @@
 
-let express = require('express');
+let express = require('express');// 第三方，node的框架
 let app = express();
-app.listen(8080)
+app.listen(8080);
 // 当对应路径参数有name参数时，才能拦截；
 app.param('name',function (req,res,next) {// next : 函数数据类型的，让请求继续向下执行；
     //
